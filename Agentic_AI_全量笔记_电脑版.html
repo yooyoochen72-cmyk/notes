@@ -1,0 +1,1608 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI 课程知识库</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --sidebar-bg: #1e293b;
+            --main-bg: #f8fafc;
+            --primary: #2563eb;
+            --border: #e2e8f0;
+            --text-main: #334155;
+            --accent-bg: #f0f7ff;
+        }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            margin: 0; display: flex; background: var(--main-bg); color: var(--text-main);
+            line-height: 1.8;
+        }
+        /* 侧边栏 */
+        .sidebar { width: 500px; height: 100vh; position: fixed; background: var(--sidebar-bg); color: #f1f5f9; overflow-y: auto; z-index: 100; }
+        .sidebar-header { padding: 30px 25px; border-bottom: 1px solid #334155; }
+        .sidebar-header h2 { font-size: 1.2rem; margin: 0; color: #38bdf8; letter-spacing: 1px; }
+        .sidebar ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar a { text-decoration: none; color: #94a3b8; padding: 15px 25px; display: block; border-bottom: 1px solid #334155; font-size: 0.95rem; }
+        .sidebar a:hover { background: #334155; color: white; }
+
+        /* 内容区布局 */
+        .content { margin-left: 500px; flex: 1; padding: 40px 60px; max-width: 1000px; }
+        .card { background: white; border-radius: 12px; padding: 45px; margin-bottom: 50px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--border); }
+
+        h1 { font-size: 2rem; color: #0f172a; border-left: 6px solid var(--primary); padding-left: 15px; margin-bottom: 30px; }
+        .section-title { font-weight: bold; color: var(--primary); margin: 30px 0 15px 0; display: flex; align-items: center; font-size: 1.15rem; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: var(--border); margin-left: 15px; }
+
+        /* 文本渲染 */
+        .md-render { word-break: break-all; }
+        .method-container { background: var(--accent-bg); border-radius: 8px; padding: 25px; margin: 15px 0; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .list-item { background: #fff; border: 1px solid var(--border); padding: 12px 18px; border-radius: 8px; margin-bottom: 10px; }
+
+        .flow-wrapper { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 15px; background: #f8fafc; border-radius: 8px; border: 1px dashed var(--primary); }
+        .flow-node { background: white; border: 1px solid var(--primary); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-size: 0.9rem; font-weight: 500; }
+        .limitations-box { background: #fff1f2; color: #991b1b; padding: 20px; border-radius: 8px; border: 1px solid #fecaca; }
+
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; background: white; }
+        th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+        th { background: #f1f5f9; }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>课程笔记全库</h2>
+            <div style="font-size: 0.75rem; opacity: 0.5; margin-top:5px;">FULL ARCHIVE (31)</div>
+        </div>
+        <ul>
+            
+            <li><a href="#note_2e3672c204">1.如何通过迭代思维解决复杂任务的可靠性难题</a></li>
+            
+            <li><a href="#note_fc3da97a2c">2.五步拆解复杂任务：构建基于“规划-调研-反思”的 AI 研究智能体</a></li>
+            
+            <li><a href="#note_2a80891549">3.根据业务场景选择 AI 智能体的自主等级</a></li>
+            
+            <li><a href="#note_701c321d49">4.从单次提示到迭代循环：智能体工作流重塑大模型效能边界</a></li>
+            
+            <li><a href="#note_1d6adff8c7">5.多模态环境下的任务象限分析与动态规划逻辑</a></li>
+            
+            <li><a href="#note_b42d404dda">6.构建智能体：任务拆解深度导引与工作流实战</a></li>
+            
+            <li><a href="#note_6dd923996b">7.智能体系统构建进阶：从迭代评估到错误分析的实战教学</a></li>
+            
+            <li><a href="#note_48f60b9027">8.构建智能体工作流：四大核心设计模式与 AI 系统方法论</a></li>
+            
+            <li><a href="#note_1b34794d55">9.AI Agent 设计模式：反射机制及其在自动化工作流中的实战</a></li>
+            
+            <li><a href="#note_9a00813fc2">10.AI Agent 实战教学：反射设计模式与迭代式工作流构建</a></li>
+            
+            <li><a href="#note_fea89efa35">11.AI Agent 设计模式：多模态反射机制在图表生成工作流中的实战应用</a></li>
+            
+            <li><a href="#note_200e6e4ebb">12.AI Agent 系统优化：反射设计模式的性能量化评估与 Evals 构建</a></li>
+            
+            <li><a href="#note_0f911730fd">13.AI Agent 教学：超越提示词工程构建带外部反馈的反射设计模式</a></li>
+            
+            <li><a href="#note_930cdd26de">14.AI Agent 开发核心：大语言模型的工具使用原理与函数调用</a></li>
+            
+            <li><a href="#note_1741bbc447">15.从文本生成到行为触发：深度解析 LLM 工具调用的底层机制与交互闭环</a></li>
+            
+            <li><a href="#note_7afcc75251">16.利用 AISuite 实现 LLM 工具调用的代码解析与流程优化</a></li>
+            
+            <li><a href="#note_ab0cabb445">17.代码执行设计模式与沙箱安全机制</a></li>
+            
+            <li><a href="#note_961d5c5b82">18.MCP 协议深度解析：构建 AI 智能体集成标准的 M+N 演进范式</a></li>
+            
+            <li><a href="#note_2691ed9098">19.从错误分析到 Evals 量化驱动的迭代闭环</a></li>
+            
+            <li><a href="#note_3ec9c8a758">20.基于追踪的系统化错误分析与组件优化</a></li>
+            
+            <li><a href="#note_5b51fd1ec4">21.组件级错误归因分析与工作流性能优化指南</a></li>
+            
+            <li><a href="#note_d75925b3f6">22.组件级评估与高效系统迭代</a></li>
+            
+            <li><a href="#note_8a4a353b03">23.性能优化与模型直觉培养指南</a></li>
+            
+            <li><a href="#note_3276386641">24.量化性能瓶颈与平衡成本质量指南</a></li>
+            
+            <li><a href="#note_6d865625ef">25.构建与分析的迭代循环之道</a></li>
+            
+            <li><a href="#note_ef659e22a0">26.AI 智能体规划设计模式：从硬编码到 LLM 动态任务编排的演进</a></li>
+            
+            <li><a href="#note_e60f2321aa">27.利用 JSON 实现自动化工作流的精确编排</a></li>
+            
+            <li><a href="#note_09ae1fab49">28.从 JSON 到代码：利用代码执行提升自主智能体的逻辑规划与复杂任务处理能力</a></li>
+            
+            <li><a href="#note_8429f359d6">29.多智能体协作工作流：角色定义、任务分解与协作模式深度解析</a></li>
+            
+            <li><a href="#note_46f9193956">30.多智能体系统通信模式：从线性拓扑到网状协作的设计架构指南</a></li>
+            
+            <li><a href="#note_60e19c7174">31.全课总结：从设计模式到多智能体协作的核心架构</a></li>
+            
+        </ul>
+    </nav>
+
+    <div class="content">
+        
+        <article id="note_2e3672c204" class="card">
+            <h1>1.如何通过迭代思维解决复杂任务的可靠性难题</h1>
+
+            <div class="md-render" data-content='"\u672c\u8bfe\u7a0b\u7531 Andrew Ng \u4e3b\u8bb2\uff0c\u65e8\u5728\u6df1\u5165\u63a2\u8ba8**\u4ee3\u7406\u578b\u4eba\u5de5\u667a\u80fd\uff08Agentic AI\uff09**\u7684\u6838\u5fc3\u6982\u5ff5\u4e0e\u5b9e\u8df5\u3002Agentic AI \u5e76\u975e\u7b80\u5355\u7684\u63d0\u793a\u8bcd\u5de5\u7a0b\uff0c\u800c\u662f\u4e00\u79cd\u901a\u8fc7**\u4ee3\u7406\u578b\u5de5\u4f5c\u6d41\uff08Agentic Workflows\uff09**\u6784\u5efa\u590d\u6742\u5e94\u7528\u7684\u65b0\u8303\u5f0f\u3002\u8bfe\u7a0b\u65e8\u5728\u5e2e\u52a9\u5f00\u53d1\u8005\u62e8\u5f00\u884c\u4e1a\u7092\u4f5c\u7684\u8ff7\u96fe\uff0c\u638c\u63e1\u6784\u5efa\u9ad8\u6027\u80fd AI \u4ee3\u7406\u7684\u6700\u4f73\u5b9e\u8df5\uff0c\u89e3\u51b3\u4f20\u7edf\u5355\u6b21\u63a8\u7406\u6a21\u578b\u5728\u5904\u7406\u590d\u6742\u3001\u591a\u6b65\u9aa4\u4efb\u52a1\u65f6\u53ef\u9760\u6027\u4e0d\u8db3\u7684\u95ee\u9898\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u5728\u4e8e\u4ece\u201c\u5355\u6b21\u63d0\u793a\u201d\u8f6c\u5411**\u8fed\u4ee3\u5f0f\u4ee3\u7406\u5de5\u4f5c\u6d41**\u3002\u6210\u529f\u7684\u5173\u952e\u5728\u4e8e\u5efa\u7acb**\u6709\u7eaa\u5f8b\u7684\u5f00\u53d1\u6d41\u7a0b\uff08Disciplined Development Process\uff09**\uff0c\u5176\u6838\u5fc3\u6b65\u9aa4\u5305\u62ec\uff1a1. **\u8bc4\u4f30\uff08Evals\uff09**\uff1a\u5efa\u7acb\u7cfb\u7edf\u5316\u7684\u6027\u80fd\u8861\u91cf\u6807\u51c6\uff1b2. **\u9519\u8bef\u5206\u6790\uff08Error Analysis\uff09**\uff1a\u6df1\u5165\u5256\u6790\u4ee3\u7406\u5931\u6548\u7684\u5177\u4f53\u73af\u8282\u5e76\u8fdb\u884c\u9488\u5bf9\u6027\u4f18\u5316\u3002\u901a\u8fc7\u8fd9\u79cd\u95ed\u73af\u8fed\u4ee3\uff0c\u4f7f AI \u80fd\u591f\u5904\u7406\u539f\u672c\u65e0\u6cd5\u5b8c\u6210\u7684\u590d\u6742\u903b\u8f91\u4efb\u52a1\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u8d85\u8d8a\u5355\u6b21\u63a8\u7406\uff1a\u5229\u7528\u8fed\u4ee3\u548c\u63a8\u7406\u94fe\u63d0\u5347\u4efb\u52a1\u6210\u529f\u7387"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u8bc4\u4f30\u9a71\u52a8\u5f00\u53d1\uff1a\u5c06\u7cfb\u7edf\u5316\u8bc4\u4f30\u4f5c\u4e3a\u4ee3\u7406\u4f18\u5316\u7684\u6838\u5fc3"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5173\u6ce8\u5b9e\u7528\u4ef7\u503c\uff1a\u533a\u5206\u8425\u9500\u6807\u7b7e\u4e0e\u771f\u6b63\u5177\u5907\u5de5\u4f5c\u6d41\u80fd\u529b\u7684\u4ee3\u7406\u5e94\u7528"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u5ba2\u6237\u652f\u6301\uff08\u5982 Salesforce Agentforce\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u6df1\u5ea6\u5b66\u672f/\u5e02\u573a\u7814\u7a76\uff08\u5982 Claude Research\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u6cd5\u5f8b\u6587\u6863\u81ea\u52a8\u5316\u5904\u7406\uff08\u5982 Callidus Platform\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u533b\u7597\u8f85\u52a9\u8bca\u65ad\u4e0e\u5206\u6790\uff08\u5982 Microsoft MAI-Dx\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u8f6f\u4ef6\u5de5\u7a0b\u81ea\u52a8\u5316"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u76ee\u524d\u884c\u4e1a\u5b58\u5728\u8fc7\u5ea6\u7092\u4f5c\u73b0\u8c61\uff0c\u8bb8\u591a\u88ab\u79f0\u4e3a\u201c\u4ee3\u7406\u201d\u7684\u5e94\u7528\u7f3a\u4e4f\u5b9e\u8d28\u6027\u7684\u5de5\u4f5c\u6d41\u652f\u6491\uff1b\u4e14\u9ad8\u6027\u80fd\u4ee3\u7406\u7684\u5f00\u53d1\u6781\u5ea6\u4f9d\u8d56\u4e25\u8c28\u7684\u8bc4\u4f30\u4f53\u7cfb\uff0c\u800c\u975e\u7b80\u5355\u7684\u6a21\u578b\u8c03\u7528\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **Agentforce (Salesforce)**: \u4e13\u6ce8\u4e8e\u81ea\u52a8\u5316\u5ba2\u6237\u652f\u6301\u4ee3\u7406\n- **Claude Research (Anthropic)**: \u4e13\u6ce8\u4e8e\u64b0\u5199\u6df1\u5ea6\u7814\u7a76\u62a5\u544a\u4e0e\u4fe1\u606f\u91c7\u96c6\n- **Callidus Platform**: \u4e13\u6ce8\u4e8e\u5904\u7406\u68d8\u624b\u7684\u6cd5\u5f8b\u6587\u4ef6\u4e0e\u5408\u89c4\u6027\u5206\u6790\n- **MAI-Dx (Microsoft AI)**: \u4e13\u6ce8\u4e8e\u6574\u5408\u60a3\u8005\u6570\u636e\u5e76\u63d0\u4f9b\u533b\u7597\u8bca\u65ad\u5efa\u8bae"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了 Agentic AI 在不同顶尖平台上的实际应用界面，强调了从简单的对话框向复杂任务编排器（Orchestrator）的演进。</p>
+        </article>
+        
+        <article id="note_fc3da97a2c" class="card">
+            <h1>2.五步拆解复杂任务：构建基于“规划-调研-反思”的 AI 研究智能体</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u7531\u5434\u6069\u8fbe\uff08Andrew Ng\uff09\u4e3b\u8bb2\uff0c\u6838\u5fc3\u63a2\u8ba8\u4e86\u201c\u4ee3\u7406\u578bAI\u5de5\u4f5c\u6d41\u201d\uff08Agentic AI Workflows\uff09\u4e0e\u4f20\u7edf\u201c\u96f6\u6837\u672c\u201d\uff08Zero-shot\uff09\u63d0\u793a\u8bcd\u5de5\u7a0b\u7684\u533a\u522b\u3002\u4f20\u7edf\u6a21\u5f0f\u8981\u6c42\u5927\u6a21\u578b\u5728\u4e0d\u4fee\u6539\u7684\u60c5\u51b5\u4e0b\u4e00\u6b21\u6027\u8f93\u51fa\u7ed3\u679c\uff0c\u800c\u4ee3\u7406\u578b\u5de5\u4f5c\u6d41\u901a\u8fc7\u5c06\u590d\u6742\u4efb\u52a1\u62c6\u89e3\u4e3a\u89c4\u5212\u3001\u8c03\u7814\u3001\u8349\u62df\u3001\u53cd\u601d\u53ca\u4fee\u6539\u7b49\u591a\u4e2a\u8fed\u4ee3\u6b65\u9aa4\uff0c\u663e\u8457\u63d0\u5347\u4e86\u6700\u7ec8\u4ea7\u51fa\u7684\u8d28\u91cf\u3002\u5176\u6838\u5fc3\u4ef7\u503c\u5728\u4e8e\u901a\u8fc7\u201c\u65f6\u95f4\u6362\u8d28\u91cf\u201d\uff0c\u5229\u7528\u5927\u6a21\u578b\u7684\u63a8\u7406\u80fd\u529b\u8fdb\u884c\u81ea\u6211\u4fee\u6b63\u548c\u5de5\u5177\u8c03\u7528\uff0c\u89e3\u51b3\u590d\u6742\u3001\u957f\u7a0b\u7684\u4efb\u52a1\u76ee\u6807\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u4e3a**\u4efb\u52a1\u62c6\u89e3\uff08Task Decomposition\uff09**\u4e0e**\u8fed\u4ee3\u4f18\u5316\uff08Iterative Refinement\uff09**\u3002\u5177\u4f53\u6b65\u9aa4\u5305\u62ec\uff1a1. **\u89c4\u5212\uff08Planning\uff09**\uff1a\u786e\u5b9a\u4efb\u52a1\u5927\u7eb2\u4e0e\u6240\u9700\u8d44\u6e90\uff1b2. **\u5de5\u5177\u8c03\u7528\uff08Tool Use\uff09**\uff1a\u5982\u901a\u8fc7Web Search API\u83b7\u53d6\u5b9e\u65f6\u5916\u90e8\u4fe1\u606f\uff1b3. **\u521d\u7a3f\u64b0\u5199\uff08Drafting\uff09**\uff1a\u57fa\u4e8e\u8c03\u7814\u7ed3\u679c\u751f\u6210\u5185\u5bb9\uff1b4. **\u53cd\u601d\u4e0e\u8bc4\u5ba1\uff08Reflection \u0026 Review\uff09**\uff1a\u7531\u6a21\u578b\u6216\u4eba\u5de5\u68c0\u67e5\u903b\u8f91\u4e0e\u51c6\u786e\u6027\uff1b5. **\u5faa\u73af\u4fee\u6539\uff08Revision\uff09**\uff1a\u6839\u636e\u53cd\u9988\u53cd\u590d\u6253\u78e8\u76f4\u81f3\u8fbe\u6210\u76ee\u6807\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u8fed\u4ee3\u4f18\u4e8e\u7ebf\u6027\uff1a\u901a\u8fc7\u591a\u6b21\u5faa\u73af\u4fee\u6b63\u800c\u975e\u4e00\u6b21\u6027\u751f\u6210\u6765\u63d0\u9ad8\u51c6\u786e\u7387\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5de5\u5177\u589e\u5f3a\uff1a\u5229\u7528\u5916\u90e8API\uff08\u5982\u641c\u7d22\u3001\u8ba1\u7b97\uff09\u5f25\u8865\u6a21\u578b\u8bad\u7ec3\u6570\u636e\u7684\u65f6\u6548\u6027\u4e0d\u8db3\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u4eba\u673a\u534f\u4f5c\uff1a\u5728\u5173\u952e\u8282\u70b9\u5f15\u5165Human-in-the-loop\u4ee5\u786e\u4fdd\u9ad8\u98ce\u9669\u4efb\u52a1\u7684\u53ef\u9760\u6027\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u6cd5\u5f8b\u6587\u4ef6\u5408\u89c4\u6027\u5206\u6790"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u533b\u7597\u5065\u5eb7\u9886\u57df\u6df1\u5ea6\u8c03\u7814"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5546\u4e1a\u4ea7\u54c1\u5e02\u573a\u7814\u7a76"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5b66\u672f\u8bba\u6587\u4e0e\u957f\u7bc7\u62a5\u544a\u64b0\u5199"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u8f6f\u4ef6\u5de5\u7a0b\u5f00\u53d1"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u76f8\u6bd4\u96f6\u6837\u672c\u6a21\u5f0f\uff0c\u4ee3\u7406\u578b\u5de5\u4f5c\u6d41\u8fd0\u884c\u65f6\u95f4\u66f4\u957f\uff0c\u6210\u672c\u66f4\u9ad8\uff1b\u4e14\u5bf9\u4efb\u52a1\u62c6\u89e3\u7684\u903b\u8f91\u4e25\u5bc6\u6027\u6709\u8f83\u9ad8\u8981\u6c42\uff0c\u8bbe\u8ba1\u4e0d\u5f53\u53ef\u80fd\u5bfc\u81f4\u9519\u8bef\u7d2f\u79ef\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **\u975e\u4ee3\u7406\u578b\u5de5\u4f5c\u6d41 (Zero-shot)**: \n  - \u8f93\u5165\u63d0\u793a -\u003e [LLM\u76f4\u63a5\u751f\u6210] -\u003e \u6700\u7ec8\u4ea7\u51fa\n- **\u4ee3\u7406\u578b\u5de5\u4f5c\u6d41 (Agentic)**:\n  - 1. \u64b0\u5199\u5927\u7eb2 (Outline)\n  - 2. \u7f51\u7edc\u8c03\u7814 (Web Research)\n  - 3. \u64b0\u5199\u521d\u7a3f (First Draft)\n  - 4. \u8bc4\u5ba1\u4e0e\u53cd\u601d (Review \u0026 Reflect)\n  - 5. \u8fed\u4ee3\u4fee\u6539 (Revise)\n  - 6. \u6700\u7ec8\u4ea4\u4ed8 (Final Output)\n- **\u7814\u7a76\u667a\u80fd\u4f53\u6267\u884c\u94fe**: \n  - \u89c4\u5212 -\u003e \u641c\u7d22 -\u003e \u7b5b\u9009\u4e0e\u6392\u5e8f -\u003e \u64b0\u5199 -\u003e \u7f16\u8f91\u5ba1\u6821 -\u003e \u751f\u6210\u62a5\u544a"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频对比了非代理型工作流（线性、无退格）与代理型工作流（循环、多步骤）的路径差异，并展示了一个“研究智能体”从接收指令到生成Markdown报告的全过程图谱。</p>
+        </article>
+        
+        <article id="note_2a80891549" class="card">
+            <h1>3.根据业务场景选择 AI 智能体的自主等级</h1>
+
+            <div class="md-render" data-content='"\u5434\u6069\u8fbe\u63d0\u51fa\u5c06\u667a\u80fd\u4f53\u89c6\u4e3a\u4e00\u4e2a\u8fde\u7eed\u7684\u201c\u81ea\u4e3b\u6027\u9891\u8c31\uff08Agentic Spectrum\uff09\u201d\uff0c\u800c\u975e\u975e\u9ed1\u5373\u767d\u7684\u4e8c\u5143\u6982\u5ff5\u3002\u89c6\u9891\u6838\u5fc3\u63a2\u8ba8\u4e86\u667a\u80fd\u4f53\u5de5\u4f5c\u6d41\u4e2d\u81ea\u4e3b\u7a0b\u5ea6\u7684\u5dee\u5f02\uff1a\u4ece\u6b65\u9aa4\u5b8c\u5168\u9884\u8bbe\u7684\u7ebf\u6027\u7cfb\u7edf\uff0c\u5230\u80fd\u591f\u81ea\u4e3b\u89c4\u5212\u3001\u9009\u62e9\u5de5\u5177\u3001\u53cd\u601d\u5e76\u8fed\u4ee3\u7684\u9ad8\u5ea6\u81ea\u4e3b\u7cfb\u7edf\u3002\u65e8\u5728\u5e2e\u52a9\u5f00\u53d1\u8005\u6839\u636e\u5b9e\u9645\u4e1a\u52a1\u573a\u666f\uff0c\u5728\u201c\u53ef\u63a7\u6027\u201d\u4e0e\u201c\u7075\u6d3b\u6027\u201d\u4e4b\u95f4\u5bfb\u627e\u6700\u4f18\u5e73\u8861\u70b9\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u6a21\u578b\u4e3a**\u667a\u80fd\u4f53\u81ea\u4e3b\u6027\u9891\u8c31**\u3002\u5176\u6f14\u8fdb\u903b\u8f91\u5982\u4e0b\uff1a1. **\u4f4e\u81ea\u4e3b\u6027\u9636\u6bb5**\uff1a\u6240\u6709\u6b65\u9aa4\u9884\u8bbe\uff0c\u5de5\u5177\u8c03\u7528\u786c\u7f16\u7801\uff0c\u81ea\u4e3b\u6027\u4ec5\u4f53\u73b0\u5728**\u6587\u672c\u751f\u6210**\uff1b2. **\u534a\u81ea\u4e3b\u9636\u6bb5**\uff1a\u667a\u80fd\u4f53\u53ef\u505a\u90e8\u5206\u51b3\u7b56\uff0c\u5728\u9884\u5b9a\u4e49\u5de5\u5177\u5e93\u4e2d\u8fdb\u884c\u9009\u62e9\uff1b3. **\u9ad8\u81ea\u4e3b\u6027\u9636\u6bb5**\uff1a\u667a\u80fd\u4f53\u81ea\u4e3b\u51b3\u5b9a**\u6267\u884c\u5e8f\u5217**\uff0c\u5177\u5907**\u53cd\u601d\u4e0e\u6539\u8fdb**\u80fd\u529b\uff0c\u751a\u81f3\u80fd\u5373\u65f6\u521b\u5efa\u65b0\u5de5\u5177\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u4f7f\u7528\u201cAgentic\u201d\u4f5c\u4e3a\u5f62\u5bb9\u8bcd\u63cf\u8ff0\u7cfb\u7edf\u7279\u5f81\uff0c\u800c\u975e\u4e89\u8bba\u5176\u662f\u5426\u4e3a\u201cAgent\u201d\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u81ea\u4e3b\u6027\u7a0b\u5ea6\u5e94\u4e0e\u4efb\u52a1\u7684\u590d\u6742\u5ea6\u548c\u5bb9\u9519\u7387\u76f8\u5339\u914d\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u9ad8\u53ef\u63a7\u6027\uff08\u4f4e\u81ea\u4e3b\uff09\u4e0e\u9ad8\u7075\u6d3b\u6027\uff08\u9ad8\u81ea\u4e3b\uff09\u4e4b\u95f4\u5b58\u5728\u6743\u8861\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u7cfb\u7edf\u67b6\u6784\u8bbe\u8ba1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u79d1\u7814\u52a9\u624b"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4f01\u4e1a\u7ea7\u590d\u6742\u4e1a\u52a1\u6d41\u7a0b\u81ea\u52a8\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u52a8\u6001\u8f6f\u4ef6\u5de5\u7a0b\u5de5\u5177"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u9ad8\u5ea6\u81ea\u4e3b\u7684\u667a\u80fd\u4f53\uff08Highly Autonomous Agents\uff09\u76ee\u524d\u9762\u4e34\u53ef\u9884\u6d4b\u6027\u5dee\u3001\u96be\u4ee5\u7cbe\u786e\u63a7\u5236\u4ee5\u53ca\u8c03\u8bd5\u6210\u672c\u9ad8\u7684\u95ee\u9898\uff0c\u4ecd\u5904\u4e8e\u6d3b\u8dc3\u7814\u7a76\u9636\u6bb5\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"| \u7279\u5f81 | \u4f4e\u81ea\u4e3b\u6027 (Less Autonomous) | \u9ad8\u81ea\u4e3b\u6027 (Highly Autonomous) |\n| :--- | :--- | :--- |\n| **\u6b65\u9aa4\u89c4\u5212** | \u7a0b\u5e8f\u5458\u9884\u5148\u8bbe\u5b9a (Predetermined) | \u667a\u80fd\u4f53\u81ea\u4e3b\u51b3\u7b56 (Dynamic Planning) |\n| **\u5de5\u5177\u4f7f\u7528** | \u786c\u7f16\u7801\u8c03\u7528 (Hard-coded) | \u52a8\u6001\u9009\u62e9/\u5373\u65f6\u521b\u5efa (On the fly) |\n| **\u6838\u5fc3\u903b\u8f91** | \u7ebf\u6027\u5e8f\u5217\u6267\u884c | \u5faa\u73af\u3001\u53cd\u601d\u4e0e\u81ea\u6211\u6539\u8fdb |\n| **\u53ef\u63a7\u6027** | \u6781\u9ad8 | \u8f83\u4f4e\uff0c\u5177\u4e0d\u53ef\u9884\u6d4b\u6027 |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了“Degrees of Autonomy”频谱图，左侧为线性确定的工作流（LLM->Search->Fetch->LLM），右侧为带有循环决策和反思机制的复杂网络图。</p>
+        </article>
+        
+        <article id="note_701c321d49" class="card">
+            <h1>4.从单次提示到迭代循环：智能体工作流重塑大模型效能边界</h1>
+
+            <div class="md-render" data-content='"\u672c\u8bb2\u5ea7\u6df1\u5165\u63a2\u8ba8\u4e86\u667a\u80fd\u4f53\u5de5\u4f5c\u6d41\uff08Agentic Workflows\uff09\u7684\u6838\u5fc3\u4f18\u52bf\u3002\u5434\u6069\u8fbe\u6307\u51fa\uff0c\u901a\u8fc7\u5c06\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u5c01\u88c5\u5728\u8fed\u4ee3\u3001\u5faa\u73af\u7684\u5de5\u4f5c\u6d41\u4e2d\uff0c\u53ef\u4ee5\u5b9e\u73b0\u5355\u6b21\u63d0\u793a\u8bcd\u65e0\u6cd5\u5b8c\u6210\u7684\u590d\u6742\u4efb\u52a1\u3002\u5176\u6838\u5fc3\u4ef7\u503c\u5728\u4e8e\u901a\u8fc7\u8fed\u4ee3\u4f18\u5316\u663e\u8457\u63d0\u5347\u6a21\u578b\u6027\u80fd\uff08\u5982GPT-3.5\u5728\u667a\u80fd\u4f53\u6a21\u5f0f\u4e0b\u53ef\u8d85\u8d8aGPT-4\u5355\u6b21\u8868\u73b0\uff09\u3001\u5229\u7528\u5e76\u884c\u5904\u7406\u5927\u5e45\u63d0\u9ad8\u4efb\u52a1\u6548\u7387\uff0c\u4ee5\u53ca\u901a\u8fc7\u6a21\u5757\u5316\u8bbe\u8ba1\u5b9e\u73b0\u7ec4\u4ef6\u7684\u7075\u6d3b\u66ff\u6362\u4e0e\u4f18\u5316\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u56f4\u7ed5**\u8fed\u4ee3\u4e0e\u589e\u5f3a**\u5c55\u5f00\uff1a1. **\u81ea\u6211\u53cd\u601d (Reflection)**\uff1a\u6a21\u578b\u751f\u6210\u521d\u6b65\u7ed3\u679c\u540e\u8fdb\u884c\u81ea\u6211\u68c0\u67e5\u4e0e\u4fee\u6b63\uff1b2. **\u5de5\u5177\u4f7f\u7528 (Tool Use)**\uff1a\u8c03\u7528\u5916\u90e8API\u6216\u641c\u7d22\u5f15\u64ce\u83b7\u53d6\u5b9e\u65f6\u4fe1\u606f\uff1b3. **\u89c4\u5212 (Planning)**\uff1a\u5c06\u5927\u76ee\u6807\u62c6\u89e3\u4e3a\u53ef\u6267\u884c\u7684\u5b50\u4efb\u52a1\u5e8f\u5217\uff1b4. **\u591a\u667a\u80fd\u4f53\u534f\u4f5c (Multi-agent)**\uff1a\u4e0d\u540c\u89d2\u8272\u7684\u667a\u80fd\u4f53\u5206\u5de5\u914d\u5408\u3002\u901a\u8fc7**\u5e76\u884c\u5316 (Parallelization)** \u6280\u672f\uff0c\u5c06\u539f\u672c\u9700\u8981\u4eba\u7c7b\u987a\u5e8f\u6267\u884c\u7684\u6b65\u9aa4\uff08\u5982\u9605\u8bfb9\u4e2a\u7f51\u9875\uff09\u8f6c\u53d8\u4e3a\u540c\u6b65\u6267\u884c\uff0c\u6781\u5927\u5730\u7f29\u77ed\u4e86\u603b\u8017\u65f6\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u6027\u80fd\u4f18\u5148\uff1a\u901a\u8fc7\u6d41\u7a0b\u8865\u507f\u6a21\u578b\u80fd\u529b\u7684\u4e0d\u8db3"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5e76\u884c\u63d0\u901f\uff1a\u5229\u7528\u8ba1\u7b97\u8d44\u6e90\u6362\u53d6\u65f6\u95f4\u6548\u7387"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6a21\u5757\u5316\u89e3\u8026\uff1a\u652f\u6301\u72ec\u7acb\u66f4\u6362LLM\u4f9b\u5e94\u5546\u6216\u5916\u90e8\u5de5\u5177"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u8f6f\u4ef6\u5de5\u7a0b\uff08\u81ea\u52a8\u5316\u4ee3\u7801\u7f16\u5199\u4e0e\u8c03\u8bd5\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5b66\u672f\u7814\u7a76\u4e0e\u4fe1\u606f\u68c0\u7d22\uff08\u591a\u6e90\u5e76\u884c\u641c\u7d22\u4e0e\u6c47\u603b\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u5185\u5bb9\u521b\u4f5c\uff08\u5982\u6df1\u5ea6\u8bba\u6587\u6216\u62a5\u544a\u64b0\u5199\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4f01\u4e1a\u7ea7\u81ea\u52a8\u5316\u6d41\u7a0b\u8bbe\u8ba1"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u76f8\u6bd4\u5355\u6b21\u63d0\u793a\u8bcd\uff0c\u667a\u80fd\u4f53\u5de5\u4f5c\u6d41\u7684\u8fd0\u884c\u65f6\u95f4\u66f4\u957f\uff0c\u8ba1\u7b97\u6210\u672c\uff08Token\u6d88\u8017\uff09\u66f4\u9ad8\uff0c\u4e14\u7cfb\u7edf\u8bbe\u8ba1\u7684\u590d\u6742\u5ea6\u663e\u8457\u589e\u52a0\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"| \u6a21\u578b\u7248\u672c | \u5de5\u4f5c\u6a21\u5f0f | HumanEval \u51c6\u786e\u7387 |\n| :--- | :--- | :--- |\n| GPT-3.5 | \u975e\u667a\u80fd\u4f53 (Non-agentic) | 48% |\n| GPT-4 | \u975e\u667a\u80fd\u4f53 (Non-agentic) | 67% |\n| GPT-3.5 | \u667a\u80fd\u4f53\u5de5\u4f5c\u6d41 (Agentic) | \u003e 67% (\u663e\u8457\u63d0\u5347) |\n\n**\u5e76\u884c\u5316\u6d41\u7a0b\u793a\u4f8b\uff08\u9ed1\u6d1e\u8bba\u6587\u64b0\u5199\uff09\uff1a**\n- **\u5c42\u7ea71**\uff1a1\u4e2aLLM\u751f\u62103\u4e2a\u5e76\u884c\u641c\u7d22\u8bcd\n- **\u5c42\u7ea72**\uff1a3\u4e2a\u5e76\u884c\u7f51\u9875\u641c\u7d22 -\u003e \u6bcf\u4e2a\u641c\u7d22\u63d0\u53d6\u524d3\u4e2a\u7ed3\u679c\n- **\u5c42\u7ea73**\uff1a9\u4e2a\u5e76\u884c\u7f51\u9875\u5185\u5bb9\u4e0b\u8f7d\n- **\u5c42\u7ea74**\uff1a\u6c47\u603b\u6240\u6709\u4fe1\u606f\uff0c\u7531LLM\u64b0\u5199\u6700\u7ec8\u8bba\u6587"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了HumanEval代码基准测试对比图，证明了GPT-3.5在加入智能体技术后，其表现能从48%跃升至超越GPT-4非智能体模式（67%）的水平。同时展示了并行化搜索与下载的流程图。</p>
+        </article>
+        
+        <article id="note_1d6adff8c7" class="card">
+            <h1>5.多模态环境下的任务象限分析与动态规划逻辑</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u6df1\u5165\u63a2\u8ba8\u4e86\u667a\u80fd\u4f53\uff08Agentic AI\uff09\u7684\u5b9e\u9645\u5e94\u7528\u573a\u666f\u53ca\u5176\u5de5\u4f5c\u6d41\u6784\u5efa\u903b\u8f91\u3002\u6838\u5fc3\u5185\u5bb9\u56f4\u7ed5\u5982\u4f55\u5c06\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u6574\u5408\u8fdb\u4e1a\u52a1\u6d41\u7a0b\uff0c\u901a\u8fc7\u4efb\u52a1\u5206\u89e3\u5b9e\u73b0\u4ece\u7b80\u5355\u81ea\u52a8\u5316\uff08\u5982\u53d1\u7968\u5904\u7406\uff09\u5230\u590d\u6742\u81ea\u4e3b\u51b3\u7b56\uff08\u5982\u7f51\u9875\u5bfc\u822a\u4e0e\u591a\u8f6e\u5ba2\u670d\uff09\u7684\u8de8\u8d8a\u3002\u89c6\u9891\u5f3a\u8c03\u4e86\u667a\u80fd\u4f53\u5728\u5904\u7406\u5177\u5907\u660e\u786e\u6b65\u9aa4\u6216\u6807\u51c6\u64cd\u4f5c\u7a0b\u5e8f\uff08SOP\uff09\u7684\u4efb\u52a1\u65f6\u8868\u73b0\u6700\u4f18\uff0c\u5e76\u5c55\u793a\u4e86\u524d\u6cbf\u7684\u201c\u8ba1\u7b97\u673a\u4f7f\u7528\u201d\u667a\u80fd\u4f53\u5982\u4f55\u52a8\u6001\u5e94\u5bf9\u975e\u7ed3\u6784\u5316\u73af\u5883\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u4e3a**\u4efb\u52a1\u5206\u89e3\uff08Task Decomposition\uff09**\u3002\u5177\u4f53\u6b65\u9aa4\u5305\u62ec\uff1a1. **\u8f93\u5165\u89e3\u6790**\uff08\u5982PDF\u8f6c\u6587\u672c\uff09\uff1b2. **\u610f\u56fe\u8bc6\u522b\u4e0e\u89c4\u5212**\uff08\u7531LLM\u5224\u65ad\u4efb\u52a1\u7c7b\u578b\u5e76\u89c4\u5212\u8def\u5f84\uff09\uff1b3. **\u5de5\u5177\u8c03\u7528**\uff08\u901a\u8fc7API\u67e5\u8be2\u6570\u636e\u5e93\u6216\u64cd\u4f5c\u7f51\u9875\uff09\uff1b4. **\u7ed3\u679c\u751f\u6210\u4e0e\u53cd\u9988**\uff08\u8349\u62df\u56de\u590d\u6216\u66f4\u65b0\u8bb0\u5f55\uff09\uff1b5. **\u4eba\u673a\u534f\u4f5c**\uff08\u5728\u5173\u952e\u8282\u70b9\u5f15\u5165\u4eba\u5de5\u5ba1\u6838\uff09\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u4f18\u5148\u9009\u62e9\u5177\u5907\u6807\u51c6\u64cd\u4f5c\u7a0b\u5e8f\uff08SOP\uff09\u7684\u6d41\u7a0b\u8fdb\u884c\u667a\u80fd\u5316\u6539\u9020"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u4ece\u7eaf\u6587\u672c\u8d44\u4ea7\u5165\u624b\uff0c\u9010\u6b65\u6269\u5c55\u81f3\u591a\u6a21\u6001\uff08\u97f3\u89c6\u9891\u3001\u89c6\u89c9\uff09"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5bf9\u4e8e\u590d\u6742\u4efb\u52a1\uff0c\u91c7\u7528\u201c\u8fb9\u89c4\u5212\u8fb9\u6267\u884c\u201d\u7684\u52a8\u6001\u7b56\u7565"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5728\u81ea\u52a8\u5316\u6d41\u7a0b\u4e2d\u5d4c\u5165\u4eba\u5de5\u5ba1\u6838\u73af\u8282\u4ee5\u786e\u4fdd\u5b89\u5168\u6027"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u8d22\u52a1\u81ea\u52a8\u5316\uff08\u53d1\u7968\u63d0\u53d6\u4e0e\u5165\u5e93\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5ba2\u6237\u670d\u52a1\uff08\u90ae\u4ef6\u81ea\u52a8\u56de\u590d\u3001\u9000\u8d27\u5904\u7406\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u7535\u5b50\u5546\u52a1\uff08\u5e93\u5b58\u67e5\u8be2\u3001\u8ba2\u5355\u7ba1\u7406\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5728\u7ebf\u65c5\u6e38\u4e0e\u9884\u8ba2\uff08\u673a\u7968\u641c\u7d22\u3001\u6bd4\u4ef7\u4e0e\u64cd\u4f5c\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4f01\u4e1a\u6d41\u7a0b\u81ea\u52a8\u5316\uff08RPA\u7684\u667a\u80fd\u5347\u7ea7\u7248\uff09"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u76ee\u524d\u5728\u4efb\u52a1\u5173\u952e\u578b\u5e94\u7528\u4e2d\u53ef\u9760\u6027\u5c1a\u4e0d\u8db3\uff1b\u5bf9\u7f51\u9875\u52a0\u8f7d\u5ef6\u8fdf\u654f\u611f\uff1b\u5904\u7406\u975e\u6807\u51c6\u3001\u9ad8\u5ea6\u52a8\u6001\u4e14\u7f3a\u4e4f\u660e\u786e\u6b65\u9aa4\u7684\u4efb\u52a1\u65f6\u6210\u529f\u7387\u8f83\u4f4e\uff1b\u591a\u6a21\u6001\u8f93\u5165\u7684\u5904\u7406\u590d\u6742\u5ea6\u8fdc\u9ad8\u4e8e\u7eaf\u6587\u672c\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"```json\n{\n  \"task_complexity_comparison\": [\n    {\n      \"level\": \"Easier (\u8f83\u6613\u5b9e\u73b0)\",\n      \"characteristics\": [\n        \"\u6e05\u6670\u7684\u6b65\u9aa4\u5316\u6d41\u7a0b (Clear, step-by-step process)\",\n        \"\u9075\u5faa\u6807\u51c6\u64cd\u4f5c\u7a0b\u5e8f (Standard procedures to follow)\",\n        \"\u4ec5\u9650\u6587\u672c\u8d44\u6e90 (Text assets only)\"\n      ]\n    },\n    {\n      \"level\": \"Harder (\u66f4\u5177\u6311\u6218)\",\n      \"characteristics\": [\n        \"\u6b65\u9aa4\u65e0\u6cd5\u9884\u77e5 (Steps not known ahead of time)\",\n        \"\u9700\u8981\u8fb9\u6267\u884c\u8fb9\u89c4\u5212 (Plan/solve as you go)\",\n        \"\u591a\u6a21\u6001\u8f93\u5165 (Multimodal: sound, vision)\"\n      ]\n    }\n  ],\n  \"agentic_workflow_example\": \"\u53d1\u7968\u5904\u7406\u6d41\u7a0b\uff1aPDF\u6587\u4ef6 -\u003e PDF-to-Text API -\u003e LLM\u5224\u65ad/\u63d0\u53d6\u5b57\u6bb5 -\u003e \u8c03\u7528\u6570\u636e\u5e93API -\u003e \u5b8c\u6210\u8bb0\u5f55\u66f4\u65b0\"\n}\n```"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了一个从“易”到“难”的任务象限图，横轴代表任务复杂度，标注了影响智能体实现难度的关键变量（如步骤明确度、资产类型、模态数量）。</p>
+        </article>
+        
+        <article id="note_b42d404dda" class="card">
+            <h1>6.构建智能体：任务拆解深度导引与工作流实战</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u7531 Andrew Ng \u4e3b\u8bb2\uff0c\u6838\u5fc3\u63a2\u8ba8\u4e86**\u4efb\u52a1\u62c6\u89e3\uff08Task Decomposition\uff09**\u5728\u6784\u5efa\u667a\u80fd\u4f53\u5de5\u4f5c\u6d41\uff08Agentic Workflows\uff09\u4e2d\u7684\u5173\u952e\u4f5c\u7528\u3002\u89c6\u9891\u65e8\u5728\u89e3\u51b3\u5927\u6a21\u578b\u5728\u5904\u7406\u590d\u6742\u4efb\u52a1\u65f6\u201c\u76f4\u63a5\u751f\u6210\u201d\u6548\u679c\u4e0d\u4f73\u7684\u95ee\u9898\u3002\u901a\u8fc7\u5c06\u5b8f\u89c2\u76ee\u6807\u62c6\u5206\u4e3a LLM \u6216\u7279\u5b9a\u5de5\u5177\u53ef\u6267\u884c\u7684\u79bb\u6563\u6b65\u9aa4\uff0c\u53ef\u4ee5\u663e\u8457\u63d0\u5347 AI \u8f93\u51fa\u7684\u6df1\u5ea6\u3001\u903b\u8f91\u6027\u4e0e\u51c6\u786e\u6027\u3002\u6838\u5fc3\u903b\u8f91\u5728\u4e8e\uff1a\u6a21\u62df\u4eba\u7c7b\u5de5\u4f5c\u6d41\uff0c\u5c06\u4efb\u52a1\u7ec6\u5316\u81f3 LLM \u6216 API \u80fd\u591f\u80dc\u4efb\u7684\u539f\u5b50\u7ea7\u64cd\u4f5c\uff0c\u5e76\u8fdb\u884c\u6301\u7eed\u8fed\u4ee3\u4f18\u5316\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u4e3a**\u8fed\u4ee3\u5f0f\u4efb\u52a1\u62c6\u89e3\u6cd5**\u3002\u5177\u4f53\u6b65\u9aa4\u5305\u62ec\uff1a1. **\u8bc6\u522b\u79bb\u6563\u6b65\u9aa4**\uff1a\u89c2\u5bdf\u4eba\u7c7b\u5b8c\u6210\u8be5\u4efb\u52a1\u7684\u81ea\u7136\u6d41\u7a0b\u30022. **\u80fd\u529b\u5339\u914d**\uff1a\u5224\u65ad\u6bcf\u4e2a\u6b65\u9aa4\u662f\u5426\u53ef\u7531 **LLM**\uff08\u6587\u672c\u751f\u6210\u3001\u4fe1\u606f\u63d0\u53d6\uff09\u6216 **\u5de5\u5177/API**\uff08\u641c\u7d22\u3001\u6570\u636e\u5e93\u67e5\u8be2\u3001\u4ee3\u7801\u6267\u884c\uff09\u5b8c\u6210\u30023. **\u9012\u5f52\u7ec6\u5316**\uff1a\u82e5\u67d0\u6b65\u9aa4\u6548\u679c\u4e0d\u4f73\uff0c\u5219\u5c06\u5176\u8fdb\u4e00\u6b65\u62c6\u89e3\u3002\u4f8b\u5982\uff0c\u5c06\u201c\u5199\u8bba\u6587\u201d\u4ece\u5355\u6b65\u751f\u6210\u62c6\u89e3\u4e3a\u201c\u5927\u7eb2-\u003e\u641c\u7d22-\u003e\u521d\u7a3f-\u003e\u5ba1\u9605-\u003e\u4fee\u8ba2\u201d\u7684 **5\u6b65\u5de5\u4f5c\u6d41**\u30024. **\u95ed\u73af\u4f18\u5316**\uff1a\u57fa\u4e8e\u8f93\u51fa\u8d28\u91cf\u6301\u7eed\u8c03\u6574\u6b65\u9aa4\u5e8f\u5217\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u6a21\u62df\u4eba\u7c7b\u4e13\u5bb6\u5de5\u4f5c\u6d41\u539f\u5219"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u539f\u5b50\u5316\u64cd\u4f5c\u539f\u5219\uff1a\u786e\u4fdd\u6bcf\u4e00\u6b65\u90fd\u5728 LLM \u6216\u5de5\u5177\u7684\u80fd\u529b\u8fb9\u754c\u5185"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5de5\u5177\u4e0e\u6a21\u578b\u534f\u540c\u539f\u5219\uff1a\u5229\u7528 LLM \u505a\u51b3\u7b56\uff0c\u5229\u7528 API \u6267\u884c\u5177\u4f53\u52a8\u4f5c"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6301\u7eed\u8fed\u4ee3\u539f\u5219\uff1a\u521d\u59cb\u62c6\u89e3\u5f80\u5f80\u4e0d\u5b8c\u7f8e\uff0c\u9700\u6839\u636e\u7ed3\u679c\u53cd\u590d\u8c03\u4f18"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI \u667a\u80fd\u4f53\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u4e1a\u52a1\u6d41\u7a0b\u8bbe\u8ba1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5185\u5bb9\u521b\u4f5c\u4e0e\u79d1\u7814\u8f85\u52a9"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5ba2\u6237\u670d\u52a1\u81ea\u52a8\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u8d22\u52a1\u53d1\u7968\u81ea\u52a8\u5316\u5904\u7406"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u8fc7\u5ea6\u62c6\u89e3\u53ef\u80fd\u589e\u52a0\u7cfb\u7edf\u5ef6\u8fdf\u4e0e\u6210\u672c\uff1b\u5de5\u4f5c\u6d41\u7684\u6709\u6548\u6027\u9ad8\u5ea6\u4f9d\u8d56\u4e8e\u5404\u6b65\u9aa4\u7684\u8bc4\u4f30\uff08Evals\uff09\u53cd\u9988\uff1b\u5bf9\u4e8e\u6781\u5ea6\u6a21\u7cca\u6216\u9700\u8981\u5f3a\u5b9e\u65f6\u76f4\u89c9\u7684\u4efb\u52a1\uff0c\u62c6\u89e3\u96be\u5ea6\u8f83\u5927\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **\u667a\u80fd\u4f53\u5de5\u4f5c\u6d41\u5efa\u7b51\u6a21\u5757\u8868**\uff1a\n  | \u7c7b\u522b | \u793a\u4f8b | \u5178\u578b\u7528\u9014 |\n  | :--- | :--- | :--- |\n  | **\u6a21\u578b (Models)** | LLMs, \u591a\u6a21\u6001\u6a21\u578b | \u6587\u672c\u751f\u6210\u3001\u5de5\u5177\u8c03\u7528\u51b3\u7b56\u3001\u4fe1\u606f\u63d0\u53d6 |\n  | **\u5de5\u5177 (Tools)** | API (\u641c\u7d22, \u90ae\u4ef6, \u65e5\u5386) | \u83b7\u53d6\u5b9e\u65f6\u6570\u636e\u3001\u6267\u884c\u5916\u90e8\u52a8\u4f5c |\n  | **\u4fe1\u606f\u68c0\u7d22** | \u6570\u636e\u5e93, RAG | \u68c0\u7d22\u76f8\u5173\u4e0a\u4e0b\u6587\u3001\u66f4\u65b0\u8bb0\u5f55 |\n  | **\u4ee3\u7801\u6267\u884c** | \u4ee3\u7801\u89e3\u91ca\u5668 | \u590d\u6742\u8ba1\u7b97\u3001\u6570\u636e\u5206\u6790 |\n\n- **\u8bba\u6587\u5199\u4f5c\u5de5\u4f5c\u6d41\u6f14\u8fdb**\uff1a\n  1. **\u76f4\u63a5\u751f\u6210**\uff1a\u5355\u6b65\u63d0\u793a\u8bcd -\u003e \u8868\u9762\u5316\u8f93\u51fa\u3002\n  2. **3\u6b65\u5de5\u4f5c\u6d41**\uff1a\u5199\u5927\u7eb2 -\u003e \u7f51\u9875\u641c\u7d22 -\u003e \u64b0\u5199\u6b63\u6587\u3002\n  3. **5\u6b65\u5de5\u4f5c\u6d41**\uff1a\u5199\u5927\u7eb2 -\u003e \u7f51\u9875\u641c\u7d22 -\u003e \u5199\u521d\u7a3f -\u003e \u8bc4\u4f30\u4fee\u8ba2\u70b9 -\u003e \u6700\u7ec8\u4fee\u8ba2\u3002"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了从简单到复杂的任务拆解对比图，以及智能体工作流的‘建筑模块’（Building Blocks）对照表。</p>
+        </article>
+        
+        <article id="note_6dd923996b" class="card">
+            <h1>7.智能体系统构建进阶：从迭代评估到错误分析的实战教学</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u6df1\u5165\u63a2\u8ba8\u4e86\u6784\u5efa\u667a\u80fd\u4f53\u5de5\u4f5c\u6d41\uff08Agentic Workflows\uff09\u6210\u529f\u7684\u5173\u952e\u56e0\u7d20\uff1a\u9ad8\u5ea6\u89c4\u8303\u7684\u8bc4\u4f30\u6d41\u7a0b\uff08Evals\uff09\u3002\u5434\u6069\u8fbe\u6307\u51fa\uff0c\u7531\u4e8e\u667a\u80fd\u4f53\u7cfb\u7edf\u7684\u590d\u6742\u6027\uff0c\u5f00\u53d1\u8005\u96be\u4ee5\u9884\u5224\u6240\u6709\u6f5c\u5728\u9519\u8bef\u3002\u56e0\u6b64\uff0c\u6838\u5fc3\u7b56\u7565\u662f\u201c\u5148\u6784\u5efa\uff0c\u540e\u8bc4\u4f30\u201d\uff1a\u901a\u8fc7\u624b\u52a8\u68c0\u67e5\u8f93\u51fa\u53d1\u73b0\u4f4e\u8d28\u91cf\u7ed3\u679c\uff0c\u8fdb\u800c\u5efa\u7acb\u5ba2\u89c2\uff08\u4ee3\u7801\u9a71\u52a8\uff09\u6216\u4e3b\u89c2\uff08\u5927\u6a21\u578b\u4f5c\u4e3a\u8bc4\u5ba1\uff09\u7684\u8bc4\u4f30\u6807\u51c6\u3002\u901a\u8fc7\u5bf9\u7aef\u5230\u7aef\u53ca\u7ec4\u4ef6\u7ea7\u8f93\u51fa\u7684\u6301\u7eed\u9519\u8bef\u5206\u6790\uff0c\u9a71\u52a8\u7cfb\u7edf\u8fed\u4ee3\u4f18\u5316\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u9075\u5faa**\u8fed\u4ee3\u8bc4\u4f30\u5faa\u73af**\uff1a1. **\u6784\u5efa\u539f\u578b**\uff1a\u9996\u5148\u5b8c\u6210\u57fa\u7840\u667a\u80fd\u4f53\u5de5\u4f5c\u6d41\u30022. **\u624b\u52a8\u8bc6\u522b**\uff1a\u4eba\u5de5\u5ba1\u67e5\u8f93\u51fa\uff0c\u5bfb\u627e\u4e0d\u7b26\u5408\u9884\u671f\u7684\u201c\u4f4e\u8d28\u91cf\u8f93\u51fa\u201d\u30023. **\u5efa\u7acb\u8bc4\u4f30\u5668**\uff1a\u9488\u5bf9\u7279\u5b9a\u9519\u8bef\u5efa\u7acb**\u5ba2\u89c2\u8bc4\u4f30\uff08Objective Evals\uff09**\uff08\u5982\u901a\u8fc7\u4ee3\u7801\u68c0\u7d22\u5173\u952e\u8bcd\uff09\u6216**\u4e3b\u89c2\u8bc4\u4f30\uff08Subjective Evals\uff09**\uff08\u5982\u5f15\u5165**LLM-as-a-judge**\uff09\u30024. **\u9519\u8bef\u5206\u6790\uff08Error Analysis\uff09**\uff1a\u901a\u8fc7\u68c0\u67e5**\u8f68\u8ff9\uff08Traces\uff09**\uff08\u4e2d\u95f4\u8f93\u51fa\uff09\u5b9a\u4f4d\u6545\u969c\u70b9\u30025. **\u5206\u5c42\u4f18\u5316**\uff1a\u5206\u522b\u8fdb\u884c**\u7aef\u5230\u7aef\u8bc4\u4f30**\u548c**\u7ec4\u4ef6\u7ea7\u8bc4\u4f30**\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u8bc4\u4f30\u9a71\u52a8\u5f00\u53d1\uff1a\u8bc4\u4f30\u80fd\u529b\u7684\u5f3a\u5f31\u76f4\u63a5\u51b3\u5b9a\u4e86\u6784\u5efa\u667a\u80fd\u4f53\u7684\u6548\u7387\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5148\u8fd0\u884c\u518d\u8bc4\u4f30\uff1a\u4e0d\u8981\u8bd5\u56fe\u5728\u6784\u5efa\u524d\u9884\u8bbe\u6240\u6709\u8bc4\u4f30\u6307\u6807\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u53ef\u89e3\u91ca\u6027\u8ffd\u8e2a\uff1a\u901a\u8fc7\u68c0\u67e5\u4e2d\u95f4\u6b65\u9aa4\uff08Traces\uff09\u800c\u975e\u4ec5\u770b\u6700\u7ec8\u7ed3\u679c\u6765\u53d1\u73b0\u6539\u8fdb\u673a\u4f1a\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u7cfb\u7edf\u5f00\u53d1\u4e0e\u67b6\u6784"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u5ba2\u6237\u670d\u52a1\u7cfb\u7edf"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u667a\u80fd\u7814\u7a76/\u5199\u4f5c\u52a9\u624b"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u591a\u6b65\u4efb\u52a1\u6d41\u4f18\u5316"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u5927\u6a21\u578b\u57281-5\u5206\u7684\u7ec6\u7c92\u5ea6\u8bc4\u5206\u4e0a\u8868\u73b0\u5e76\u4e0d\u7406\u60f3\uff1b\u521d\u671f\u4ecd\u9700\u5927\u91cf\u4eba\u5de5\u4ecb\u5165\u8fdb\u884c\u4f4e\u8d28\u91cf\u8f93\u51fa\u7684\u8bc6\u522b\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"| \u8bc4\u4f30\u7ef4\u5ea6 | \u8bc4\u4f30\u65b9\u5f0f | \u9002\u7528\u573a\u666f | \u793a\u4f8b |\n| :--- | :--- | :--- | :--- |\n| **\u5ba2\u89c2\u8bc4\u4f30 (Objective)** | \u7f16\u5199\u4ee3\u7801\u68c0\u6d4b | \u5b58\u5728\u660e\u786e\u5bf9\u9519\u6807\u51c6\u3001\u9ed1\u767d\u5206\u660e\u7684\u60c5\u51b5 | \u68c0\u6d4b\u662f\u5426\u63d0\u53ca\u7ade\u4e89\u5bf9\u624b\u540d\u79f0 |\n| **\u4e3b\u89c2\u8bc4\u4f30 (Subjective)** | LLM-as-a-judge | \u81ea\u7531\u6587\u672c\u8f93\u51fa\u3001\u8d28\u91cf\u96be\u4ee5\u91cf\u5316\u7684\u60c5\u51b5 | \u7ed9\u8bba\u6587\u8d28\u91cf\u6253\u5206 (1-5\u5206) |\n| **\u7aef\u5230\u7aef\u8bc4\u4f30** | \u6574\u4f53\u8f93\u51fa\u6d4b\u8bd5 | \u8861\u91cf\u7cfb\u7edf\u6700\u7ec8\u4ea4\u4ed8\u4ef7\u503c | \u6700\u7ec8\u56de\u590d\u662f\u5426\u89e3\u51b3\u4e86\u5ba2\u6237\u95ee\u9898 |\n| **\u7ec4\u4ef6\u7ea7\u8bc4\u4f30** | \u6b65\u9aa4\u8f93\u51fa\u6d4b\u8bd5 | \u5b9a\u4f4d\u591a\u6b65\u5de5\u4f5c\u6d41\u4e2d\u7684\u5177\u4f53\u8584\u5f31\u73af\u8282 | \u641c\u7d22\u6b65\u9aa4\u8fd4\u56de\u76845\u4e2a\u6765\u6e90\u662f\u5426\u76f8\u5173 |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了从客户邮件处理到研究报告生成的多个流程图，重点对比了客观代码检测与LLM主观评分的差异。</p>
+        </article>
+        
+        <article id="note_48f60b9027" class="card">
+            <h1>8.构建智能体工作流：四大核心设计模式与 AI 系统方法论</h1>
+
+            <div class="md-render" data-content='"\u5434\u6069\u8fbe\u6559\u6388\u5728\u89c6\u9891\u4e2d\u4ecb\u7ecd\u4e86**\u667a\u80fd\u4f53\u5de5\u4f5c\u6d41\uff08Agentic Workflows\uff09**\u7684\u6838\u5fc3\u6982\u5ff5\u3002\u8be5\u65b9\u6cd5\u8bba\u4e3b\u5f20\u901a\u8fc7\u7ec4\u5408\u57fa\u7840\u6784\u5efa\u5757\u6765\u6784\u5efa\u590d\u6742\u7684AI\u7cfb\u7edf\uff0c\u800c\u975e\u4f9d\u8d56\u5355\u4e00\u7684\u63d0\u793a\u8bcd\u3002\u5176\u6838\u5fc3\u4ef7\u503c\u5728\u4e8e\u901a\u8fc7\u8fed\u4ee3\u3001\u5de5\u5177\u8c03\u7528\u548c\u591a\u89d2\u8272\u534f\u4f5c\uff0c\u663e\u8457\u63d0\u5347\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u5728\u5904\u7406\u590d\u6742\u4efb\u52a1\u65f6\u7684\u6027\u80fd\u548c\u53ef\u9760\u6027\uff0c\u89e3\u51b3\u4f20\u7edf\u96f6\u6d4b\uff08Zero-shot\uff09\u751f\u6210\u5728\u903b\u8f91\u4e25\u5bc6\u6027\u548c\u4efb\u52a1\u6df1\u5ea6\u4e0a\u7684\u4e0d\u8db3\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u89c6\u9891\u63d0\u51fa\u4e86\u56db\u79cd\u6838\u5fc3\u8bbe\u8ba1\u6a21\u5f0f\uff1a1. **\u53cd\u601d\uff08Reflection\uff09**\uff1a\u6a21\u578b\u5bf9\u81ea\u8eab\u8f93\u51fa\u8fdb\u884c\u68c0\u67e5\u3001\u6279\u8bc4\u5e76\u4fee\u6b63\u30022. **\u5de5\u5177\u4f7f\u7528\uff08Tool Use\uff09**\uff1a\u6a21\u578b\u6839\u636e\u9700\u6c42\u8c03\u7528\u5916\u90e8\u51fd\u6570\uff08\u5982\u641c\u7d22\u3001\u4ee3\u7801\u6267\u884c\uff09\u30023. **\u89c4\u5212\uff08Planning\uff09**\uff1a\u5c06\u590d\u6742\u76ee\u6807\u62c6\u89e3\u4e3a\u6709\u5e8f\u7684\u5b50\u4efb\u52a1\u5e8f\u5217\u30024. **\u591a\u667a\u80fd\u4f53\u534f\u4f5c\uff08Multi-agent Collaboration\uff09**\uff1a\u901a\u8fc7\u6a21\u62df\u4e0d\u540c\u89d2\u8272\uff08\u5982CEO\u3001\u7a0b\u5e8f\u5458\u3001\u6d4b\u8bd5\u5458\uff09\u7684\u4e92\u52a8\u6765\u5b8c\u6210\u4efb\u52a1\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"**\u8fed\u4ee3\u4f18\u4e8e\u5355\u6b21\u751f\u6210**\uff1a\u901a\u8fc7\u53cd\u590d\u53cd\u9988\u5faa\u73af\u63d0\u5347\u8f93\u51fa\u8d28\u91cf\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"**\u89d2\u8272\u4e13\u4e1a\u5316**\uff1a\u4e3a\u4e0d\u540c\u667a\u80fd\u4f53\u5206\u914d\u7279\u5b9aPersona\u4ee5\u63d0\u9ad8\u4efb\u52a1\u4e13\u6ce8\u5ea6\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"**\u5916\u90e8\u80fd\u529b\u6269\u5c55**\uff1a\u901a\u8fc7API\u8c03\u7528\u5f25\u8865LLM\u5728\u5b9e\u65f6\u4fe1\u606f\u548c\u7cbe\u786e\u8ba1\u7b97\u4e0a\u7684\u77ed\u677f\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u8f6f\u4ef6\u81ea\u52a8\u5316\u5f00\u53d1\uff08\u4ee3\u7801\u7f16\u5199\u4e0e\u5ba1\u67e5\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u6570\u636e\u5206\u6790\u4e0e\u6570\u5b66\u8ba1\u7b97"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5e02\u573a\u8425\u9500\u5185\u5bb9\u521b\u4f5c\uff08\u8c03\u7814\u3001\u64b0\u5199\u3001\u7f16\u8f91\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u591a\u6a21\u6001\u4efb\u52a1\u5904\u7406\uff08\u56fe\u50cf\u751f\u6210\u3001\u8bed\u97f3\u5408\u6210\u3001\u6587\u672c\u8f6c\u6362\uff09"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u667a\u80fd\u4f53\u884c\u4e3a\u5177\u6709\u4e0d\u53ef\u9884\u6d4b\u6027\uff0c\u7cfb\u7edf\u63a7\u5236\u96be\u5ea6\u8f83\u9ad8\uff0c\u4e14\u90e8\u5206\u6a21\u5f0f\uff08\u5982\u89c4\u5212\u548c\u591a\u667a\u80fd\u4f53\u534f\u4f5c\uff09\u76ee\u524d\u4ecd\u5904\u4e8e\u5b9e\u9a8c\u9636\u6bb5\uff0c\u54cd\u5e94\u5ef6\u8fdf\u548c\u6210\u672c\u53ef\u80fd\u589e\u52a0\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **\u53cd\u601d\u6a21\u5f0f\u6d41\u7a0b**\uff1a\u7528\u6237\u8bf7\u6c42 -\u003e \u7f16\u5199\u4ee3\u7801 -\u003e \u68c0\u67e5\u6b63\u786e\u6027/\u98ce\u683c -\u003e \u63d0\u4f9b\u5efa\u8bbe\u6027\u6279\u8bc4 -\u003e \u4fee\u6b63\u4ee3\u7801\u3002\n- **\u89c4\u5212\u6a21\u5f0f\u6848\u4f8b (HuggingGPT)**\uff1a\n  1. \u59ff\u6001\u68c0\u6d4b (Pose Determination)\n  2. \u59ff\u6001\u8f6c\u56fe\u50cf (Pose-to-Image)\n  3. \u56fe\u50cf\u8f6c\u6587\u672c (Image-to-Text)\n  4. \u6587\u672c\u8f6c\u8bed\u97f3 (Text-to-Speech)\n- **\u591a\u667a\u80fd\u4f53\u6027\u80fd\u5bf9\u6bd4**\uff1a\n  | \u4efb\u52a1 | \u5355\u667a\u80fd\u4f53 | \u591a\u667a\u80fd\u4f53 |\n  | :--- | :--- | :--- |\n  | \u4f20\u8bb0\u7f16\u5199 | 66.0% | 73.8% |\n  | MMLU\u6d4b\u8bd5 | 63.9% | 71.1% |\n  | \u56fd\u9645\u8c61\u68cb | 29.3% | 45.2% |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了智能体设计模式的分类图、HuggingGPT的规划流程图、以及多智能体辩论在不同任务（传记编写、MMLU、国际象棋）中优于单智能体的对比数据表。</p>
+        </article>
+        
+        <article id="note_1b34794d55" class="card">
+            <h1>9.AI Agent 设计模式：反射机制及其在自动化工作流中的实战</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u4ecb\u7ecd\u4e86 AI Agent \u5f00\u53d1\u4e2d\u7684\u201c\u53cd\u5c04\u8bbe\u8ba1\u6a21\u5f0f\u201d\uff08Reflection Design Pattern\uff09\u3002\u8be5\u6a21\u5f0f\u901a\u8fc7\u6a21\u62df\u4eba\u7c7b\u201c\u521d\u7a3f-\u53cd\u601d-\u4fee\u6539\u201d\u7684\u5de5\u4f5c\u6d41\u7a0b\uff0c\u8ba9\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u5bf9\u81ea\u8eab\u751f\u6210\u7684\u8f93\u51fa\u8fdb\u884c\u68c0\u67e5\u548c\u6539\u8fdb\u3002\u6838\u5fc3\u76ee\u6807\u662f\u901a\u8fc7\u8fed\u4ee3\u5faa\u73af\u63d0\u5347\u4efb\u52a1\u6267\u884c\u7684\u8d28\u91cf\uff0c\u7279\u522b\u662f\u5728\u4ee3\u7801\u751f\u6210\u548c\u6587\u672c\u521b\u4f5c\u9886\u57df\uff0c\u8be5\u6a21\u5f0f\u80fd\u663e\u8457\u964d\u4f4e\u9519\u8bef\u7387\u5e76\u63d0\u5347\u7ed3\u679c\u7684\u4e13\u4e1a\u5ea6\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u53cd\u5c04\u6a21\u5f0f\u901a\u5e38\u5305\u542b\u4e09\u4e2a\u5173\u952e\u9636\u6bb5\uff1a1. **\u521d\u59cb\u751f\u6210 (Initial Generation)**\uff1a\u6a21\u578b\u6839\u636e\u63d0\u793a\u8bcd\u751f\u6210\u7b2c\u4e00\u7248\u8f93\u51fa\uff08\u5982 Email V1 \u6216 Code V1\uff09\u30022. **\u53cd\u601d/\u8bc4\u4ef7 (Reflection/Critique)**\uff1a\u5c06\u521d\u7a3f\u4f20\u56de\u6a21\u578b\uff08\u53ef\u4ee5\u662f\u540c\u4e00\u4e2a\u6a21\u578b\u6216\u66f4\u64c5\u957f\u903b\u8f91\u7684 **\u63a8\u7406\u6a21\u578b/\u601d\u8003\u6a21\u578b**\uff09\uff0c\u8981\u6c42\u5176\u68c0\u67e5\u9519\u8bef\u3001\u9057\u6f0f\u6216\u683c\u5f0f\u95ee\u9898\u30023. **\u8fed\u4ee3\u4fee\u6b63 (Revision)**\uff1a\u6a21\u578b\u7ed3\u5408\u53cd\u601d\u5efa\u8bae\uff0c\u751f\u6210\u66f4\u9ad8\u8d28\u91cf\u7684\u7b2c\u4e8c\u7248\u8f93\u51fa\u3002\u82e5\u5f15\u5165 **\u5916\u90e8\u53cd\u9988 (External Feedback)**\uff08\u5982\u4ee3\u7801\u8fd0\u884c\u62a5\u9519\u4fe1\u606f\uff09\uff0c\u53cd\u5c04\u7684\u6548\u679c\u5c06\u5927\u5e45\u589e\u5f3a\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u81ea\u6211\u6279\u5224\u539f\u5219\uff1a\u8981\u6c42\u6a21\u578b\u626e\u6f14\u5ba1\u67e5\u8005\u89d2\u8272\uff0c\u8bc6\u522b\u521d\u7a3f\u4e2d\u7684\u5e7b\u89c9\u6216\u903b\u8f91\u6f0f\u6d1e\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5916\u90e8\u95ed\u73af\u539f\u5219\uff1a\u5229\u7528\u7f16\u8bd1\u5668\u3001\u6267\u884c\u5668\u7b49\u5916\u90e8\u5de5\u5177\u7684\u771f\u5b9e\u53cd\u9988\u9a71\u52a8\u53cd\u601d\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6a21\u578b\u5206\u5de5\u539f\u5219\uff1a\u53ef\u4f7f\u7528\u4e0d\u540c\u80fd\u529b\u7684\u6a21\u578b\u5206\u522b\u8d1f\u8d23\u201c\u521b\u4f5c\u201d\u4e0e\u201c\u5ba1\u8ba1\u201d\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u8f6f\u4ef6\u5f00\u53d1\uff1a\u81ea\u52a8\u751f\u6210\u4ee3\u7801\u3001Bug \u68c0\u67e5\u4e0e\u4fee\u590d"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5185\u5bb9\u521b\u4f5c\uff1a\u90ae\u4ef6\u64b0\u5199\u3001\u6587\u7ae0\u6da6\u8272\u3001\u62a5\u544a\u751f\u6210"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u903b\u8f91\u63a8\u7406\uff1a\u590d\u6742\u95ee\u9898\u7684\u591a\u6b65\u9a8c\u8bc1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u529e\u516c\uff1aAgent \u4efb\u52a1\u6d41\u7684\u81ea\u6211\u7ea0\u504f"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u53cd\u5c04\u6a21\u5f0f\u5e76\u975e\u4e07\u80fd\uff0c\u5b83\u901a\u5e38\u5e26\u6765\u7684\u662f\u6027\u80fd\u7684\u201c\u7a33\u6b65\u63d0\u5347\u201d\u800c\u975e\u8d28\u53d8\uff1b\u6b64\u5916\uff0c\u591a\u6b21\u8c03\u7528 LLM \u4f1a\u589e\u52a0\u63a8\u7406\u6210\u672c\u548c\u54cd\u5e94\u5ef6\u8fdf\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"### \u53cd\u5c04\u6a21\u5f0f\u6d41\u7a0b\u5bf9\u6bd4\n\n1. **\u57fa\u7840\u53cd\u5c04\u6d41 (Basic Reflection)**\n   - \u8f93\u5165 -\u003e LLM -\u003e \u521d\u7a3f (V1)\n   - \u521d\u7a3f -\u003e LLM (\u53cd\u601d\u63d0\u793a\u8bcd) -\u003e \u53cd\u601d\u610f\u89c1\n   - \u53cd\u601d\u610f\u89c1 + \u521d\u7a3f -\u003e LLM -\u003e \u7ec8\u7a3f (V2)\n\n2. **\u4ee3\u7801\u589e\u5f3a\u53cd\u5c04\u6d41 (Code Reflection with Feedback)**\n   - \u4efb\u52a1 -\u003e LLM -\u003e \u4ee3\u7801 (V1)\n   - \u4ee3\u7801 (V1) -\u003e **\u6267\u884c\u5668 (Executor)** -\u003e \u8fd0\u884c\u7ed3\u679c/\u62a5\u9519\u4fe1\u606f\n   - \u62a5\u9519\u4fe1\u606f -\u003e LLM (\u5206\u6790\u539f\u56e0) -\u003e \u4fee\u6b63\u5efa\u8bae\n   - \u4fee\u6b63\u5efa\u8bae -\u003e LLM -\u003e \u4f18\u5316\u4ee3\u7801 (V2)"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频通过对比图展示了从“人类反思”到“Agent 反思”的演进，并重点演示了带有外部反馈的代码优化流程图。</p>
+        </article>
+        
+        <article id="note_9a00813fc2" class="card">
+            <h1>10.AI Agent 实战教学：反射设计模式与迭代式工作流构建</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u6df1\u5165\u63a2\u8ba8\u4e86**\u53cd\u5c04\u8bbe\u8ba1\u6a21\u5f0f\uff08Reflection Design Pattern\uff09**\u5728\u5927\u578b\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u5de5\u4f5c\u6d41\u4e2d\u7684\u5e94\u7528\u3002\u6838\u5fc3\u4e3b\u65e8\u5728\u4e8e\uff1a\u76f8\u6bd4\u4e8e\u5355\u6b21\u76f4\u63a5\u751f\u6210\uff08Direct Generation\uff09\uff0c\u901a\u8fc7\u8ba9\u6a21\u578b\u5bf9\u81ea\u8eab\u8f93\u51fa\u8fdb\u884c\u5ba1\u89c6\u3001\u8bc4\u4f30\u548c\u4fee\u6b63\u7684\u8fed\u4ee3\u6d41\u7a0b\uff0c\u53ef\u4ee5\u663e\u8457\u63d0\u5347\u4efb\u52a1\u5b8c\u6210\u7684\u8d28\u91cf\u3002\u8be5\u6a21\u5f0f\u6709\u6548\u89e3\u51b3\u4e86\u96f6\u6837\u672c\u63d0\u793a\uff08Zero-shot Prompting\uff09\u5728\u5904\u7406\u590d\u6742\u903b\u8f91\u3001\u4ee3\u7801\u7f16\u5199\u53ca\u7ed3\u6784\u5316\u6570\u636e\u751f\u6210\u65f6\u5bb9\u6613\u51fa\u73b0\u7684\u9519\u8bef\u6216\u9057\u6f0f\u95ee\u9898\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u4e3a**\u8fed\u4ee3\u5f0f\u81ea\u6211\u6539\u8fdb\u5faa\u73af**\uff1a\n1. **\u521d\u59cb\u751f\u6210**\uff1a\u57fa\u4e8e\u539f\u59cb\u63d0\u793a\u8bcd\u751f\u6210\u521d\u7a3f\u3002\n2. **\u81ea\u6211\u53cd\u601d**\uff1a\u4f7f\u7528\u4e13\u95e8\u7684**\u53cd\u5c04\u63d0\u793a\u8bcd\uff08Reflection Prompt\uff09**\u8981\u6c42\u6a21\u578b\u68c0\u67e5\u521d\u7a3f\u4e2d\u7684\u9519\u8bef\u3001\u903b\u8f91\u6f0f\u6d1e\u6216\u4e0d\u7b26\u5408\u6807\u51c6\u7684\u5730\u65b9\u3002\n3. **\u4fee\u6b63\u5b8c\u5584**\uff1a\u6839\u636e\u53cd\u601d\u7ed3\u679c\u751f\u6210\u6700\u7ec8\u7248\u672c\u3002\u5173\u952e\u5728\u4e8e\u4ece**Zero-shot**\u5411**Agentic Workflow**\u7684\u8f6c\u53d8\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u660e\u786e\u6307\u793a\u53cd\u5c04\u52a8\u4f5c\uff1a\u5728\u63d0\u793a\u8bcd\u4e2d\u6e05\u6670\u8981\u6c42\u6a21\u578b\u8fdb\u884c\u201c\u5ba1\u89c6\u201d\u6216\u201c\u8bc4\u4ef7\u201d\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6307\u5b9a\u5177\u4f53\u7684\u68c0\u67e5\u6807\u51c6\uff1a\u63d0\u4f9b\u6e05\u6670\u7684\u7ef4\u5ea6\uff08\u5982\uff1a\u4ee3\u7801\u53ef\u8bfb\u6027\u3001\u8bed\u6c14\u4e13\u4e1a\u5ea6\u3001\u4e8b\u5b9e\u51c6\u786e\u6027\uff09\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u53c2\u8003\u9ad8\u8d28\u91cf\u5f00\u6e90\u63d0\u793a\u8bcd\uff1a\u901a\u8fc7\u7814\u7a76\u6210\u719f\u7684\u5f00\u6e90\u9879\u76ee\u5b66\u4e60\u5982\u4f55\u6784\u5efa\u590d\u6742\u7684\u53cd\u5c04\u903b\u8f91\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u8f6f\u4ef6\u5f00\u53d1\uff1a\u4ee3\u7801\u5ba1\u67e5\u4e0e\u6027\u80fd\u4f18\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5185\u5bb9\u521b\u4f5c\uff1a\u90ae\u4ef6\u6da6\u8272\u3001\u8bba\u6587\u4fee\u6539\u4e0e\u8bed\u6c14\u8c03\u6574"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u6570\u636e\u5de5\u7a0b\uff1aHTML/JSON \u7ed3\u6784\u5316\u6570\u636e\u6821\u9a8c"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u54c1\u724c\u8425\u9500\uff1a\u57df\u540d\u521b\u610f\u751f\u6210\u4e0e\u591a\u8bed\u8a00\u6587\u5316\u7981\u5fcc\u68c0\u67e5"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u7531\u4e8e\u6d89\u53ca\u591a\u6b21\u6a21\u578b\u8c03\u7528\uff0c\u4f1a\u589e\u52a0\u63a8\u7406\u5ef6\u8fdf\u548c Token \u6d88\u8017\uff1b\u5728\u6781\u7b80\u5355\u7684\u4efb\u52a1\u4e2d\uff0c\u6027\u80fd\u63d0\u5347\u53ef\u80fd\u4e0d\u660e\u663e\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"| \u4efb\u52a1\u793a\u4f8b | \u6f5c\u5728\u95ee\u9898 | \u53cd\u5c04\u63d0\u793a\u8bcd\u7b56\u7565 |\n| :--- | :--- | :--- |\n| \u751f\u6210 HTML \u8868\u683c | \u6807\u7b7e\u7f3a\u5931\u6216\u683c\u5f0f\u9519\u8bef | \u9a8c\u8bc1 HTML \u4ee3\u7801\u7684\u5b8c\u6574\u6027\u4e0e\u8bed\u6cd5 |\n| \u7f16\u5199\u51b2\u8336\u6307\u5357 | \u6b65\u9aa4\u9057\u6f0f\u6216\u903b\u8f91\u4e0d\u8fde\u8d2f | \u68c0\u67e5\u6307\u4ee4\u7684\u8fde\u8d2f\u6027\u4e0e\u5b8c\u6574\u6027 |\n| \u57df\u540d\u5934\u8111\u98ce\u66b4 | \u96be\u53d1\u97f3\u6216\u6709\u8d1f\u9762\u542b\u4e49 | \u68c0\u67e5\u662f\u5426\u6709\u8d1f\u9762\u6697\u793a\u53ca\u662f\u5426\u6613\u4e8e\u53e3\u64ad |\n| \u90ae\u4ef6\u6da6\u8272 | \u8bed\u6c14\u4e0d\u5f53\u6216\u4e8b\u5b9e\u9519\u8bef | \u5ba1\u67e5\u8bed\u6c14\u4e13\u4e1a\u6027\u5e76\u6838\u5b9e\u6240\u6709\u4e8b\u5b9e\u4e0e\u65e5\u671f |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了一张对比柱状图，证明了在情感逆转、对话响应、代码优化、数学推理等多种任务中，加入反射机制后的模型表现（深色柱）普遍优于直接生成（浅色柱），且在 GPT-3.5 和 GPT-4 上均有体现。</p>
+        </article>
+        
+        <article id="note_fea89efa35" class="card">
+            <h1>11.AI Agent 设计模式：多模态反射机制在图表生成工作流中的实战应用</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u4ecb\u7ecd\u4e86**\u53cd\u5c04\u8bbe\u8ba1\u6a21\u5f0f\uff08Reflection Design Pattern\uff09**\u5728\u56fe\u8868\u751f\u6210\u5de5\u4f5c\u6d41\u4e2d\u7684\u5e94\u7528\u3002\u9488\u5bf9\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u521d\u6b21\u751f\u6210\u7684\u4ee3\u7801\u6216\u56fe\u8868\u8d28\u91cf\u4e0d\u4f73\uff08\u5982\u53ef\u8bfb\u6027\u5dee\u3001\u903b\u8f91\u6df7\u4e71\uff09\u7684\u95ee\u9898\uff0c\u901a\u8fc7\u5f15\u5165\u201c\u751f\u6210-\u8bc4\u4f30-\u4fee\u6b63\u201d\u7684\u4ee3\u7406\u5de5\u4f5c\u6d41\uff08Agentic Workflow\uff09\uff0c\u5229\u7528\u591a\u6a21\u6001\u6a21\u578b\u5bf9\u89c6\u89c9\u8f93\u51fa\u8fdb\u884c\u81ea\u6211\u6279\u5224\u4e0e\u8fed\u4ee3\uff0c\u4ece\u800c\u663e\u8457\u63d0\u5347\u6700\u7ec8\u56fe\u8868\u7684\u4e13\u4e1a\u6027\u548c\u51c6\u786e\u6027\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u6d41\u7a0b\u5206\u4e3a\u56db\u4e2a\u9636\u6bb5\uff1a1. **\u521d\u59cb\u751f\u6210**\uff1aLLM \u6839\u636e\u7528\u6237\u9700\u6c42\u7f16\u5199 Python \u4ee3\u7801\uff08V1\uff09\uff1b2. **\u4ee3\u7801\u6267\u884c**\uff1a\u8fd0\u884c\u4ee3\u7801\u751f\u6210\u521d\u6b65\u56fe\u8868\uff08plot.png\uff09\uff1b3. **\u89c6\u89c9\u63a8\u7406\u4e0e\u53cd\u9988**\uff1a\u5c06 V1 \u4ee3\u7801\u548c\u56fe\u8868\u8f93\u5165\u591a\u6a21\u6001 LLM\uff0c\u7531\u5176\u626e\u6f14\u201c\u4e13\u5bb6\u6570\u636e\u5206\u6790\u5e08\u201d\u89d2\u8272\uff0c\u9488\u5bf9**\u53ef\u8bfb\u6027**\u3001**\u6e05\u6670\u5ea6**\u548c**\u5b8c\u6574\u6027**\u8fdb\u884c\u8bc4\u4f30\uff1b4. **\u4ee3\u7801\u66f4\u65b0**\uff1aLLM \u6839\u636e\u53cd\u9988\u751f\u6210\u4f18\u5316\u540e\u7684\u4ee3\u7801\uff08V2\uff09\uff0c\u4ea7\u51fa\u66f4\u9ad8\u8d28\u91cf\u7684\u56fe\u8868\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u95ed\u73af\u8fed\u4ee3\uff1a\u901a\u8fc7\u53cd\u9988\u5faa\u73af\u4e0d\u65ad\u903c\u8fd1\u6700\u4f18\u89e3"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u591a\u6a21\u6001\u8bc4\u4f30\uff1a\u7ed3\u5408\u4ee3\u7801\u903b\u8f91\u4e0e\u89c6\u89c9\u5448\u73b0\u8fdb\u884c\u53cc\u91cd\u6821\u9a8c"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u89d2\u8272\u8bbe\u5b9a\uff1a\u901a\u8fc7 Prompt \u8d4b\u4e88\u6a21\u578b\u4e13\u5bb6\u8eab\u4efd\u4ee5\u83b7\u53d6\u9ad8\u8d28\u91cf\u5efa\u8bae"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u6570\u636e\u5206\u6790"'></div>
+                    
+                    <div class="list-item md-render" data-content='"AI Agent \u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u52a8\u6001\u62a5\u8868\u751f\u6210"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u6570\u636e\u79d1\u5b66\u8f85\u52a9\u5de5\u5177"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u53cd\u5c04\u673a\u5236\u5bf9\u6027\u80fd\u7684\u63d0\u5347\u7a0b\u5ea6\u56e0\u5e94\u7528\u573a\u666f\u800c\u5f02\uff1a\u90e8\u5206\u573a\u666f\u63d0\u5347\u663e\u8457\uff0c\u90e8\u5206\u63d0\u5347\u6709\u9650\uff0c\u751a\u81f3\u51e0\u4e4e\u6ca1\u6709\u63d0\u5347\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **\u56fe\u8868\u751f\u6210\u4ee3\u7406\u5de5\u4f5c\u6d41**\uff1a\n  - \u8f93\u5165\uff1a\u7528\u6237\u63d0\u793a\u8bcd (User Prompt)\n  - \u73af\u8282 A\uff1aLLM \u7f16\u5199 Python \u4ee3\u7801 -\u003e \u751f\u6210 V1 Code\n  - \u73af\u8282 B\uff1a\u6267\u884c V1 Code -\u003e \u751f\u6210 plot.png\n  - \u73af\u8282 C\uff1a\u591a\u6a21\u6001 LLM \u8bc4\u4f30 (Critique) -\u003e \u63d0\u51fa\u6539\u8fdb\u5efa\u8bae\n  - \u73af\u8282 D\uff1a\u66f4\u65b0\u4ee3\u7801 -\u003e \u751f\u6210 V2 Code -\u003e \u4ea7\u51fa\u6700\u7ec8\u56fe\u8868\n- **\u53cd\u5c04 Prompt \u5173\u952e\u7ef4\u5ea6**\uff1a\n  - Readability (\u53ef\u8bfb\u6027)\n  - Clarity (\u6e05\u6670\u5ea6)\n  - Completeness (\u5b8c\u6574\u6027)"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了从堆叠柱状图（V1）到更清晰的分离柱状图（V2）的演进过程，并对比了单一模型与多模型协作（LLM 1 生成，LLM 2 反射）的架构差异。</p>
+        </article>
+        
+        <article id="note_200e6e4ebb" class="card">
+            <h1>12.AI Agent 系统优化：反射设计模式的性能量化评估与 Evals 构建</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u6df1\u5165\u63a2\u8ba8\u4e86\u5982\u4f55\u8bc4\u4f30\u201c\u53cd\u5c04\u8bbe\u8ba1\u6a21\u5f0f\u201d\uff08Reflection Design Pattern\uff09\u5bf9AI\u7cfb\u7edf\u6027\u80fd\u7684\u5f71\u54cd\u3002\u867d\u7136\u53cd\u5c04\u80fd\u663e\u8457\u63d0\u5347\u8f93\u51fa\u8d28\u91cf\uff0c\u4f46\u4f1a\u589e\u52a0\u7cfb\u7edf\u5ef6\u8fdf\u548c\u8ba1\u7b97\u6210\u672c\u3002\u8bfe\u7a0b\u6838\u5fc3\u5728\u4e8e\u901a\u8fc7\u6784\u5efa\u201c\u8bc4\u6d4b\u96c6\u201d\uff08Evals\uff09\u6765\u91cf\u5316\u53cd\u5c04\u7684\u5b9e\u9645\u6536\u76ca\uff0c\u6db5\u76d6\u4e86\u4ece\u5ba2\u89c2\u4efb\u52a1\uff08\u5982SQL\u751f\u6210\uff09\u5230\u4e3b\u89c2\u4efb\u52a1\uff08\u5982\u6570\u636e\u53ef\u89c6\u5316\uff09\u7684\u8bc4\u4f30\u65b9\u6cd5\uff0c\u65e8\u5728\u5e2e\u52a9\u5f00\u53d1\u8005\u5728\u6027\u80fd\u63d0\u5347\u4e0e\u7cfb\u7edf\u5f00\u9500\u4e4b\u95f4\u505a\u51fa\u6570\u636e\u9a71\u52a8\u7684\u6743\u8861\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u8bc4\u4f30\u6d41\u7a0b\u5206\u4e3a\u56db\u4e2a\u5173\u952e\u9636\u6bb5\uff1a1. **\u6784\u5efa\u6570\u636e\u96c6**\uff1a\u6536\u96c6Prompt\u5e76\u6807\u6ce8\u6807\u51c6\u7b54\u6848\uff08Ground Truth\uff09\u30022. **\u5bf9\u6bd4\u5b9e\u9a8c**\uff1a\u5206\u522b\u8fd0\u884c\u201c\u65e0\u53cd\u5c04\u201d\u548c\u201c\u6709\u53cd\u5c04\u201d\u7684\u5de5\u4f5c\u6d41\u30023. **\u91cf\u5316\u8bc4\u4f30**\uff1a\u9488\u5bf9\u5ba2\u89c2\u4efb\u52a1\u4f7f\u7528\u4ee3\u7801\u81ea\u52a8\u6bd4\u5bf9\u51c6\u786e\u7387\uff1b\u9488\u5bf9\u4e3b\u89c2\u4efb\u52a1\u4f7f\u7528**LLM\u4f5c\u4e3a\u88c1\u5224\uff08LLM-as-a-judge\uff09**\u30024. **\u8fed\u4ee3\u4f18\u5316**\uff1a\u6839\u636e\u8bc4\u4f30\u7ed3\u679c\u8c03\u6574\u53cd\u5c04\u6307\u4ee4\uff08Reflection Prompt\uff09\uff0c\u5982\u8981\u6c42\u5176\u63d0\u9ad8\u4ee3\u7801\u8fd0\u884c\u901f\u5ea6\u6216\u6e05\u6670\u5ea6\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u4f18\u5148\u4f7f\u7528\u57fa\u4e8e\u4ee3\u7801\u7684\u5ba2\u89c2\u8bc4\u4f30\uff08Objective Evals\uff09"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5728\u4e3b\u89c2\u8bc4\u4f30\u4e2d\uff0c\u4f7f\u7528**\u8bc4\u5206\u91cf\u8868\uff08Rubric\uff09**\u4f18\u4e8e\u76f4\u63a5\u6253\u5206"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u91c7\u7528**\u4e8c\u5143\u6807\u51c6\uff08Binary Criteria\uff09**\u6c42\u548c\u6cd5\u63d0\u5347\u8bc4\u5206\u4e00\u81f4\u6027"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u8b66\u60d5\u5e76\u6d88\u9664LLM\u88c1\u5224\u7684**\u4f4d\u7f6e\u504f\u89c1**\uff08\u503e\u5411\u4e8e\u9009\u7b2c\u4e00\u4e2a\u9009\u9879\uff09"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u5e94\u7528\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u5de5\u7a0b"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u4ee3\u7801/SQL\u751f\u6210"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u667a\u80fd\u4f53\uff08Agentic Workflows\uff09\u4f18\u5316"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u53cd\u5c04\u6b65\u9aa4\u4f1a\u589e\u52a0\u63a8\u7406\u65f6\u95f4\u548cToken\u6d88\u8017\uff1b\u4e3b\u89c2\u8bc4\u4f30\u4e2dLLM\u4f5c\u4e3a\u88c1\u5224\u5b58\u5728\u4f4d\u7f6e\u504f\u89c1\uff08Position Bias\uff09\u548c\u8bc4\u5206\u4e0d\u4e00\u81f4\u6027\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **\u5ba2\u89c2\u8bc4\u4f30\u5bf9\u6bd4\uff08SQL\u751f\u6210\u793a\u4f8b\uff09**\uff1a\n  - \u65e0\u53cd\u5c04\uff1a\u76f4\u63a5\u6267\u884c\u7b2c\u4e00\u7248SQL -\u003e \u51c6\u786e\u7387 87%\n  - \u6709\u53cd\u5c04\uff1a\u5bf9\u7b2c\u4e00\u7248\u8fdb\u884c\u81ea\u6211\u68c0\u67e5 -\u003e \u751f\u6210V2 SQL -\u003e \u51c6\u786e\u7387 95%\n\n- **\u4e3b\u89c2\u8bc4\u4f30\u91cf\u8868\uff08Rubric\uff09\u7ed3\u6784**\uff1a\n  1. \u662f\u5426\u6709\u6e05\u6670\u6807\u9898\uff080/1\uff09\n  2. \u5750\u6807\u8f74\u6807\u7b7e\u662f\u5426\u5b8c\u6574\uff080/1\uff09\n  3. \u56fe\u8868\u7c7b\u578b\u662f\u5426\u5408\u9002\uff080/1\uff09\n  4. \u6570\u503c\u8303\u56f4\u662f\u5426\u6b63\u786e\uff080/1\uff09\n  *\u6700\u7ec8\u5f97\u5206 = \u5404\u9879\u4e8c\u5143\u6307\u6807\u4e4b\u548c*"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了SQL生成工作流的逻辑图，以及反射前后的准确率对比表（87% vs 95%）；同时展示了基于评分量表的可视化图表评估模型。</p>
+        </article>
+        
+        <article id="note_0f911730fd" class="card">
+            <h1>13.AI Agent 教学：超越提示词工程构建带外部反馈的反射设计模式</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u7531\u5434\u6069\u8fbe\uff08Andrew Ng\uff09\u8bb2\u89e3 AI \u667a\u80fd\u4f53\u5f00\u53d1\u4e2d\u7684\u201c\u5e26\u5916\u90e8\u53cd\u9988\u7684\u81ea\u6211\u53cd\u601d\uff08Reflection with external feedback\uff09\u201d\u8bbe\u8ba1\u6a21\u5f0f\u3002\u6838\u5fc3\u89c2\u70b9\u6307\u51fa\uff0c\u5355\u7eaf\u4f9d\u8d56\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u81ea\u8eab\u8fdb\u884c\u53cd\u601d\u867d\u80fd\u63d0\u5347\u6027\u80fd\uff0c\u4f46\u5f15\u5165\u5916\u90e8\u5de5\u5177\u6216\u73af\u5883\u7684\u53cd\u9988\uff08\u5982\u4ee3\u7801\u6267\u884c\u7ed3\u679c\u3001\u641c\u7d22\u4e8b\u5b9e\u3001\u5b57\u6570\u7edf\u8ba1\uff09\u80fd\u66f4\u663e\u8457\u5730\u7a81\u7834\u63d0\u793a\u8bcd\u5de5\u7a0b\uff08Prompt Engineering\uff09\u7684\u8fb9\u9645\u6548\u5e94\u9012\u51cf\uff0c\u4f7f\u6a21\u578b\u6027\u80fd\u8fbe\u5230\u66f4\u9ad8\u6c34\u5e73\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u8be5\u6a21\u5f0f\u9075\u5faa**\u8fed\u4ee3\u4f18\u5316\u5faa\u73af**\uff1a1. **\u521d\u59cb\u751f\u6210**\uff1aLLM \u751f\u6210\u521d\u7a3f\uff1b2. **\u5916\u90e8\u8bc4\u4f30**\uff1a\u5229\u7528\u5916\u90e8\u5de5\u5177\uff08\u5982\u7f16\u8bd1\u5668\u3001\u6b63\u5219\u5339\u914d\u3001\u641c\u7d22\u5f15\u64ce\uff09\u83b7\u53d6\u5ba2\u89c2\u53cd\u9988\uff1b3. **\u53cd\u9988\u6ce8\u5165**\uff1a\u5c06\u9519\u8bef\u4fe1\u606f\u6216\u65b0\u4e8b\u5b9e\u4f5c\u4e3a\u63d0\u793a\u8bcd\u53cd\u9988\u7ed9 LLM\uff1b4. **\u53cd\u601d\u6539\u8fdb**\uff1aLLM \u6839\u636e\u53cd\u9988\u751f\u6210\u4f18\u5316\u7248\u672c\u3002\u901a\u8fc7**\u5916\u90e8\u771f\u7406\uff08Ground Truth\uff09**\u7ea0\u6b63\u6a21\u578b\u7684\u5e7b\u89c9\u6216\u903b\u8f91\u76f2\u70b9\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u5916\u90e8\u53cd\u9988\u4f18\u4e8e\u95ed\u73af\u81ea\u7701"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5229\u7528\u786e\u5b9a\u6027\u5de5\u5177\u5f25\u8865\u6982\u7387\u6a21\u578b\u4e0d\u8db3"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u901a\u8fc7\u591a\u8f6e\u8fed\u4ee3\u7a81\u7834\u6027\u80fd\u74f6\u9888"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI \u667a\u80fd\u4f53\uff08Agentic Workflow\uff09\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u7f16\u7a0b\u4e0e\u4ee3\u7801\u5ba1\u67e5"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4e8b\u5b9e\u6838\u67e5\u4e0e\u5b66\u672f\u5199\u4f5c"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5408\u89c4\u6027\u5185\u5bb9\u751f\u6210"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u4f1a\u589e\u52a0\u7cfb\u7edf\u7684\u590d\u6742\u6027\u3001\u63a8\u7406\u5ef6\u8fdf\u4ee5\u53ca\u8c03\u7528\u5916\u90e8\u5de5\u5177\u5e26\u6765\u7684\u989d\u5916\u6210\u672c\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"| \u6311\u6218\u573a\u666f | \u5916\u90e8\u5de5\u5177\u793a\u4f8b | \u53cd\u9988\u6765\u6e90 |\n| :--- | :--- | :--- |\n| **\u4ee3\u7801\u7f16\u5199** | \u5355\u5143\u6d4b\u8bd5/\u7f16\u8bd1\u5668 | \u8fd0\u884c\u8f93\u51fa\u3001\u9519\u8bef\u5806\u6808\u4fe1\u606f |\n| **\u7ade\u4e89\u5bf9\u624b\u89c4\u907f** | \u6b63\u5219\u8868\u8fbe\u5f0f/\u6a21\u5f0f\u5339\u914d | \u5339\u914d\u5230\u7684\u7ade\u4e89\u5bf9\u624b\u540d\u79f0\u5217\u8868 |\n| **\u4e8b\u5b9e\u51c6\u786e\u6027** | \u641c\u7d22\u5f15\u64ce (Web Search) | \u6743\u5a01\u6765\u6e90\u7684\u4e8b\u5b9e\u7247\u6bb5 (Snippets) |\n| **\u6587\u672c\u957f\u5ea6\u9650\u5236** | \u5b57\u6570\u7edf\u8ba1\u5de5\u5177 | \u7cbe\u786e\u7684\u5b57\u7b26/\u5355\u8bcd\u8ba1\u6570\u7ed3\u679c |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了“提示词工程投入时间与性能关系图”，对比了无反思、仅自我反思、带外部反馈反思三条曲线，直观呈现了外部反馈在解决性能平台期（Plateau）方面的卓越表现。</p>
+        </article>
+        
+        <article id="note_930cdd26de" class="card">
+            <h1>14.AI Agent 开发核心：大语言模型的工具使用原理与函数调用</h1>
+
+            <div class="md-render" data-content='"\u672c\u6a21\u5757\u4ecb\u7ecd\u4e86\u5927\u578b\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u7684\u201c\u5de5\u5177\u4f7f\u7528\u201d\uff08Tool Use\uff09\u6982\u5ff5\u3002\u6838\u5fc3\u5728\u4e8e\u5141\u8bb8\u6a21\u578b\u5728\u5904\u7406\u4efb\u52a1\u65f6\uff0c\u81ea\u4e3b\u51b3\u5b9a\u662f\u5426\u8c03\u7528\u5916\u90e8\u51fd\u6570\uff08\u5de5\u5177\uff09\u6765\u83b7\u53d6\u5b9e\u65f6\u4fe1\u606f\u3001\u6267\u884c\u590d\u6742\u8ba1\u7b97\u6216\u64cd\u4f5c\u5916\u90e8\u7cfb\u7edf\u3002\u8fd9\u89e3\u51b3\u4e86LLM\u53d7\u9650\u4e8e\u8bad\u7ec3\u6570\u636e\u65f6\u6548\u6027\u3001\u7f3a\u4e4f\u7279\u5b9a\u9886\u57df\u8ba1\u7b97\u80fd\u529b\u53ca\u65e0\u6cd5\u4e0e\u5916\u90e8\u73af\u5883\u4ea4\u4e92\u7684\u5c40\u9650\uff0c\u4f7f\u5176\u4ece\u5355\u7eaf\u7684\u6587\u672c\u751f\u6210\u5668\u8f6c\u53d8\u4e3a\u5177\u5907\u884c\u52a8\u80fd\u529b\u7684\u667a\u80fd\u4f53\uff08Agent\uff09\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u6d41\u7a0b\u4e3a**\u7b80\u5355\u5de5\u5177\u6267\u884c\u5faa\u73af**\uff1a1. **\u8f93\u5165\u63d0\u793a\uff08Input Prompt\uff09**\uff1a\u7528\u6237\u53d1\u8d77\u8bf7\u6c42\u30022. **\u5de5\u5177\u8bc4\u4f30\uff08Tool Evaluation\uff09**\uff1aLLM\u67e5\u770b\u53ef\u7528\u7684**\u5de5\u5177\u96c6\uff08Tools\uff09**\u30023. **\u51fd\u6570\u8bf7\u6c42\uff08Function Request\uff09**\uff1aLLM\u51b3\u5b9a\u8c03\u7528\u7279\u5b9a\u51fd\u6570\u5e76\u751f\u6210\u8bf7\u6c42\u30024. **\u6267\u884c\u4e0e\u8fd4\u56de\uff08Execution \u0026 Return\uff09**\uff1a\u7cfb\u7edf\u6267\u884c\u51fd\u6570\u5e76\u8fd4\u56de\u7ed3\u679c\u30025. **\u4e0a\u4e0b\u6587\u6574\u5408\uff08Context Integration\uff09**\uff1a\u7ed3\u679c\u53cd\u9988\u81f3LLM\u7684\u5bf9\u8bdd\u5386\u53f2\u30026. **\u6700\u7ec8\u8f93\u51fa\uff08Final Output\uff09**\uff1aLLM\u751f\u6210\u57fa\u4e8e\u5de5\u5177\u6570\u636e\u7684\u56de\u7b54\u3002\u6b64\u5916\uff0c\u6a21\u578b\u5177\u5907**\u81ea\u4e3b\u51b3\u7b56\uff08Autonomous Decision\uff09**\u80fd\u529b\uff0c\u4ec5\u5728\u5fc5\u8981\u65f6\u8c03\u7528\u5de5\u5177\uff08\u5982\u67e5\u8be2\u65f6\u95f4\uff09\uff0c\u800c\u975e\u76f2\u76ee\u8c03\u7528\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u529f\u80fd\u6027\u539f\u5219\uff1a\u5de5\u5177\u672c\u8d28\u4e0a\u662f\u63d0\u4f9b\u7ed9LLM\u8c03\u7528\u7684\u51fd\u6570\uff08Functions\uff09\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6309\u9700\u8c03\u7528\u539f\u5219\uff1aLLM\u5e94\u6839\u636e\u63d0\u793a\u8bcd\u4e0a\u4e0b\u6587\u5224\u65ad\u662f\u5426\u9700\u8981\u5de5\u5177\u652f\u6301\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u591a\u5de5\u5177\u534f\u540c\u539f\u5219\uff1a\u590d\u6742\u4efb\u52a1\uff08\u5982\u65e5\u7a0b\u7ba1\u7406\uff09\u9700\u652f\u6301\u591a\u4e2a\u5de5\u5177\uff08\u67e5\u8be2\u3001\u521b\u5efa\u3001\u5220\u9664\uff09\u7684\u94fe\u5f0f\u8c03\u7528\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u667a\u80fd\u4f53\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u5ba2\u6237\u670d\u52a1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5b9e\u65f6\u6570\u636e\u68c0\u7d22\u7cfb\u7edf"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u91d1\u878d\u8ba1\u7b97\u52a9\u624b"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4f01\u4e1a\u6570\u636e\u5e93\u67e5\u8be2\u63a5\u53e3"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u6a21\u578b\u5fc5\u987b\u7ecf\u8fc7\u7279\u5b9a\u8bad\u7ec3\u4ee5\u8bc6\u522b\u4f55\u65f6\u8c03\u7528\u5de5\u5177\uff1b\u5916\u90e8\u5de5\u5177\u8c03\u7528\u4f1a\u589e\u52a0\u7cfb\u7edf\u5ef6\u8fdf\uff1b\u6a21\u578b\u53ef\u80fd\u4ea7\u751f\u9519\u8bef\u7684\u5de5\u5177\u8c03\u7528\u53c2\u6570\u6216\u8bef\u5224\u8c03\u7528\u65f6\u673a\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"```json\n[\n  {\n    \"\u573a\u666f\": \"\u5b9e\u65f6\u4fe1\u606f\u83b7\u53d6\",\n    \"\u63d0\u793a\u8bcd\": \"\u73b0\u5728\u51e0\u70b9\u4e86\uff1f\",\n    \"\u8c03\u7528\u5de5\u5177\": \"get_current_time()\",\n    \"\u8f93\u51fa\u7ed3\u679c\": \"\u5f53\u524d\u5177\u4f53\u65f6\u95f4\uff08\u5982 3:20 PM\uff09\"\n  },\n  {\n    \"\u573a\u666f\": \"\u5916\u90e8\u641c\u7d22\",\n    \"\u63d0\u793a\u8bcd\": \"\u5bfb\u627e\u5c71\u666f\u57ce\u9644\u8fd1\u7684\u610f\u5927\u5229\u9910\u5385\",\n    \"\u8c03\u7528\u5de5\u5177\": \"web_search(query=\u0027...\u0027)\",\n    \"\u8f93\u51fa\u7ed3\u679c\": \"\u7279\u5b9a\u9910\u5385\u540d\u79f0\u53ca\u63cf\u8ff0\"\n  },\n  {\n    \"\u573a\u666f\": \"\u6570\u636e\u5e93\u67e5\u8be2\",\n    \"\u63d0\u793a\u8bcd\": \"\u663e\u793a\u8d2d\u4e70\u767d\u8272\u58a8\u955c\u7684\u5ba2\u6237\",\n    \"\u8c03\u7528\u5de5\u5177\": \"query_database(table=\u0027sales\u0027, ...)\",\n    \"\u8f93\u51fa\u7ed3\u679c\": \"\u5177\u4f53\u7684\u5ba2\u6237\u6570\u91cf\u53ca\u5217\u8868\"\n  },\n  {\n    \"\u573a\u666f\": \"\u590d\u6742\u903b\u8f91/\u8ba1\u7b97\",\n    \"\u63d0\u793a\u8bcd\": \"\u8ba1\u7b9710\u5e74\u540e\u7684\u5229\u606f\u6536\u76ca\",\n    \"\u8c03\u7528\u5de5\u5177\": \"interest_calc() \u6216 eval(code)\",\n    \"\u8f93\u51fa\u7ed3\u679c\": \"\u7cbe\u786e\u7684\u6570\u503c\u8ba1\u7b97\u7ed3\u679c\"\n  }\n]\n```"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频通过流程图展示了LLM与外部工具的闭环交互。特别使用了“虚线框”符号标注在LLM上方，表示为模型提供的一组可选工具集。</p>
+        </article>
+        
+        <article id="note_1741bbc447" class="card">
+            <h1>15.从文本生成到行为触发：深度解析 LLM 工具调用的底层机制与交互闭环</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u6df1\u5165\u63a2\u8ba8\u4e86\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u8c03\u7528\u5916\u90e8\u5de5\u5177\uff08Tool Use\uff09\u7684\u6838\u5fc3\u673a\u5236\u3002\u89c6\u9891\u65e8\u5728\u63ed\u793a LLM \u5982\u4f55\u4ece\u4ec5\u80fd\u751f\u6210\u6587\u672c\u7684\u6a21\u578b\uff0c\u8f6c\u53d8\u4e3a\u80fd\u591f\u89e6\u53d1\u7279\u5b9a\u4ee3\u7801\u6267\u884c\u7684\u667a\u80fd\u4ee3\u7406\u3002\u901a\u8fc7\u5bf9\u6bd4\u65e9\u671f\u57fa\u4e8e\u63d0\u793a\u8bcd\u5de5\u7a0b\uff08Prompt Engineering\uff09\u7684\u624b\u52a8\u89e3\u6790\u65b9\u6cd5\u4e0e\u73b0\u4ee3\u539f\u751f\u8c03\u7528\u903b\u8f91\uff0c\u8bf4\u660e\u4e86 LLM \u901a\u8fc7\u8bc6\u522b\u7279\u5b9a\u6587\u672c\u6a21\u5f0f\u6765\u8bf7\u6c42\u51fd\u6570\u6267\u884c\uff0c\u5e76\u5229\u7528\u8fd4\u56de\u7ed3\u679c\u751f\u6210\u6700\u7ec8\u54cd\u5e94\u7684\u95ed\u73af\u8fc7\u7a0b\uff0c\u89e3\u51b3\u4e86 LLM \u65e0\u6cd5\u83b7\u53d6\u5b9e\u65f6\u4fe1\u606f\u6216\u6267\u884c\u590d\u6742\u8ba1\u7b97\u7684\u5c40\u9650\u6027\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u89c6\u9891\u63d0\u51fa\u4e86**\u63d0\u793a\u8bcd\u9a71\u52a8\u7684\u5de5\u5177\u8c03\u7528\u6a21\u578b**\uff0c\u5177\u4f53\u6b65\u9aa4\u5982\u4e0b\uff1a1. **\u7cfb\u7edf\u63d0\u793a\u8bcd\u5b9a\u4e49**\uff1a\u5728 System Prompt \u4e2d\u544a\u77e5 LLM \u53ef\u7528\u5de5\u5177\u53ca\u5176\u8c03\u7528\u683c\u5f0f\u30022. **\u6a21\u5f0f\u751f\u6210**\uff1aLLM \u6839\u636e\u7528\u6237\u9700\u6c42\u8f93\u51fa\u9884\u5b9a\u4e49\u7684**\u7279\u5b9a\u683c\u5f0f\u6587\u672c**\uff08\u5982 `FUNCTION: get_current_time()`\uff09\u30023. **\u540e\u7aef\u62e6\u622a\u4e0e\u89e3\u6790**\uff1a\u5f00\u53d1\u8005\u7f16\u5199\u4ee3\u7801\u76d1\u63a7 LLM \u8f93\u51fa\uff0c\u8bc6\u522b\u7279\u5b9a\u6a21\u5f0f\u5e76\u63d0\u53d6**\u51fd\u6570\u540d\u4e0e\u53c2\u6570**\u30024. **\u5916\u90e8\u6267\u884c**\uff1a\u5728\u6a21\u578b\u5916\u90e8\u6267\u884c\u5b9e\u9645\u4ee3\u7801\u30025. **\u4e0a\u4e0b\u6587\u6ce8\u5165**\uff1a\u5c06\u6267\u884c\u7ed3\u679c\u4f5c\u4e3a**\u5bf9\u8bdd\u5386\u53f2**\u53cd\u9988\u7ed9 LLM\u30026. **\u6700\u7ec8\u63a8\u7406**\uff1aLLM \u7ed3\u5408\u539f\u59cb\u95ee\u9898\u4e0e\u5de5\u5177\u7ed3\u679c\u751f\u6210\u6700\u7ec8\u7b54\u6848\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u6a21\u5f0f\u5339\u914d\u539f\u5219\uff1a\u5229\u7528 LLM \u7684\u6587\u672c\u8865\u5168\u80fd\u529b\u751f\u6210\u7ed3\u6784\u5316\u6307\u4ee4"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u95ed\u73af\u53cd\u9988\u539f\u5219\uff1a\u5de5\u5177\u6267\u884c\u7ed3\u679c\u5fc5\u987b\u4f5c\u4e3a\u4e0a\u4e0b\u6587\u91cd\u65b0\u8f93\u5165\u6a21\u578b"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u89e3\u8026\u539f\u5219\uff1aLLM \u8d1f\u8d23\u51b3\u7b56\u8c03\u7528\uff0c\u5f00\u53d1\u8005\u4ee3\u7801\u8d1f\u8d23\u5b9e\u9645\u6267\u884c"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI \u667a\u80fd\u4f53\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u5de5\u4f5c\u6d41\u96c6\u6210"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5b9e\u65f6\u6570\u636e\u67e5\u8be2\u7cfb\u7edf"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4f01\u4e1a\u7ea7 API \u8c03\u5ea6"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u65e9\u671f\u624b\u52a8\u89e3\u6790\u65b9\u6cd5\uff08\u5982\u5168\u5927\u5199\u6807\u8bb0\uff09\u8f83\u4e3a\u7b28\u62d9\u4e14\u6613\u9519\uff1b\u6a21\u578b\u8f93\u51fa\u7684\u4e0d\u786e\u5b9a\u6027\u53ef\u80fd\u5bfc\u81f4\u89e3\u6790\u5931\u8d25\uff1b\u591a\u6b21\u5f80\u8fd4\u4ea4\u4e92\u589e\u52a0\u4e86\u7cfb\u7edf\u5ef6\u8fdf\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"```json\n[\n  {\n    \"\u6b65\u9aa4\": \"1. \u7528\u6237\u8f93\u5165\",\n    \"\u52a8\u4f5c\": \"\u8be2\u95ee\u201c\u73b0\u5728\u51e0\u70b9\uff1f\u201d\",\n    \"\u53c2\u4e0e\u65b9\": \"\u7528\u6237\"\n  },\n  {\n    \"\u6b65\u9aa4\": \"2. \u6a21\u578b\u51b3\u7b56\",\n    \"\u52a8\u4f5c\": \"\u8f93\u51fa `FUNCTION: get_current_time()`\",\n    \"\u53c2\u4e0e\u65b9\": \"LLM\"\n  },\n  {\n    \"\u6b65\u9aa4\": \"3. \u4ee3\u7801\u62e6\u622a\",\n    \"\u52a8\u4f5c\": \"\u89e3\u6790\u5b57\u7b26\u4e32\u5e76\u8c03\u7528 Python \u51fd\u6570\",\n    \"\u53c2\u4e0e\u65b9\": \"\u5f00\u53d1\u8005\u4ee3\u7801\"\n  },\n  {\n    \"\u6b65\u9aa4\": \"4. \u7ed3\u679c\u53cd\u9988\",\n    \"\u52a8\u4f5c\": \"\u5c06\u201c8:00 AM\u201d\u4f20\u56de\u6a21\u578b\",\n    \"\u53c2\u4e0e\u65b9\": \"\u5916\u90e8\u7cfb\u7edf\"\n  },\n  {\n    \"\u6b65\u9aa4\": \"5. \u6700\u7ec8\u54cd\u5e94\",\n    \"\u52a8\u4f5c\": \"\u8f93\u51fa\u201c\u73b0\u5728\u662f\u4e0a\u5348 8 \u70b9\u201d\",\n    \"\u53c2\u4e0e\u65b9\": \"LLM\"\n  }\n]\n```"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了从用户提问到工具执行再到最终回答的完整时序流程图，并对比了无参数函数与带参数函数（如 timezone）的提示词差异。</p>
+        </article>
+        
+        <article id="note_7afcc75251" class="card">
+            <h1>16.利用 AISuite 实现 LLM 工具调用的代码解析与流程优化</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u6df1\u5165\u63a2\u8ba8\u4e86\u5982\u4f55\u901a\u8fc7\u4ee3\u7801\u5b9e\u73b0\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u7684\u5de5\u5177\u8c03\u7528\uff08Tool Calling\uff09\u3002\u6838\u5fc3\u8bb2\u89e3\u4e86\u4f7f\u7528 AISuite \u5f00\u6e90\u5e93\u7b80\u5316\u5de5\u5177\u5b9a\u4e49\u7684\u6d41\u7a0b\u3002\u91cd\u70b9\u6307\u51fa\uff1aLLM \u672c\u8eab\u5e76\u4e0d\u76f4\u63a5\u6267\u884c\u5de5\u5177\uff0c\u800c\u662f\u901a\u8fc7\u751f\u6210\u7b26\u5408\u7279\u5b9a\u8bed\u6cd5\u7684\u8bf7\u6c42\u6765\u201c\u5efa\u8bae\u201d\u8c03\u7528\u3002\u89c6\u9891\u8be6\u7ec6\u6f14\u793a\u4e86\u5982\u4f55\u5229\u7528 Python \u7684 docstring \u81ea\u52a8\u751f\u6210 JSON Schema\uff0c\u4ece\u800c\u8ba9\u6a21\u578b\u7406\u89e3\u51fd\u6570\u7684\u529f\u80fd\u3001\u53c2\u6570\u53ca\u8c03\u7528\u65f6\u673a\uff0c\u5e76\u4ecb\u7ecd\u4e86 max_turns \u53c2\u6570\u5728\u9632\u6b62\u4ee3\u7406\u5de5\u4f5c\u6d41\u6b7b\u5faa\u73af\u4e2d\u7684\u4f5c\u7528\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u5b9e\u73b0\u5de5\u5177\u8c03\u7528\u7684\u6838\u5fc3\u6b65\u9aa4\uff1a1. **\u5b9a\u4e49\u51fd\u6570**\uff1a\u7f16\u5199\u5177\u5907\u6e05\u6670\u903b\u8f91\u7684 Python \u51fd\u6570\u30022. **\u7f16\u5199 Docstring**\uff1a\u5229\u7528\u6ce8\u91ca\u8be6\u7ec6\u63cf\u8ff0\u51fd\u6570\u529f\u80fd\u53ca\u53c2\u6570\uff0c\u8fd9\u662f\u6a21\u578b\u7406\u89e3\u5de5\u5177\u7684\u5173\u952e\u30023. **AISuite \u5c01\u88c5**\uff1a\u901a\u8fc7 AISuite \u5e93\u5c06\u51fd\u6570\u6620\u5c04\u7ed9\u6a21\u578b\u30024. **\u81ea\u52a8\u751f\u6210 JSON Schema**\uff1a\u7cfb\u7edf\u540e\u53f0\u5c06\u51fd\u6570\u5143\u6570\u636e\u8f6c\u6362\u4e3a\u6807\u51c6 JSON \u683c\u5f0f\u30025. **\u6a21\u578b\u51b3\u7b56**\uff1aLLM \u6839\u636e\u4e0a\u4e0b\u6587\u51b3\u5b9a\u662f\u5426\u8c03\u7528\u5de5\u5177\u5e76\u8f93\u51fa\u53c2\u6570\u30026. **\u6267\u884c\u4e0e\u53cd\u9988**\uff1a\u7cfb\u7edf\u6267\u884c\u51fd\u6570\u5e76\u5c06\u7ed3\u679c\u8fd4\u56de\u7ed9\u6a21\u578b\u8fdb\u884c\u6700\u7ec8\u54cd\u5e94\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"Docstring \u9a71\u52a8\u539f\u5219\uff1a\u6ce8\u91ca\u5373\u6587\u6863\uff0c\u4e5f\u662f\u6a21\u578b\u7684\u6307\u4ee4\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u975e\u76f4\u63a5\u8c03\u7528\u539f\u5219\uff1a\u6a21\u578b\u4ec5\u53d1\u51fa\u8bf7\u6c42\uff0c\u7531\u7cfb\u7edf\u73af\u5883\u6267\u884c\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5faa\u73af\u63a7\u5236\u539f\u5219\uff1a\u901a\u8fc7 max_turns \u9650\u5236\u6a21\u578b\u8fde\u7eed\u8bf7\u6c42\u5de5\u5177\u7684\u6b21\u6570\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI \u4ee3\u7406\uff08Agentic Workflows\uff09\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u529e\u516c\u6d41\u7a0b\u96c6\u6210"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u667a\u80fd\u5ba2\u670d\u7cfb\u7edf\u6269\u5c55"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u4efb\u52a1\u62c6\u89e3\u4e0e\u5916\u90e8 API \u8054\u52a8"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u4f9d\u8d56\u4e8e\u9ad8\u8d28\u91cf\u7684\u51fd\u6570\u6ce8\u91ca\uff08Docstrings\uff09\uff1b\u6a21\u578b\u53ef\u80fd\u4ea7\u751f\u5e7b\u89c9\u5bfc\u81f4\u9519\u8bef\u7684\u5de5\u5177\u8c03\u7528\uff1b\u591a\u8f6e\u8c03\u7528\u53ef\u80fd\u9677\u5165\u65e0\u9650\u5faa\u73af\uff08\u9700\u8bbe\u7f6e max_turns\uff09\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **\u5de5\u5177\u5b9a\u4e49\u6d41\u7a0b\u8868**\uff1a\n  - \u8f93\u5165\u5c42\uff1aPython \u51fd\u6570 + \u8be6\u7ec6 Docstring\n  - \u8f6c\u6362\u5c42\uff1aAISuite \u81ea\u52a8\u89e3\u6790\u5143\u6570\u636e\n  - \u8f93\u51fa\u5c42\uff1a\u7b26\u5408 OpenAI \u89c4\u8303\u7684 JSON Schema\n\n- **JSON Schema \u6838\u5fc3\u5b57\u6bb5**\uff1a\n  - `name`: \u51fd\u6570\u540d\u79f0\uff08\u5982 get_current_time\uff09\n  - `description`: \u51fd\u6570\u529f\u80fd\u63cf\u8ff0\uff08\u63d0\u53d6\u81ea Docstring\uff09\n  - `parameters`: \u53c2\u6570\u7c7b\u578b\u3001\u63cf\u8ff0\u53ca\u679a\u4e3e\u503c\uff08\u5982 timezone\uff09"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了从 Python 代码到 JSON Schema 的映射关系图，以及 AISuite 调用 GPT-4o 的代码片段。</p>
+        </article>
+        
+        <article id="note_ab0cabb445" class="card">
+            <h1>17.代码执行设计模式与沙箱安全机制</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u6df1\u5165\u63a2\u8ba8\u4e86\u5927\u578b\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u667a\u80fd\u4f53\u4e2d\u201c\u4ee3\u7801\u6267\u884c\u201d\u4f5c\u4e3a\u4e00\u79cd\u9ad8\u7ea7\u5de5\u5177\u8c03\u7528\u7684\u6838\u5fc3\u673a\u5236\u3002\u5434\u6069\u8fbe\u6307\u51fa\uff0c\u4e0e\u5176\u4e3a\u6bcf\u79cd\u7279\u5b9a\u529f\u80fd\uff08\u5982\u5404\u79cd\u6570\u5b66\u8fd0\u7b97\uff09\u5f00\u53d1\u72ec\u7acb\u5de5\u5177\uff0c\u4e0d\u5982\u8d4b\u4e88\u6a21\u578b\u7f16\u5199\u5e76\u8fd0\u884c\u4ee3\u7801\u7684\u80fd\u529b\u3002\u8fd9\u79cd\u65b9\u6cd5\u6781\u5927\u5730\u63d0\u5347\u4e86\u667a\u80fd\u4f53\u5904\u7406\u590d\u6742\u3001\u52a8\u6001\u4efb\u52a1\u7684\u7075\u6d3b\u6027\u3002\u89c6\u9891\u91cd\u70b9\u4ecb\u7ecd\u4e86\u4ece\u4ee3\u7801\u751f\u6210\u3001\u63d0\u53d6\u3001\u6267\u884c\u5230\u7ed3\u679c\u53cd\u9988\u7684\u5b8c\u6574\u95ed\u73af\u6d41\u7a0b\uff0c\u5e76\u5f3a\u8c03\u4e86\u901a\u8fc7\u201c\u53cd\u601d\u673a\u5236\u201d\u7ea0\u6b63\u9519\u8bef\u4ee5\u53ca\u5229\u7528\u201c\u6c99\u7bb1\u73af\u5883\u201d\u4fdd\u969c\u7cfb\u7edf\u5b89\u5168\u7684\u91cd\u8981\u6027\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u6d41\u7a0b\u5206\u4e3a\u56db\u4e2a\u9636\u6bb5\uff1a1. **\u63d0\u793a\u8bcd\u5f15\u5bfc (Prompting)**\uff1a\u8981\u6c42\u6a21\u578b\u5c06\u89e3\u51b3\u65b9\u6848\u7f16\u5199\u4e3a\u7279\u5b9a\u6807\u7b7e\uff08\u5982`\u003cexecute_python\u003e`\uff09\u5305\u88f9\u7684Python\u4ee3\u7801\u30022. **\u4ee3\u7801\u63d0\u53d6 (Extraction)**\uff1a\u5229\u7528**\u6b63\u5219\u8868\u8fbe\u5f0f (Regular Expression)**\u6216\u6a21\u5f0f\u5339\u914d\u4ece\u6a21\u578b\u8f93\u51fa\u4e2d\u63d0\u53d6\u4ee3\u7801\u5757\u30023. **\u73af\u5883\u6267\u884c (Execution)**\uff1a\u5728\u9694\u79bb\u73af\u5883\u4e2d\u8fd0\u884c\u4ee3\u7801\uff0c\u83b7\u53d6\u6570\u503c\u7ed3\u679c\u6216\u9519\u8bef\u4fe1\u606f\u30024. **\u53cd\u9988\u4e0e\u53cd\u601d (Reflection)**\uff1a\u82e5\u6267\u884c\u5931\u8d25\uff0c\u5c06**\u9519\u8bef\u4fe1\u606f (Error Message)**\u53cd\u9988\u7ed9\u6a21\u578b\u8fdb\u884c\u81ea\u6211\u4fee\u6b63\u548c\u4e8c\u6b21\u8fed\u4ee3\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u901a\u7528\u6027\u4f18\u5148\uff1a\u7528\u4ee3\u7801\u751f\u6210\u66ff\u4ee3\u6d77\u91cf\u5355\u4e00\u529f\u80fd\u5de5\u5177\u7684\u5806\u780c"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5b89\u5168\u9694\u79bb\uff1a\u5fc5\u987b\u5728\u6c99\u7bb1\uff08Sandbox\uff09\u4e2d\u8fd0\u884c\u4ee5\u9632\u8303\u707e\u96be\u6027\u9519\u8bef"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u95ed\u73af\u53cd\u9988\uff1a\u5229\u7528\u5916\u90e8\u6267\u884c\u7ed3\u679c\u9a71\u52a8\u6a21\u578b\u7684\u81ea\u6211\u8fdb\u5316"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u667a\u80fd\u4f53\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u6570\u636e\u5206\u6790"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u79d1\u5b66\u8ba1\u7b97"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u52a8\u6001\u811a\u672c\u751f\u6210\u4e0e\u6267\u884c"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u6267\u884c\u4efb\u610f\u751f\u6210\u4ee3\u7801\u5b58\u5728\u5b89\u5168\u98ce\u9669\uff08\u5982\u8bef\u5220\u6587\u4ef6\uff09\uff1b\u6a21\u578b\u751f\u6210\u7684\u4ee3\u7801\u53ef\u80fd\u5b58\u5728\u903b\u8f91\u6f0f\u6d1e\u6216\u8bed\u6cd5\u9519\u8bef\uff1b\u5bf9\u8ba1\u7b97\u8d44\u6e90\u548c\u6267\u884c\u73af\u5883\u6709\u7279\u5b9a\u8981\u6c42\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"```json\n[\n  {\n    \"\u6bd4\u8f83\u7ef4\u5ea6\": \"\u4f20\u7edf\u5de5\u5177\u8c03\u7528\",\n    \"\u5b9e\u73b0\u65b9\u5f0f\": \"\u9884\u5b9a\u4e49add/subtract\u7b49\u51fd\u6570\",\n    \"\u7075\u6d3b\u6027\": \"\u4f4e\uff08\u53d7\u9650\u4e8e\u9884\u8bbe\u5de5\u5177\u6570\u91cf\uff09\",\n    \"\u590d\u6742\u5ea6\": \"\u968f\u529f\u80fd\u589e\u52a0\u5448\u7ebf\u6027\u589e\u957f\"\n  },\n  {\n    \"\u6bd4\u8f83\u7ef4\u5ea6\": \"\u4ee3\u7801\u6267\u884c\u6a21\u5f0f\",\n    \"\u5b9e\u73b0\u65b9\u5f0f\": \"\u6a21\u578b\u81ea\u4e3b\u7f16\u5199Python\u811a\u672c\",\n    \"\u7075\u6d3b\u6027\": \"\u6781\u9ad8\uff08\u7406\u8bba\u652f\u6301\u6240\u6709\u53ef\u7f16\u7a0b\u4efb\u52a1\uff09\",\n    \"\u590d\u6742\u5ea6\": \"\u7edf\u4e00\u63a5\u53e3\uff0c\u901a\u8fc7\u4ee3\u7801\u903b\u8f91\u5904\u7406\u590d\u6742\u6027\"\n  }\n]\n```"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了从用户查询到最终答案的流转图，重点标注了LLM与代码执行器之间的交互节点，以及沙箱环境（Docker/E2B）在安全防护中的位置。</p>
+        </article>
+        
+        <article id="note_961d5c5b82" class="card">
+            <h1>18.MCP 协议深度解析：构建 AI 智能体集成标准的 M+N 演进范式</h1>
+
+            <div class="md-render" data-content='"MCP (Model Context Protocol) \u662f\u7531 Anthropic \u63d0\u51fa\u5e76\u88ab\u5e7f\u6cdb\u91c7\u7528\u7684\u5f00\u653e\u6807\u51c6\uff0c\u65e8\u5728\u89e3\u51b3\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u4e0e\u5916\u90e8\u5de5\u5177\u53ca\u6570\u636e\u6e90\u96c6\u6210\u65f6\u7684\u201c\u96c6\u6210\u7206\u70b8\u201d\u95ee\u9898\u3002\u4f20\u7edf\u6a21\u5f0f\u4e0b\uff0c\u5f00\u53d1\u8005\u9700\u4e3a\u6bcf\u4e2a\u5e94\u7528\u4e0e\u5de5\u5177\u7684\u7ec4\u5408\u7f16\u5199\u81ea\u5b9a\u4e49\u5c01\u88c5\uff08\u590d\u6742\u5ea6 M\u00d7N\uff09\uff0c\u800c MCP \u901a\u8fc7\u6807\u51c6\u5316\u63a5\u53e3\uff0c\u5c06\u590d\u6742\u5ea6\u964d\u4f4e\u4e3a M+N\u3002\u5b83\u4e3a LLM \u63d0\u4f9b\u4e86\u4e00\u79cd\u7edf\u4e00\u7684\u65b9\u5f0f\u6765\u83b7\u53d6\u4e0a\u4e0b\u6587\uff08Context\uff09\u548c\u8c03\u7528\u5de5\u5177\uff08Tools\uff09\uff0c\u662f\u6784\u5efa\u5f3a\u5927\u667a\u80fd\u4f53\u5e94\u7528\uff08Agentic Applications\uff09\u7684\u5173\u952e\u57fa\u7840\u8bbe\u65bd\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u903b\u8f91\u5728\u4e8e**\u89e3\u8026\uff08Decoupling\uff09**\u30021. **MCP Client**\uff1a\u53d1\u8d77\u8bf7\u6c42\u7684\u5e94\u7528\uff08\u5982 Claude Desktop\uff09\uff0c\u8d1f\u8d23\u4e0e\u7528\u6237\u4ea4\u4e92\u5e76\u8c03\u7528\u534f\u8bae\u30022. **MCP Server**\uff1a\u6570\u636e\u6216\u5de5\u5177\u7684\u5c01\u88c5\u5c42\uff0c\u8d1f\u8d23\u5c06\u7279\u5b9a API\uff08\u5982 GitHub API\uff09\u8f6c\u6362\u4e3a\u6807\u51c6 MCP \u63a5\u53e3\u30023. **\u8d44\u6e90\u4e0e\u5de5\u5177\uff08Resources \u0026 Tools\uff09**\uff1a**Resources** \u7528\u4e8e\u83b7\u53d6\u9759\u6001\u4e0a\u4e0b\u6587\u6570\u636e\uff0c**Tools** \u7528\u4e8e\u6267\u884c\u901a\u7528\u51fd\u6570\u3002\u901a\u8fc7\u8fd9\u79cd\u67b6\u6784\uff0c\u4efb\u4f55\u9002\u914d MCP \u7684\u5ba2\u6237\u7aef\u90fd\u80fd\u65e0\u7f1d\u8fde\u63a5\u4efb\u4f55\u9002\u914d MCP \u7684\u670d\u52a1\u7aef\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u6807\u51c6\u5316\u4f18\u5148\uff1a\u901a\u8fc7\u7edf\u4e00\u534f\u8bae\u53d6\u4ee3\u788e\u7247\u5316\u7684\u81ea\u5b9a\u4e49\u5c01\u88c5"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u751f\u6001\u4e92\u64cd\u4f5c\u6027\uff1a\u5b9e\u73b0\u5e94\u7528\u4e0e\u5de5\u5177\u7684\u5373\u63d2\u5373\u7528"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u964d\u4f4e\u5f00\u53d1\u95e8\u69db\uff1a\u5c06 M\u00d7N \u7684\u96c6\u6210\u5de5\u4f5c\u91cf\u7b80\u5316\u4e3a M+N"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI \u667a\u80fd\u4f53\uff08Agents\uff09\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4f01\u4e1a\u7ea7\u6570\u636e\u96c6\u6210"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u667a\u80fd IDE\uff08\u5982 Cursor\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u529e\u516c\u6d41\uff08Slack/Google Drive \u96c6\u6210\uff09"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u76ee\u524d\u4ecd\u5904\u4e8e\u751f\u6001\u65e9\u671f\uff0c\u9700\u5e94\u7528\u7aef\uff08Client\uff09\u548c\u5de5\u5177\u7aef\uff08Server\uff09\u540c\u65f6\u9002\u914d\u534f\u8bae\uff1b\u521d\u671f\u8bbe\u8ba1\u4fa7\u91cd\u4e8e\u6570\u636e\u83b7\u53d6\uff08Resources\uff09\uff0c\u590d\u6742\u52a8\u4f5c\u7684\u6807\u51c6\u5316\u4ecd\u5728\u6f14\u8fdb\u4e2d\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"```json\n{\n  \"integration_complexity_comparison\": [\n    {\n      \"mode\": \"\u4f20\u7edf\u6a21\u5f0f (Custom Wrappers)\",\n      \"complexity\": \"M \u00d7 N\",\n      \"description\": \"\u6bcf\u4e2a\u5e94\u7528\u9700\u4e3a\u6bcf\u4e2a\u5de5\u5177\u5355\u72ec\u7f16\u5199\u96c6\u6210\u4ee3\u7801\"\n    },\n    {\n      \"mode\": \"MCP \u6a21\u5f0f (Standardized)\",\n      \"complexity\": \"M + N\",\n      \"description\": \"\u5e94\u7528\u548c\u5de5\u5177\u53ea\u9700\u5404\u81ea\u9002\u914d\u4e00\u6b21 MCP \u6807\u51c6\u5373\u53ef\u4e92\u901a\"\n    }\n  ],\n  \"mcp_ecosystem_components\": {\n    \"clients\": [\n      \"Cursor\",\n      \"Claude Desktop\",\n      \"Windsurf\"\n    ],\n    \"servers\": [\n      \"Slack\",\n      \"Google Drive\",\n      \"GitHub\",\n      \"PostgreSQL\"\n    ]\n  }\n}\n```"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了从“多对多”混乱连接到“中心化标准协议”连接的演进图，重点对比了集成复杂度的数学模型变化。</p>
+        </article>
+        
+        <article id="note_2691ed9098" class="card">
+            <h1>19.从错误分析到 Evals 量化驱动的迭代闭环</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u7531\u5434\u6069\u8fbe\u4e3b\u8bb2\uff0c\u6838\u5fc3\u63a2\u8ba8\u4e86\u6784\u5efa\u81ea\u4e3b\u578bAI\uff08Agentic AI\uff09\u5de5\u4f5c\u6d41\u7684\u5b9e\u7528\u6280\u5de7\uff0c\u91cd\u70b9\u805a\u7126\u4e8e\u8bc4\u4f30\uff08Evaluations/Evals\uff09\u673a\u5236\u3002\u9488\u5bf9AI\u667a\u80fd\u4f53\u6027\u80fd\u96be\u4ee5\u9884\u6d4b\u3001\u5f00\u53d1\u65b9\u5411\u4e0d\u660e\u786e\u7684\u95ee\u9898\uff0c\u5434\u6069\u8fbe\u63d0\u51fa\u4e86\u201c\u5feb\u901f\u539f\u578b-\u89c2\u5bdf\u8f93\u51fa-\u8bc6\u522b\u9519\u8bef\u6a21\u5f0f-\u6784\u5efa\u8bc4\u4f30\u96c6-\u91cf\u5316\u8fed\u4ee3\u201d\u7684\u95ed\u73af\u5f00\u53d1\u6a21\u5f0f\u3002\u901a\u8fc7\u53d1\u7968\u5904\u7406\u3001\u8425\u9500\u6587\u6848\u52a9\u624b\u548c\u7814\u7a76\u667a\u80fd\u4f53\u4e09\u4e2a\u5177\u4f53\u6848\u4f8b\uff0c\u5c55\u793a\u4e86\u5982\u4f55\u4ece\u5c11\u91cf\u6837\u672c\uff0810-20\u4e2a\uff09\u51fa\u53d1\uff0c\u5efa\u7acb\u5ba2\u89c2\u4ee3\u7801\u6821\u9a8c\u6216\u4e3b\u89c2LLM\u88c1\u5224\u7684\u8bc4\u4f30\u6807\u51c6\uff0c\u4ece\u800c\u6709\u6548\u9a71\u52a8\u7cfb\u7edf\u6027\u80fd\u7684\u6301\u7eed\u63d0\u5347\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u4e3a**\u8fed\u4ee3\u8bc4\u4f30\u9a71\u52a8\u5f00\u53d1**\u3002\u5177\u4f53\u6b65\u9aa4\u5982\u4e0b\uff1a1. **\u5feb\u901f\u539f\u578b\u5f00\u53d1**\uff1a\u5148\u6784\u5efa\u4e00\u4e2a\u7b80\u5355\u7cfb\u7edf\uff0c\u907f\u514d\u5728\u7406\u8bba\u9636\u6bb5\u505c\u7559\u8fc7\u4e45\u30022. **\u4eba\u5de5\u9519\u8bef\u5206\u6790**\uff1a\u624b\u52a8\u68c0\u67e5\u5c11\u91cf\u8f93\u51fa\uff0c\u8bc6\u522b**\u9519\u8bef\u6a21\u5f0f\uff08Error Modes\uff09**\u30023. **\u6784\u5efa\u8bc4\u4f30\u96c6\uff08Evals\uff09**\uff1a\u9488\u5bf9\u7279\u5b9a\u95ee\u9898\u51c6\u590710-20\u4e2a\u6d4b\u8bd5\u6837\u672c\u30024. **\u81ea\u52a8\u5316\u5ea6\u91cf**\uff1a\u7f16\u5199\u4ee3\u7801\u8fdb\u884c\u5ba2\u89c2\u5339\u914d\uff0c\u6216\u5229\u7528**LLM-as-a-judge**\u8fdb\u884c\u4e3b\u89c2\u6253\u5206\u30025. **\u95ed\u73af\u4f18\u5316**\uff1a\u6839\u636e\u8bc4\u4f30\u6307\u6807\u53cd\u9988\uff0c\u8c03\u6574\u63d0\u793a\u8bcd\u6216\u7b97\u6cd5\uff0c\u89c2\u5bdf\u6307\u6807\u662f\u5426\u63d0\u5347\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u5148\u6c42\u5b8c\u6210\uff0c\u518d\u6c42\u5b8c\u7f8e\uff08Quick and dirty is ok to start\uff09"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u8bc4\u4f30\u96c6\u5e94\u968f\u7cfb\u7edf\u8fdb\u5316\u800c\u52a8\u6001\u8fed\u4ee3"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u4f18\u5148\u89e3\u51b3AI\u8868\u73b0\u660e\u663e\u900a\u4e8e\u4eba\u7c7b\u4e13\u5bb6\u7684\u73af\u8282"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u7cfb\u7edf\u5f00\u53d1\u8005"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5927\u6a21\u578b\u5e94\u7528\u67b6\u6784\u5e08"'></div>
+                    
+                    <div class="list-item md-render" data-content='"NLP\u7b97\u6cd5\u5de5\u7a0b\u5e08"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u4e1a\u52a1\u6d41\u7a0b\u8bbe\u8ba1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"RAG\u5e94\u7528\u4f18\u5316"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u521d\u59cb\u8bc4\u4f30\u96c6\u89c4\u6a21\u8f83\u5c0f\uff0810-20\u4e2a\u6837\u672c\uff09\u53ef\u80fd\u65e0\u6cd5\u8986\u76d6\u6240\u6709\u8fb9\u7f18\u6848\u4f8b\uff1bLLM-as-a-judge \u5b58\u5728\u6f5c\u5728\u7684\u4e3b\u89c2\u504f\u5dee\u548c\u6a21\u578b\u5e7b\u89c9\u98ce\u9669\uff1b\u8bc4\u4f30\u96c6\u7684\u6784\u5efa\u548c\u7ef4\u62a4\u9700\u8981\u6301\u7eed\u7684\u4eba\u5de5\u6295\u5165\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"### \u8bc4\u4f30\u7ef4\u5ea6 2x2 \u77e9\u9635\n\n| \u8bc4\u4f30\u7ef4\u5ea6 | \u7f16\u5199\u4ee3\u7801\u8bc4\u4f30 (\u5ba2\u89c2/Objective) | LLM\u4f5c\u4e3a\u88c1\u5224 (\u4e3b\u89c2/Subjective) |\n| :--- | :--- | :--- |\n| **\u6709\u6837\u672c\u771f\u5b9e\u6807\u7b7e (Per-example Ground Truth)** | **\u6848\u4f8b\uff1a\u53d1\u7968\u65e5\u671f\u63d0\u53d6**\u3002\u901a\u8fc7\u6b63\u5219\u6216\u4ee3\u7801\u6bd4\u5bf9\u63d0\u53d6\u503c\u4e0e\u771f\u5b9e\u65e5\u671f\u3002 | **\u6848\u4f8b\uff1a\u5173\u952e\u8981\u70b9\u8986\u76d6**\u3002LLM\u5224\u65ad\u8f93\u51fa\u662f\u5426\u5305\u542b\u9884\u8bbe\u76845\u4e2a\u91d1\u6807\u51c6\u77e5\u8bc6\u70b9\u3002 |\n| **\u65e0\u6837\u672c\u771f\u5b9e\u6807\u7b7e (No Per-example Ground Truth)** | **\u6848\u4f8b\uff1a\u5b57\u6570\u9650\u5236\u68c0\u67e5**\u3002\u4ee3\u7801\u7edf\u8ba1\u8f93\u51fa\u5b57\u6570\u662f\u5426\u5c0f\u4e8e\u7b49\u4e8e\u76ee\u6807\u503c\u3002 | **\u6848\u4f8b\uff1a\u56fe\u8868\u8d28\u91cf\u8bc4\u4f30**\u3002LLM\u6839\u636e\u8bc4\u5206\u6807\u51c6\uff08Rubric\uff09\u5bf9\u56fe\u8868\u5408\u89c4\u6027\u6253\u5206\u3002 |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了评估维度的“2x2象限矩阵”，通过横轴（评估方式：代码/客观 vs LLM裁判/主观）与纵轴（参考标准：有/无样本真实标签）将评估场景分类。</p>
+        </article>
+        
+        <article id="note_3ec9c8a758" class="card">
+            <h1>20.基于追踪的系统化错误分析与组件优化</h1>
+
+            <div class="md-render" data-content='"\u672c\u8bb2\u5ea7\u91cd\u70b9\u8ba8\u8bba\u4e86\u6784\u5efa\u667a\u80fd\u4f53\uff08Agentic AI\uff09\u5de5\u4f5c\u6d41\u4e2d\u7684**\u9519\u8bef\u5206\u6790\uff08Error Analysis\uff09**\u4e0e\u4f18\u5148\u7ea7\u6392\u5e8f\u3002Andrew Ng \u6307\u51fa\uff0c\u667a\u80fd\u4f53\u7cfb\u7edf\u521d\u6b21\u6784\u5efa\u65f6\u5f80\u5f80\u8fbe\u4e0d\u5230\u9884\u671f\uff0c\u5f00\u53d1\u8005\u4e0d\u5e94\u51ed\u76f4\u89c9\u76f2\u76ee\u4f18\u5316\uff0c\u800c\u5e94\u901a\u8fc7\u7cfb\u7edf\u5316\u7684\u9519\u8bef\u5206\u6790\u65b9\u6cd5\uff0c\u8bc6\u522b\u5de5\u4f5c\u6d41\u4e2d\u5404\u7ec4\u4ef6\uff08\u5982\u641c\u7d22\u3001\u6293\u53d6\u3001\u63a8\u7406\uff09\u7684\u6027\u80fd\u74f6\u9888\uff0c\u4ece\u800c\u6709\u9488\u5bf9\u6027\u5730\u63d0\u5347\u7cfb\u7edf\u6574\u4f53\u6548\u7387\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u4e3a**\u57fa\u4e8e\u8ffd\u8e2a\uff08Trace\uff09\u7684\u7cfb\u7edf\u5316\u9519\u8bef\u5206\u6790**\u3002\u5177\u4f53\u6b65\u9aa4\u5305\u62ec\uff1a1. **\u8bb0\u5f55\u8ffd\u8e2a\uff08Traces\uff09**\uff1a\u6536\u96c6\u667a\u80fd\u4f53\u8fd0\u884c\u8fc7\u7a0b\u4e2d\u6bcf\u4e00\u6b65\u7684\u4e2d\u95f4\u8f93\u51fa\uff08Spans\uff09\u30022. **\u5efa\u7acb\u9519\u8bef\u7edf\u8ba1\u8868**\uff1a\u4f7f\u7528\u7535\u5b50\u8868\u683c\u8bb0\u5f55\u4e0d\u540c Prompt \u4e0b\u5404\u73af\u8282\u7684\u8868\u73b0\u30023. **\u91cf\u5316\u7ec4\u4ef6\u9519\u8bef\u7387**\uff1a\u7edf\u8ba1\u5982\u201c\u641c\u7d22\u8bcd\u751f\u6210\u201d\u3001\u201c\u641c\u7d22\u7ed3\u679c\u8d28\u91cf\u201d\u3001\u201c\u8d44\u6599\u7b5b\u9009\u201d\u7b49\u73af\u8282\u7684\u5931\u8d25\u9891\u7387\u30024. **\u4f18\u5148\u7ea7\u6392\u5e8f**\uff1a\u4f18\u5148\u4f18\u5316\u90a3\u4e9b\u9519\u8bef\u7387\u9ad8\u4e14\u5177\u5907\u660e\u786e\u6539\u8fdb\u601d\u8def\u7684\u7ec4\u4ef6\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u6570\u636e\u9a71\u52a8\u800c\u975e\u76f4\u89c9\u9a71\u52a8"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u7ec6\u7c92\u5ea6\u68c0\u67e5\u4e2d\u95f4\u73af\u8282\uff08Spans\uff09"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5efa\u7acb\u7eaa\u5f8b\u5316\u7684\u9519\u8bef\u5206\u6790\u6d41\u7a0b"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI \u5de5\u7a0b\u5e08"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5927\u6a21\u578b\u5e94\u7528\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"RAG \u7cfb\u7edf\u4f18\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u5de5\u4f5c\u6d41\u8bbe\u8ba1"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u9519\u8bef\u5206\u6790\u9ad8\u5ea6\u4f9d\u8d56\u4eba\u5de5\u5bf9\u4e2d\u95f4\u8f93\u51fa\u7684\u68c0\u67e5\uff0c\u5bf9\u4e8e\u5927\u89c4\u6a21\u6570\u636e\u96c6\u53ef\u80fd\u5b58\u5728\u4eba\u529b\u6210\u672c\u8f83\u9ad8\u7684\u5c40\u9650\uff1b\u540c\u65f6\uff0c\u5224\u65ad\u201c\u9519\u8bef\u201d\u9700\u8981\u9886\u57df\u4e13\u5bb6\u5177\u5907\u660e\u786e\u7684\u57fa\u51c6\u6807\u51c6\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"```json\n{\n  \"research_agent_workflow\": [\n    \"User Query (\u7528\u6237\u67e5\u8be2)\",\n    \"LLM: Search Web (\u751f\u6210\u641c\u7d22\u8bcd)\",\n    \"Web Search (\u6267\u884c\u7f51\u9875\u641c\u7d22)\",\n    \"LLM: Select Sources (\u7b5b\u9009\u6700\u4f73\u6765\u6e90)\",\n    \"Web Fetch (\u6293\u53d6\u7f51\u9875\u5185\u5bb9)\",\n    \"LLM: Write Essay (\u64b0\u5199\u8bba\u6587\u521d\u7a3f)\"\n  ],\n  \"error_analysis_table_template\": {\n    \"columns\": [\n      \"Prompt (\u63d0\u793a\u8bcd)\",\n      \"Search Terms (\u641c\u7d22\u8bcd\u8d28\u91cf)\",\n      \"Search Results (\u641c\u7d22\u7ed3\u679c\u8d28\u91cf)\",\n      \"Picking Sources (\u7b5b\u9009\u73af\u8282)\",\n      \"Reasoning (\u63a8\u7406/\u5199\u4f5c\u73af\u8282)\"\n    ],\n    \"example_metrics\": [\n      \"Search Terms: 5% error\",\n      \"Search Results: 45% error\",\n      \"Picking Sources: 10% error\"\n    ]\n  }\n}\n```"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了研究型智能体（Research Agent）的流程图，以及一份用于统计各环节错误分布的电子表格模型。</p>
+        </article>
+        
+        <article id="note_5b51fd1ec4" class="card">
+            <h1>21.组件级错误归因分析与工作流性能优化指南</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u6df1\u5165\u63a2\u8ba8\u4e86\u6784\u5efa\u4ee3\u7406\u5f0f\u4eba\u5de5\u667a\u80fd\uff08Agentic AI\uff09\u65f6\u7684\u5b9e\u7528\u9519\u8bef\u5206\u6790\u65b9\u6cd5\u3002\u5434\u6069\u8fbe\u6559\u6388\u6307\u51fa\uff0c\u901a\u8fc7\u5bf910-100\u4e2a\u5931\u8d25\u6848\u4f8b\u8fdb\u884c\u4eba\u5de5\u5ba1\u67e5\uff0c\u5e76\u5c06\u9519\u8bef\u5f52\u56e0\u4e8e\u5de5\u4f5c\u6d41\u4e2d\u7684\u7279\u5b9a\u7ec4\u4ef6\uff08\u5982PDF\u8f6c\u6587\u672c\u3001LLM\u63d0\u53d6\u3001\u6570\u636e\u5e93\u67e5\u8be2\u7b49\uff09\uff0c\u5f00\u53d1\u8005\u53ef\u4ee5\u7cbe\u51c6\u5b9a\u4f4d\u6027\u80fd\u74f6\u9888\u3002\u8fd9\u79cd\u65b9\u6cd5\u907f\u514d\u4e86\u76f2\u76ee\u4f18\u5316\u975e\u6838\u5fc3\u7ec4\u4ef6\uff0c\u786e\u4fdd\u7814\u53d1\u8d44\u6e90\u96c6\u4e2d\u5728\u5bf9\u6700\u7ec8\u7cfb\u7edf\u6027\u80fd\u63d0\u5347\u6700\u663e\u8457\u7684\u73af\u8282\uff0c\u662f\u63d0\u5347\u4ee3\u7406\u5de5\u4f5c\u6d41\u53ef\u9760\u6027\u7684\u6838\u5fc3\u5b9e\u8df5\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u4e3a**\u7ec4\u4ef6\u7ea7\u9519\u8bef\u5f52\u56e0\u5206\u6790**\u3002\u5177\u4f53\u6b65\u9aa4\u5982\u4e0b\uff1a1. **\u7b5b\u9009\u5931\u8d25\u6837\u672c**\uff1a\u4ece\u7cfb\u7edf\u4e2d\u9009\u53d610-100\u4e2a\u8868\u73b0\u4e0d\u4f73\u6216\u7ed3\u679c\u9519\u8bef\u7684\u5b9e\u4f8b\u30022. **\u5b9a\u4e49\u9519\u8bef\u7ef4\u5ea6**\uff1a\u6839\u636e\u5de5\u4f5c\u6d41\u62c6\u89e3\u7ec4\u4ef6\uff08\u5982**\u8f93\u5165\u5904\u7406**\u3001**LLM\u63a8\u7406**\u3001**\u5de5\u5177\u8c03\u7528**\uff09\u30023. **\u4eba\u5de5\u5f52\u56e0\u5ba1\u67e5**\uff1a\u9010\u4e00\u68c0\u67e5\u6837\u672c\uff0c\u8bb0\u5f55\u5bfc\u81f4\u9519\u8bef\u7684\u5177\u4f53\u7ec4\u4ef6\u30024. **\u91cf\u5316\u9519\u8bef\u9891\u7387**\uff1a\u7edf\u8ba1\u5404\u7ec4\u4ef6\u7684\u9519\u8bef\u5360\u6bd4\u30025. **\u4f18\u5148\u7ea7\u51b3\u7b56**\uff1a\u4f18\u5148\u6539\u8fdb\u9519\u8bef\u7387\u6700\u9ad8\u7684\u7ec4\u4ef6\uff08\u5982LLM\u751f\u6210\u7684\u67e5\u8be2\u8bed\u53e5\uff09\uff0c\u800c\u975e\u76f2\u76ee\u8c03\u4f18\uff08\u5982PDF\u89e3\u6790\uff09\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u5173\u6ce8\u6027\u80fd\u6b20\u4f73\u7684\u5b9e\u4f8b\u800c\u975e\u6b63\u786e\u5b9e\u4f8b"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u9519\u8bef\u5e76\u975e\u4e92\u65a5\uff0c\u4e00\u4e2a\u6837\u672c\u53ef\u80fd\u5305\u542b\u591a\u4e2a\u7ec4\u4ef6\u9519\u8bef"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6570\u636e\u9a71\u52a8\u7684\u4f18\u5148\u7ea7\u6392\u5e8f\u4f18\u4e8e\u76f4\u89c9\u5224\u65ad"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u5e94\u7528\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u5de5\u7a0b\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u4e1a\u52a1\u6d41\u7a0b\u8bbe\u8ba1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u667a\u80fd\u5ba2\u670d\u7cfb\u7edf\u4f18\u5316"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u9700\u8981\u4e00\u5b9a\u91cf\u7684\u4eba\u5de5\u6807\u6ce8\u4e0e\u5ba1\u67e5\u6210\u672c\uff1b\u5bf9\u4e8e\u6781\u5176\u590d\u6742\u7684\u975e\u7ebf\u6027\u5de5\u4f5c\u6d41\uff0c\u9519\u8bef\u5f52\u56e0\u53ef\u80fd\u5b58\u5728\u91cd\u53e0\u6216\u6a21\u7cca\uff1b\u4f9d\u8d56\u4e8e\u5f00\u53d1\u8005\u5bf9\u4e1a\u52a1\u903b\u8f91\u7684\u6df1\u523b\u7406\u89e3\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"### \u9519\u8bef\u5206\u6790\u5bf9\u6bd4\u8868\uff08\u793a\u4f8b\uff09\n\n**\u6848\u4f8b\u4e00\uff1a\u53d1\u7968\u5904\u7406\u5de5\u4f5c\u6d41**\n| \u8f93\u5165\u6837\u672c | PDF\u8f6c\u6587\u672c\u7ec4\u4ef6 | LLM\u6570\u636e\u63d0\u53d6\u7ec4\u4ef6 |\n| :--- | :--- | :--- |\n| \u53d1\u7968 1 | \u63d0\u53d6\u9519\u8bef | - |\n| \u53d1\u7968 2 | - | \u9009\u4e2d\u9519\u8bef\u65e5\u671f |\n| **\u9519\u8bef\u5360\u6bd4** | **15%** | **87%** |\n\n**\u6848\u4f8b\u4e8c\uff1a\u5ba2\u6237\u90ae\u4ef6\u56de\u590d\u5de5\u4f5c\u6d41**\n| \u8f93\u5165\u6837\u672c | LLM\u751f\u6210\u67e5\u8be2 | \u6570\u636e\u5e93\u67e5\u8be2\u7ed3\u679c | LLM\u751f\u6210\u90ae\u4ef6 |\n| :--- | :--- | :--- | :--- |\n| \u90ae\u4ef6 1 | \u9519\u8bef\u7684\u8868\u540d | - | - |\n| \u90ae\u4ef6 2 | - | \u6570\u636e\u5e93\u6761\u76ee\u9519\u8bef | \u672a\u5904\u7406\u8ba2\u5355\u7ec6\u8282 |\n| **\u9519\u8bef\u5360\u6bd4** | **75%** | **4%** | **30%** |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了两个典型的错误分析电子表格，分别针对发票处理和邮件回复工作流，通过百分比量化了各环节对总错误的贡献度。</p>
+        </article>
+        
+        <article id="note_d75925b3f6" class="card">
+            <h1>22.组件级评估与高效系统迭代</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u7531\u5434\u6069\u8fbe\uff08Andrew Ng\uff09\u4e3b\u8bb2\uff0c\u63a2\u8ba8\u4e86\u6784\u5efa\u4ee3\u7406\u5f0fAI\uff08Agentic AI\uff09\u7684\u5173\u952e\u6280\u5de7\uff1a**\u7ec4\u4ef6\u7ea7\u8bc4\u4f30\uff08Component-level evals\uff09**\u3002\u6838\u5fc3\u4e3b\u65e8\u5728\u4e8e\u89e3\u51b3\u7aef\u5230\u7aef\u8bc4\u4f30\uff08End-to-end evals\uff09\u6210\u672c\u9ad8\u6602\u4e14\u53d7\u5176\u4ed6\u7ec4\u4ef6\u968f\u673a\u6027\u5e72\u6270\uff08\u566a\u58f0\uff09\u7684\u95ee\u9898\u3002\u901a\u8fc7\u9694\u79bb\u7279\u5b9a\u7ec4\u4ef6\u5e76\u5efa\u7acb\u201c\u9ec4\u91d1\u6807\u51c6\u201d\u6570\u636e\u96c6\u8fdb\u884c\u72ec\u7acb\u6d4b\u8bd5\uff0c\u5f00\u53d1\u8005\u53ef\u4ee5\u83b7\u5f97\u66f4\u6e05\u6670\u7684\u9519\u8bef\u4fe1\u53f7\uff0c\u5b9e\u73b0\u66f4\u9ad8\u6548\u3001\u7cbe\u51c6\u7684\u7cfb\u7edf\u8fed\u4ee3\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"1. **\u7ec4\u4ef6\u9694\u79bb**\uff1a\u4ece\u590d\u6742\u5de5\u4f5c\u6d41\uff08\u5982\u7814\u7a76\u4ee3\u7406\uff09\u4e2d\u63d0\u53d6\u5355\u4e00\u73af\u8282\uff08\u5982\u7f51\u9875\u641c\u7d22\uff09\u3002\n2. **\u5efa\u7acb\u9ec4\u91d1\u6807\u51c6\uff08Gold Standard\uff09**\uff1a\u7531\u4e13\u5bb6\u5b9a\u4e49\u7279\u5b9a\u67e5\u8be2\u7684\u6700\u6743\u5a01\u8d44\u6e90\u5217\u8868\u4f5c\u4e3a\u57fa\u51c6\u3002\n3. **\u91cf\u5316\u8bc4\u4f30**\uff1a\u5229\u7528\u4fe1\u606f\u68c0\u7d22\u6307\u6807\uff08\u5982 **F1-score**\uff09\u8861\u91cf\u7ec4\u4ef6\u8f93\u51fa\u4e0e\u9ec4\u91d1\u6807\u51c6\u7684\u91cd\u5408\u5ea6\u3002\n4. **\u8d85\u53c2\u6570\u5b9e\u9a8c**\uff1a\u5728\u9694\u79bb\u73af\u5883\u4e0b\u5feb\u901f\u6d4b\u8bd5\u4e0d\u540c\u641c\u7d22\u5f15\u64ce\u3001\u7ed3\u679c\u6570\u91cf\u6216\u65e5\u671f\u8303\u56f4\u3002\n5. **\u7cfb\u7edf\u7ea7\u786e\u8ba4**\uff1a\u5728\u7ec4\u4ef6\u4f18\u5316\u5b8c\u6210\u540e\uff0c\u8fd0\u884c\u7aef\u5230\u7aef\u8bc4\u4f30\u4ee5\u786e\u8ba4\u6574\u4f53\u6027\u80fd\u589e\u76ca\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u4fe1\u53f7\u6e05\u6670\u5ea6\uff1a\u63d0\u4f9b\u9488\u5bf9\u7279\u5b9a\u9519\u8bef\u7684\u660e\u786e\u53cd\u9988"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u566a\u58f0\u89c4\u907f\uff1a\u6d88\u9664\u5de5\u4f5c\u6d41\u4e2d\u5176\u4ed6\u7ec4\u4ef6\u968f\u673a\u6027\u7684\u5e72\u6270"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u56e2\u961f\u6548\u7387\uff1a\u5141\u8bb8\u4e0d\u540c\u56e2\u961f\u5e76\u884c\u4f18\u5316\u5404\u81ea\u8d1f\u8d23\u7684\u7ec4\u4ef6"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5feb\u901f\u8fed\u4ee3\uff1a\u5728\u66f4\u5c0f\u3001\u66f4\u5177\u9488\u5bf9\u6027\u7684\u95ee\u9898\u4e0a\u52a0\u901f\u5b9e\u9a8c"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u7cfb\u7edf\u67b6\u6784\u5e08"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5927\u6a21\u578b\u5e94\u7528\u5f00\u53d1\u8005"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u7814\u7a76\u4ee3\u7406\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u591a\u6b65AI\u5de5\u4f5c\u6d41\u4f18\u5316"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u7ec4\u4ef6\u7ea7\u6027\u80fd\u7684\u63d0\u5347\u5e76\u4e0d\u7edd\u5bf9\u7b49\u540c\u4e8e\u7cfb\u7edf\u6574\u4f53\u6027\u80fd\u7684\u63d0\u5347\uff0c\u4f18\u5316\u540e\u4ecd\u9700\u8fdb\u884c\u6700\u7ec8\u7684\u7aef\u5230\u7aef\u9a8c\u8bc1\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **\u7814\u7a76\u4ee3\u7406\u5de5\u4f5c\u6d41**\uff1a\u7528\u6237\u67e5\u8be2 -\u003e LLM (\u641c\u7d22) -\u003e LLM (\u83b7\u53d65\u4e2a\u6700\u4f73\u6765\u6e90) -\u003e LLM (\u64b0\u5199\u8349\u7a3f)\n- **\u7ec4\u4ef6\u8bc4\u4f30\u5bf9\u6bd4\u8868**\uff1a\n  - **\u7aef\u5230\u7aef\u8bc4\u4f30**\uff1a\u6210\u672c\u9ad8\u3001\u566a\u58f0\u5927\u3001\u4fe1\u53f7\u6a21\u7cca\u3001\u9002\u5408\u6700\u7ec8\u9a8c\u8bc1\n  - **\u7ec4\u4ef6\u7ea7\u8bc4\u4f30**\uff1a\u6210\u672c\u4f4e\u3001\u4fe1\u53f7\u51c6\u3001\u652f\u6301\u5e76\u884c\u5f00\u53d1\u3001\u9002\u5408\u5f00\u53d1\u9636\u6bb5\u8fed\u4ee3\n- **\u7f51\u9875\u641c\u7d22\u7ec4\u4ef6\u8bc4\u4f30\u6d41\u7a0b**\uff1a\n  1. \u521b\u5efa\u9ec4\u91d1\u6807\u51c6\u7f51\u9875\u8d44\u6e90\u5217\u8868\n  2. \u7f16\u5199\u4ee3\u7801\u8ba1\u7b97\u8f93\u51fa\u4e0e\u9ec4\u91d1\u6807\u51c6\u7684\u91cd\u5408\u5ea6\uff08\u5982F1-score\uff09\n  3. \u8ddf\u8e2a\u4e0d\u540c\u8d85\u53c2\u6570\uff08\u641c\u7d22\u5f15\u64ce\u3001\u7ed3\u679c\u6570\u3001\u65e5\u671f\uff09\u4e0b\u7684\u6027\u80fd\u53d8\u5316"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了研究代理的工作流图，对比了端到端评估的局限性与组件级评估的优势，并列出了评估网页搜索组件的具体步骤。</p>
+        </article>
+        
+        <article id="note_8a4a353b03" class="card">
+            <h1>23.性能优化与模型直觉培养指南</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u7531 Andrew Ng \u4e3b\u8bb2\uff0c\u65e8\u5728\u63d0\u4f9b\u6784\u5efa\u667a\u80fd\u4f53\uff08Agentic AI\uff09\u5de5\u4f5c\u6d41\u7684\u5b9e\u7528\u5efa\u8bae\u3002\u6838\u5fc3\u5185\u5bb9\u805a\u7126\u4e8e\u5982\u4f55\u8bc6\u522b\u5e76\u89e3\u51b3\u667a\u80fd\u4f53\u7cfb\u7edf\u4e2d\u7684\u6027\u80fd\u74f6\u9888\u3002\u8bb2\u5ea7\u5c06\u7ec4\u4ef6\u5206\u4e3a\u975e\u5927\u8bed\u8a00\u6a21\u578b\uff08non-LLM\uff09\u548c\u57fa\u4e8e\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM-based\uff09\u4e24\u5927\u7c7b\uff0c\u5206\u522b\u7ed9\u51fa\u4e86\u4f18\u5316\u7b56\u7565\u3002\u6b64\u5916\uff0c\u5f3a\u8c03\u4e86\u5f00\u53d1\u8005\u57f9\u517b\u201c\u6a21\u578b\u76f4\u89c9\u201d\u7684\u91cd\u8981\u6027\uff0c\u901a\u8fc7\u6301\u7eed\u5b9e\u9a8c\u3001\u9605\u8bfb\u4f18\u79c0\u63d0\u793a\u8bcd\u53ca\u4f7f\u7528\u591a\u6a21\u578b\u8bc4\u4f30\uff0c\u6765\u9009\u62e9\u6700\u9002\u5408\u7279\u5b9a\u4efb\u52a1\u7684\u6a21\u578b\uff0c\u4ece\u800c\u63d0\u5347\u7aef\u5230\u7aef\u7cfb\u7edf\u7684\u6574\u4f53\u8868\u73b0\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"1. **\u975e LLM \u7ec4\u4ef6\u4f18\u5316**\uff1a\u901a\u8fc7**\u8d85\u53c2\u6570\u8c03\u4f18**\uff08\u5982\u641c\u7d22\u7ed3\u679c\u6570\u3001RAG \u76f8\u4f3c\u5ea6\u9608\u503c\u3001\u5206\u5757\u5927\u5c0f\uff09\u6216\u76f4\u63a5**\u66f4\u6362\u7ec4\u4ef6**\uff08\u5982\u6362\u7528\u4e0d\u540c\u7684\u641c\u7d22\u5f15\u64ce\uff09\u6765\u63d0\u5347\u6027\u80fd\u30022. **LLM \u7ec4\u4ef6\u4f18\u5316\u8def\u5f84**\uff1a**\u4f18\u5316\u63d0\u793a\u8bcd**\uff08\u589e\u52a0\u660e\u786e\u6307\u4ee4\u3001Few-shot \u63d0\u793a\uff09 -\u003e **\u5c1d\u8bd5\u65b0\u6a21\u578b**\uff08\u5229\u7528\u8bc4\u6d4b\u5de5\u5177\u9009\u4f18\uff09 -\u003e **\u62c6\u89e3\u6b65\u9aa4**\uff08\u5c06\u590d\u6742\u4efb\u52a1\u5206\u89e3\u4e3a\u751f\u6210\u4e0e\u53cd\u601d\u7b49\u5b50\u6b65\u9aa4\uff09 -\u003e **\u6a21\u578b\u5fae\u8c03**\uff08\u9488\u5bf9\u7279\u5b9a\u79c1\u6709\u6570\u636e\uff09\u30023. **\u6a21\u578b\u76f4\u89c9\u57f9\u517b**\uff1a\u901a\u8fc7**\u9891\u7e41\u5b9e\u9a8c**\u3001**\u5efa\u7acb\u4e2a\u4eba\u8bc4\u6d4b\u96c6**\u3001**\u7814\u8bfb\u5f00\u6e90\u63d0\u793a\u8bcd**\u4ee5\u53ca\u5728\u5de5\u4f5c\u6d41\u4e2d**\u7075\u6d3b\u5207\u6362\u6a21\u578b**\uff08\u5982\u4f7f\u7528 aisuite\uff09\u6765\u611f\u77e5\u4e0d\u540c\u6a21\u578b\u7684\u667a\u80fd\u8fb9\u754c\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u7ec4\u4ef6\u5316\u4f18\u5316\u539f\u5219\uff1a\u9488\u5bf9\u4e0d\u540c\u7c7b\u578b\u7684\u7ec4\u4ef6\u91c7\u7528\u5dee\u5f02\u5316\u5de5\u5177\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u4efb\u52a1\u62c6\u89e3\u539f\u5219\uff1a\u5355\u6b65\u6307\u4ee4\u8fc7\u6742\u65f6\uff0c\u901a\u8fc7\u5206\u89e3\u964d\u4f4e\u6a21\u578b\u8ba4\u77e5\u8d1f\u8377\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6210\u672c\u6548\u76ca\u539f\u5219\uff1a\u4f18\u5148\u901a\u8fc7\u63d0\u793a\u8bcd\u5de5\u7a0b\u4f18\u5316\uff0c\u6700\u540e\u8003\u8651\u9ad8\u6210\u672c\u7684\u5fae\u8c03\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI \u5e94\u7528\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"RAG\uff08\u68c0\u7d22\u589e\u5f3a\u751f\u6210\uff09\u7cfb\u7edf\u4f18\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u5de5\u4f5c\u6d41\u8bbe\u8ba1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5927\u6a21\u578b\u9009\u578b\u4e0e\u8bc4\u6d4b"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u5fae\u8c03\uff08Fine-tuning\uff09\u6210\u672c\u9ad8\u4e14\u590d\u6742\uff0c\u901a\u5e38\u4ec5\u5efa\u8bae\u5728\u5e94\u7528\u6210\u719f\u4e14\u9700\u69a8\u53d6\u6700\u540e\u51e0\u767e\u5206\u70b9\u6027\u80fd\u65f6\u4f7f\u7528\uff1b\u6a21\u578b\u76f4\u89c9\u7684\u57f9\u517b\u5177\u6709\u4e3b\u89c2\u6027\uff0c\u9700\u4f9d\u8d56\u5927\u91cf\u5b9e\u8df5\u79ef\u7d2f\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"### LLM \u7ec4\u4ef6\u4f18\u5316\u7b56\u7565\u5bf9\u6bd4\n- **\u4f18\u5316\u63d0\u793a\u8bcd (Improve Prompts)**: \u589e\u52a0\u663e\u5f0f\u6307\u4ee4\u3001Few-shot \u793a\u4f8b\u3002\n- **\u5c1d\u8bd5\u65b0\u6a21\u578b (Try a New Model)**: \u4f7f\u7528 AI Suite \u7b49\u5de5\u5177\u5feb\u901f\u6d4b\u8bd5\u4e0d\u540c\u4f9b\u5e94\u5546\u6a21\u578b\u3002\n- **\u62c6\u89e3\u6b65\u9aa4 (Split up the Step)**: \u5c06\u590d\u6742\u4efb\u52a1\u5206\u89e3\u4e3a\u66f4\u5c0f\u7684\u5b50\u4efb\u52a1\u6216\u300c\u751f\u6210-\u53cd\u601d\u300d\u5faa\u73af\u3002\n- **\u5fae\u8c03\u6a21\u578b (Fine-tune a Model)**: \u57fa\u4e8e\u5185\u90e8\u6570\u636e\u8fdb\u884c\u6df1\u5ea6\u5b9a\u5236\uff08\u9ad8\u6295\u5165\u3001\u9ad8\u56de\u62a5\uff09\u3002\n\n### \u6a21\u578b\u76f4\u89c9\u5f00\u53d1\u8def\u5f84\n1. **\u591a\u73a9\u6a21\u578b**: \u5173\u6ce8\u65b0\u6a21\u578b\u53d1\u5e03\u5e76\u8fdb\u884c\u591a\u6837\u5316\u67e5\u8be2\u6d4b\u8bd5\u3002\n2. **\u4e2a\u4eba\u8bc4\u6d4b\u96c6**: \u5efa\u7acb\u4e00\u5957\u6807\u51c6\u95ee\u9898\u5e93\uff0c\u7528\u4e8e\u6a2a\u5411\u5bf9\u6bd4\u6a21\u578b\u8868\u73b0\u3002\n3. **\u9605\u8bfb\u4ed6\u4eba\u63d0\u793a\u8bcd**: \u4ece\u4e92\u8054\u7f51\u3001\u540c\u884c\u53ca\u5f00\u6e90\u9879\u76ee\u4e2d\u5b66\u4e60\u6700\u4f73\u5b9e\u8df5\u3002\n4. **\u5de5\u4f5c\u6d41\u5b9e\u6218**: \u5728\u5b9e\u9645\u667a\u80fd\u4f53\u4e2d\u5207\u6362\u6a21\u578b\uff0c\u89c2\u5bdf\u5176\u5728\u7279\u5b9a\u5782\u76f4\u9886\u57df\u7684\u8868\u73b0\u3002"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了 LLM 组件优化的四层递进模型，以及 Llama 3.1 8B 与 GPT-5 在处理 PII（个人身份信息）脱敏任务时的对比案例，直观呈现了模型规模对指令遵循能力的影响。</p>
+        </article>
+        
+        <article id="note_3276386641" class="card">
+            <h1>24.量化性能瓶颈与平衡成本质量指南</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u7531\u5434\u6069\u8fbe\uff08Andrew Ng\uff09\u8bb2\u89e3\u6784\u5efa\u667a\u80fd\u4f53\uff08Agentic AI\uff09\u5de5\u4f5c\u6d41\u7684\u5b9e\u7528\u6280\u5de7\uff0c\u6838\u5fc3\u4e3b\u5f20\u662f\u201c\u8d28\u91cf\u4f18\u5148\uff0c\u4f18\u5316\u968f\u540e\u201d\u3002\u89c6\u9891\u91cd\u70b9\u4ecb\u7ecd\u4e86\u5982\u4f55\u901a\u8fc7\u5bf9\u5de5\u4f5c\u6d41\u8fdb\u884c\u7ec6\u7c92\u5ea6\u7684\u57fa\u51c6\u6d4b\u8bd5\uff08Benchmarking\uff09\uff0c\u91cf\u5316\u6bcf\u4e2a\u73af\u8282\u7684\u5ef6\u8fdf\u4e0e\u6210\u672c\uff0c\u4ece\u800c\u6709\u9488\u5bf9\u6027\u5730\u5b9e\u65bd\u5e76\u884c\u5316\u5904\u7406\u3001\u6a21\u578b\u66ff\u6362\u6216\u4f9b\u5e94\u5546\u4f18\u5316\uff0c\u89e3\u51b3\u667a\u80fd\u4f53\u7cfb\u7edf\u5728\u5927\u89c4\u6a21\u5e94\u7528\u65f6\u7684\u6027\u80fd\u4e0e\u5f00\u9500\u74f6\u9888\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u4e3a**\u7ec6\u7c92\u5ea6\u5206\u89e3\u4e0e\u91cf\u5316\u5206\u6790**\uff1a\n1. **\u5efa\u7acb\u8d28\u91cf\u57fa\u51c6**\uff1a\u9996\u5148\u786e\u4fdd\u667a\u80fd\u4f53\u80fd\u591f\u751f\u6210\u9ad8\u8d28\u91cf\u8f93\u51fa\uff0c\u6682\u4e0d\u8003\u8651\u6210\u672c\u548c\u5ef6\u8fdf\u3002\n2. **\u5de5\u4f5c\u6d41\u8ba1\u65f6\u5206\u6790\uff08Timing Analysis\uff09**\uff1a\u8bb0\u5f55\u6bcf\u4e2a\u6b65\u9aa4\uff08\u5982\u641c\u7d22\u3001\u6293\u53d6\u3001\u64b0\u5199\uff09\u7684\u8017\u65f6\uff0c\u8bc6\u522b**\u6027\u80fd\u74f6\u9888**\u3002\n3. **\u6210\u672c\u6838\u7b97\uff08Costing Analysis\uff09**\uff1a\u6309Token\u3001API\u8c03\u7528\u6216\u8ba1\u7b97\u8d44\u6e90\u8ba1\u7b97\u6bcf\u6b65\u6210\u672c\uff0c\u8bc6\u522b**\u4e3b\u8981\u6210\u672c\u8d21\u732e\u8005**\u3002\n4. **\u9488\u5bf9\u6027\u4f18\u5316\u7b56\u7565**\uff1a\n   - **\u5e76\u884c\u5316\uff08Parallelism\uff09**\uff1a\u5bf9\u4e92\u4e0d\u4f9d\u8d56\u7684\u6b65\u9aa4\uff08\u5982\u7f51\u9875\u6293\u53d6\uff09\u8fdb\u884c\u5e76\u884c\u5904\u7406\u3002\n   - **\u6a21\u578b\u84b8\u998f/\u66ff\u6362**\uff1a\u5728\u5bf9\u903b\u8f91\u8981\u6c42\u8f83\u4f4e\u7684\u73af\u8282\u4f7f\u7528**\u66f4\u5c0f\u3001\u66f4\u5feb\u3001\u66f4\u4fbf\u5b9c**\u7684\u6a21\u578b\u3002\n   - **\u4f9b\u5e94\u5546/\u786c\u4ef6\u4f18\u5316**\uff1a\u9009\u62e9\u54cd\u5e94\u901f\u5ea6\u66f4\u5feb\u7684API\u63d0\u4f9b\u5546\u6216\u4e13\u7528\u786c\u4ef6\u52a0\u901f\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u8d28\u91cf\u4f18\u5148\u539f\u5219\uff1a\u5148\u505a\u5bf9\uff0c\u518d\u505a\u5feb\uff0c\u6700\u540e\u505a\u7701\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6570\u636e\u9a71\u52a8\u51b3\u7b56\uff1a\u57fa\u4e8e\u6bcf\u4e00\u6b65\u7684\u5b9e\u6d4b\u6570\u636e\u800c\u975e\u76f4\u89c9\u6765\u51b3\u5b9a\u4f18\u5316\u91cd\u70b9\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u8fb9\u9645\u6548\u5e94\u5173\u6ce8\uff1a\u4f18\u5148\u5904\u7406\u5bf9\u603b\u5ef6\u8fdf\u6216\u603b\u6210\u672c\u8d21\u732e\u6700\u5927\u7684\u73af\u8282\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u7cfb\u7edf\u67b6\u6784\u8bbe\u8ba1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u5e94\u7528\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4f01\u4e1a\u7ea7\u81ea\u52a8\u5316\u5de5\u4f5c\u6d41\u4f18\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u6280\u672f\u4ea7\u54c1\u7ecf\u7406\u8fdb\u884c\u6210\u672c\u6548\u76ca\u5206\u6790"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u8fc7\u5ea6\u8ffd\u6c42\u5ef6\u8fdf\u548c\u6210\u672c\u4f18\u5316\u53ef\u80fd\u4f1a\u635f\u5bb3\u8f93\u51fa\u8d28\u91cf\uff1b\u5728\u7cfb\u7edf\u5c1a\u672a\u8fbe\u5230\u7406\u60f3\u7684\u8f93\u51fa\u8d28\u91cf\u524d\u8fdb\u884c\u4f18\u5316\u5c5e\u4e8e\u201c\u8fc7\u65e9\u4f18\u5316\u201d\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"| \u6b65\u9aa4 | \u5178\u578b\u5de5\u5177 | \u5ef6\u8fdf\u793a\u4f8b | \u6210\u672c\u793a\u4f8b (USD) | \u4f18\u5316\u65b9\u5411 |\n| :--- | :--- | :--- | :--- | :--- |\n| \u751f\u6210\u641c\u7d22\u8bcd | LLM | 7s | $0.0004 | \u6362\u7528\u5c0f\u6a21\u578b |\n| \u7f51\u9875\u641c\u7d22 | Search API | 5s | $0.016 | \u4f18\u5316API\u8c03\u7528 |\n| \u6293\u53d6\u524d5\u4e2a\u6765\u6e90 | Web Fetch | 3s | $0.0004 | **\u5e76\u884c\u5316\u5904\u7406** |\n| PDF\u8f6c\u6587\u672c | PDF Tool | 11s | $0.030 | \u4f18\u5316\u8ba1\u7b97\u903b\u8f91 |\n| \u64b0\u5199\u8bba\u6587\u8349\u7a3f | LLM | 18s | $0.009 | \u63d0\u9ad8Token\u751f\u6210\u901f\u5ea6 |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了一个“研究智能体（Research Agent）”的流程图，通过在每个节点下方标注时间（秒）和成本（美元），直观展示了从用户查询到生成论文草稿的全过程，并对比了不同环节的资源消耗。</p>
+        </article>
+        
+        <article id="note_6d865625ef" class="card">
+            <h1>25.构建与分析的迭代循环之道</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u603b\u7ed3\u4e86\u6784\u5efa\u667a\u80fd\u4f53\uff08Agentic AI\uff09\u7cfb\u7edf\u7684\u5f00\u53d1\u6d41\u7a0b\uff0c\u5f3a\u8c03\u5176\u672c\u8d28\u662f\u4e00\u4e2a\u975e\u7ebf\u6027\u7684\u8fed\u4ee3\u8fc7\u7a0b\u3002\u6838\u5fc3\u89c2\u70b9\u5728\u4e8e\u5f00\u53d1\u8005\u5e94\u5728\u201c\u6784\u5efa\uff08Build\uff09\u201d\u4e0e\u201c\u5206\u6790\uff08Analyze\uff09\u201d\u4e4b\u95f4\u4e0d\u65ad\u5207\u6362\u3002\u901a\u8fc7\u5206\u6790\uff08\u5982\u9519\u8bef\u5206\u6790\u3001\u8bc4\u4f30\u6307\u6807\u8ba1\u7b97\uff09\u6765\u7cbe\u51c6\u5b9a\u4f4d\u7cfb\u7edf\u8584\u5f31\u73af\u8282\uff0c\u4ece\u800c\u6307\u5bfc\u4e0b\u4e00\u6b65\u7684\u6784\u5efa\u91cd\u70b9\uff0c\u907f\u514d\u76f2\u76ee\u5f00\u53d1\u3002\u5434\u6069\u8fbe\u6307\u51fa\uff0c\u7ecf\u9a8c\u4e30\u5bcc\u7684\u56e2\u961f\u5f80\u5f80\u5728\u5206\u6790\u73af\u8282\u6295\u5165\u66f4\u591a\u7cbe\u529b\uff0c\u4ee5\u5b9e\u73b0\u66f4\u9ad8\u6548\u7684\u7cfb\u7edf\u4f18\u5316\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u6a21\u578b\u4e3a **Build-Analyze \u8fed\u4ee3\u5faa\u73af**\u3002\u5177\u4f53\u6b65\u9aa4\u5982\u4e0b\uff1a1. **\u5feb\u901f\u6784\u5efa\u7aef\u5230\u7aef\u7cfb\u7edf**\uff1a\u5148\u5b9e\u73b0\u4e00\u4e2a\u521d\u7248\uff08\u751a\u81f3\u53ef\u4ee5\u662f\u7c97\u7cd9\u7684\uff09\u7cfb\u7edf\uff1b2. **\u68c0\u67e5\u8f93\u51fa\u4e0e\u8ffd\u8e2a\uff08Traces\uff09**\uff1a\u901a\u8fc7\u9605\u8bfb\u6267\u884c\u8f68\u8ff9\u4e86\u89e3\u7cfb\u7edf\u8868\u73b0\uff1b3. **\u6784\u5efa\u8bc4\u4f30\u96c6\u4e0e\u8ba1\u7b97\u6307\u6807**\uff1a\u5229\u7528\u5c0f\u89c4\u6a21\u6570\u636e\u96c6\uff08\u598210-20\u4e2a\u6837\u672c\uff09\u8fdb\u884c\u521d\u6b65\u91cf\u5316\u8bc4\u4f30\uff1b4. **\u9519\u8bef\u5206\u6790\uff08Error Analysis\uff09**\uff1a\u7cfb\u7edf\u6027\u5730\u7edf\u8ba1\u5404\u7ec4\u4ef6\u5bfc\u81f4\u6b21\u4f18\u8f93\u51fa\u7684\u9891\u7387\uff1b5. **\u7ec4\u4ef6\u7ea7\u8bc4\u4f30**\uff1a\u968f\u7740\u7cfb\u7edf\u6210\u719f\uff0c\u9488\u5bf9\u7279\u5b9a\u7ec4\u4ef6\u8fdb\u884c\u6df1\u5ea6\u4f18\u5316\u548c\u8bc4\u4f30\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u975e\u7ebf\u6027\u8fed\u4ee3\u539f\u5219\uff1a\u5f00\u53d1\u4e0d\u662f\u5355\u5411\u6d41\u7a0b\uff0c\u9700\u6839\u636e\u5206\u6790\u7ed3\u679c\u53cd\u590d\u8c03\u6574\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5206\u6790\u9a71\u52a8\u6784\u5efa\u539f\u5219\uff1a\u5229\u7528\u5206\u6790\u7ed3\u8bba\u51b3\u5b9a\u5f00\u53d1\u7cbe\u529b\u7684\u5206\u914d\u4f18\u5148\u7ea7\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u4ece\u5c0f\u6837\u672c\u8d77\u6b65\u539f\u5219\uff1a\u521d\u671f\u4f7f\u752810-20\u4e2a\u6837\u672c\u5373\u53ef\u5feb\u901f\u5efa\u7acb\u8bc4\u4f30\u57fa\u51c6\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u5927\u6a21\u578b\u5e94\u7528\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u667a\u80fd\u4f53\u67b6\u6784\u8bbe\u8ba1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u7136\u8bed\u8a00\u5904\u7406\uff08NLP\uff09\u5de5\u7a0b"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u5de5\u4f5c\u6d41\u4f18\u5316"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u667a\u80fd\u4f53\u5de5\u4f5c\u6d41\u901a\u5e38\u5177\u6709\u9ad8\u5ea6\u5b9a\u5236\u5316\u7279\u5f81\uff0c\u73b0\u6210\u7684\u76d1\u63a7\u5de5\u5177\u867d\u6709\u5e2e\u52a9\uff0c\u4f46\u5f00\u53d1\u8005\u4ecd\u9700\u6295\u5165\u5927\u91cf\u7cbe\u529b\u6784\u5efa\u9488\u5bf9\u7279\u5b9a\u4e1a\u52a1\u573a\u666f\u7684\u81ea\u5b9a\u4e49\u8bc4\u4f30\u96c6\uff08Custom Evals\uff09\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"```json\n{\n  \"Build_Phase_Tasks\": [\n    \"\u6784\u5efa\u7aef\u5230\u7aef\u7cfb\u7edf (Build end-to-end system)\",\n    \"\u6539\u8fdb\u5355\u4e2a\u7ec4\u4ef6 (Improve individual component)\"\n  ],\n  \"Analyze_Phase_Tasks\": [\n    \"\u68c0\u67e5\u8f93\u51fa\u4e0e\u8ffd\u8e2a (Examine outputs; traces)\",\n    \"\u6784\u5efa\u8bc4\u4f30\u96c6\u5e76\u8ba1\u7b97\u6307\u6807 (Build evals; compute metrics)\",\n    \"\u9519\u8bef\u5206\u6790 (Error analysis)\",\n    \"\u7ec4\u4ef6\u7ea7\u8bc4\u4f30 (Component-level evals)\"\n  ]\n}\n```"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了一个双向互动的流程图，左侧为“Build”模块，右侧为“Analyze”模块，中间由双向箭头连接，随着系统成熟，两个模块下的具体任务逐步增加。</p>
+        </article>
+        
+        <article id="note_ef659e22a0" class="card">
+            <h1>26.AI 智能体规划设计模式：从硬编码到 LLM 动态任务编排的演进</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u4ecb\u7ecd\u4e86\u6784\u5efa\u9ad8\u5ea6\u81ea\u4e3b\u667a\u80fd\u4f53\u7684\u201c\u89c4\u5212\u8bbe\u8ba1\u6a21\u5f0f\uff08Planning Design Pattern\uff09\u201d\u3002\u8be5\u6a21\u5f0f\u7684\u6838\u5fc3\u5728\u4e8e\u4e0d\u518d\u9884\u5148\u786c\u7f16\u7801\uff08Hard-code\uff09\u56fa\u5b9a\u7684\u64cd\u4f5c\u6b65\u9aa4\uff0c\u800c\u662f\u901a\u8fc7\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u6839\u636e\u7528\u6237\u9700\u6c42\u52a8\u6001\u751f\u6210\u6267\u884c\u8ba1\u5212\u3002\u901a\u8fc7\u4e3aLLM\u63d0\u4f9b\u4e00\u7cfb\u5217\u5de5\u5177\u96c6\uff08Tools\uff09\u548c\u7cfb\u7edf\u63d0\u793a\u8bcd\uff0c\u667a\u80fd\u4f53\u80fd\u591f\u81ea\u4e3b\u62c6\u89e3\u590d\u6742\u4efb\u52a1\u3001\u8c03\u7528\u76f8\u5e94\u5de5\u5177\u5e76\u6309\u5e8f\u6267\u884c\uff0c\u4ece\u800c\u5b9e\u73b0\u6bd4\u4f20\u7edf\u786c\u7f16\u7801\u7cfb\u7edf\u66f4\u9ad8\u7684\u7075\u6d3b\u6027\u548c\u4efb\u52a1\u5904\u7406\u80fd\u529b\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u6d41\u7a0b\u5206\u4e3a**\u4efb\u52a1\u89c4\u5212**\u4e0e**\u5206\u6b65\u6267\u884c**\uff1a1. **\u5b9a\u4e49\u5de5\u5177\u96c6\uff08Tool Definition\uff09**\uff1a\u4e3aLLM\u63d0\u4f9b\u5982`get_item_description`\u3001`search_email`\u7b49\u539f\u5b50\u5316\u529f\u80fd\u51fd\u6570\uff1b2. **\u63d0\u793a\u8bcd\u5de5\u7a0b\uff08System Prompting\uff09**\uff1a\u8981\u6c42LLM\u6839\u636e\u7528\u6237\u8bf7\u6c42\u8fd4\u56de\u4e00\u4e2a**\u5206\u6b65\u6267\u884c\u8ba1\u5212\uff08Step-by-step plan\uff09**\uff1b3. **\u5faa\u73af\u6267\u884c\uff08Iterative Execution\uff09**\uff1a\u5c06\u8ba1\u5212\u4e2d\u7684\u6bcf\u4e00\u6b65\u6587\u672c\u8fde\u540c\u4e0a\u4e0b\u6587\u53cd\u9988\u7ed9LLM\uff0c\u89e6\u53d1\u5177\u4f53\u7684\u5de5\u5177\u8c03\u7528\uff1b4. **\u7ed3\u679c\u6c47\u603b**\uff1a\u5c06\u5404\u6b65\u9aa4\u6267\u884c\u7ed3\u679c\u6574\u5408\uff0c\u751f\u6210\u6700\u7ec8\u56de\u590d\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u52a8\u6001\u4efb\u52a1\u62c6\u89e3\uff1a\u5c06\u6a21\u7cca\u7684\u81ea\u7136\u8bed\u8a00\u6307\u4ee4\u8f6c\u5316\u4e3a\u903b\u8f91\u4e25\u5bc6\u7684\u6b65\u9aa4\u6e05\u5355"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u4e0a\u4e0b\u6587\u611f\u77e5\uff1a\u540e\u7eed\u6b65\u9aa4\u7684\u6267\u884c\u4f9d\u8d56\u4e8e\u524d\u5e8f\u6b65\u9aa4\u7684\u8f93\u51fa\u7ed3\u679c"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5de5\u5177\u589e\u5f3a\uff1a\u901a\u8fc7\u5916\u90e8API\u6269\u5c55LLM\u7684\u80fd\u529b\u8fb9\u754c"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u667a\u80fd\u5ba2\u670d\uff08\u5982\uff1a\u5904\u7406\u590d\u6742\u7684\u5546\u54c1\u7b5b\u9009\u4e0e\u5e93\u5b58\u67e5\u8be2\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4e2a\u4eba\u529e\u516c\u52a9\u624b\uff08\u5982\uff1a\u90ae\u4ef6\u81ea\u52a8\u5316\u5904\u7406\u3001\u65e5\u7a0b\u7ba1\u7406\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u4e3b\u7f16\u7a0b\u7cfb\u7edf\uff08\u5982\uff1a\u591a\u6b65\u9aa4\u8f6f\u4ef6\u7ec4\u4ef6\u6784\u5efa\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u6570\u636e\u68c0\u7d22\u4e0e\u5206\u6790"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u7cfb\u7edf\u53ef\u63a7\u6027\u76f8\u5bf9\u8f83\u4f4e\uff0c\u5f00\u53d1\u8005\u5728\u8fd0\u884c\u65f6\u65e0\u6cd5\u5b8c\u5168\u9884\u77e5LLM\u751f\u6210\u7684\u5177\u4f53\u8ba1\u5212\uff1b\u5728\u975e\u7f16\u7a0b\u9886\u57df\u7684\u5e7f\u6cdb\u5e94\u7528\u4ecd\u5904\u4e8e\u5b9e\u9a8c\u9636\u6bb5\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"### \u89c4\u5212\u6d41\u7a0b\u793a\u4f8b | \u573a\u666f | \u6b65\u9aa41 (\u89c4\u5212) | \u6b65\u9aa42 (\u6267\u884c) | \u6b65\u9aa43 (\u6536\u5c3e) | | :--- | :--- | :--- | :--- | | **\u96f6\u552e\u67e5\u8be2** | \u8c03\u7528 `get_item_descriptions` \u7b5b\u9009\u6b3e\u5f0f | \u8c03\u7528 `check_inventory` \u786e\u8ba4\u5e93\u5b58 | \u8c03\u7528 `get_item_price` \u6821\u9a8c\u4ef7\u683c | | **\u90ae\u4ef6\u52a9\u624b** | \u8c03\u7528 `search_email` \u5b9a\u4f4d\u76ee\u6807\u90ae\u4ef6 | \u8c03\u7528 `send_email` \u53d1\u9001\u786e\u8ba4\u56de\u590d | \u8c03\u7528 `move_email` \u5f52\u6863\u5904\u7406 |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了智能体从接收Query到生成Plan，再到逐一调用Tools并产生Output的闭环流程图。重点对比了零售查询和邮件处理两个场景下的逻辑链路。</p>
+        </article>
+        
+        <article id="note_e60f2321aa" class="card">
+            <h1>27.利用 JSON 实现自动化工作流的精确编排</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u6df1\u5165\u63a2\u8ba8\u4e86\u5982\u4f55\u901a\u8fc7\u63d0\u793a\u8bcd\uff08Prompting\uff09\u4f7f\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u751f\u6210\u3001\u7406\u89e3\u5e76\u6267\u884c\u9ad8\u5ea6\u81ea\u6cbb\u4ee3\u7406\u7684\u8ba1\u5212\u3002\u6838\u5fc3\u89c2\u70b9\u5728\u4e8e\uff0c\u5c06\u8ba1\u5212\u4ece\u6a21\u7cca\u7684\u81ea\u7136\u8bed\u8a00\u63cf\u8ff0\u8f6c\u5411\u7ed3\u6784\u5316\u7684\u6570\u636e\u683c\u5f0f\uff08\u5982 JSON\uff09\uff0c\u4ee5\u5b9e\u73b0\u4e0b\u6e38\u4ee3\u7801\u5bf9\u6267\u884c\u6b65\u9aa4\u7684\u7cbe\u786e\u89e3\u6790\u4e0e\u81ea\u52a8\u5316\u8c03\u7528\uff0c\u4ece\u800c\u63d0\u5347\u4ee3\u7406\u5728\u590d\u6742\u4efb\u52a1\uff08\u5982\u5ba2\u6237\u670d\u52a1\uff09\u4e2d\u7684\u53ef\u9760\u6027\u4e0e\u7cfb\u7edf\u5316\u6267\u884c\u80fd\u529b\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u4e3a**\u7ed3\u6784\u5316\u8ba1\u5212\u751f\u6210\uff08Structured Planning\uff09**\u3002\u5177\u4f53\u6b65\u9aa4\u5305\u62ec\uff1a1. **\u7cfb\u7edf\u63d0\u793a\u8bcd\u8bbe\u5b9a**\uff1a\u660e\u786e LLM \u53ef\u8c03\u7528\u7684\u5de5\u5177\u96c6\u53ca\u5176\u63cf\u8ff0\uff1b2. **\u683c\u5f0f\u7ea6\u675f**\uff1a\u5f3a\u5236\u8981\u6c42 LLM \u4ee5 **JSON \u683c\u5f0f**\u8f93\u51fa\u6b65\u9aa4\uff1b3. **\u5b57\u6bb5\u5b9a\u4e49**\uff1a\u6bcf\u4e2a\u6b65\u9aa4\u987b\u5305\u542b **step_number**\uff08\u6b65\u9aa4\u7f16\u53f7\uff09\u3001**description**\uff08\u4efb\u52a1\u63cf\u8ff0\uff09\u3001**tool_name**\uff08\u5de5\u5177\u540d\u79f0\uff09\u53ca **args**\uff08\u53c2\u6570\uff09\uff1b4. **\u4e0b\u6e38\u89e3\u6790**\uff1a\u901a\u8fc7\u4ee3\u7801\u89e3\u6790 JSON \u5217\u8868\uff0c\u6309\u5e8f\u89e6\u53d1\u5de5\u5177\u6267\u884c\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u6d88\u9664\u6b67\u4e49\u6027\uff1a\u7ed3\u6784\u5316\u6570\u636e\u4f18\u4e8e\u81ea\u7136\u8bed\u8a00"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u673a\u5668\u53ef\u8bfb\u6027\uff1a\u4fbf\u4e8e\u4e0b\u6e38\u7cfb\u7edf\u81ea\u52a8\u5316\u5904\u7406"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6a21\u5757\u5316\u6267\u884c\uff1a\u5c06\u590d\u6742\u4efb\u52a1\u62c6\u89e3\u4e3a\u53ef\u8c03\u7528\u7684\u5de5\u5177\u5e8f\u5217"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI \u667a\u80fd\u4f53\uff08Agent\uff09\u5f00\u53d1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u5ba2\u6237\u670d\u52a1\u7cfb\u7edf"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u5de5\u4f5c\u6d41\u7f16\u6392"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u8f6f\u4ef6\u5de5\u7a0b\u81ea\u52a8\u5316"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u867d\u7136\u4e3b\u6d41 LLM \u64c5\u957f\u751f\u6210 JSON\uff0c\u4f46\u5728\u6781\u7aef\u590d\u6742\u903b\u8f91\u4e0b\u4ecd\u53ef\u80fd\u51fa\u73b0\u683c\u5f0f\u9519\u8bef\u6216\u903b\u8f91\u5e7b\u89c9\uff1b\u7eaf\u6587\u672c\u8ba1\u5212\u867d\u7136\u76f4\u89c2\u4f46\u6700\u4e0d\u53ef\u9760\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"| \u5b57\u6bb5\u540d\u79f0 | \u8bf4\u660e |\n| :--- | :--- |\n| **step** | \u8ba1\u5212\u6267\u884c\u7684\u5e8f\u53f7 |\n| **description** | \u8be5\u6b65\u9aa4\u7684\u5177\u4f53\u529f\u80fd\u63cf\u8ff0 |\n| **tool** | \u9700\u8c03\u7528\u7684\u5177\u4f53\u5de5\u5177/\u51fd\u6570\u540d\u79f0 |\n| **args** | \u4f20\u9012\u7ed9\u5de5\u5177\u7684\u53c2\u6570\u952e\u503c\u5bf9 |"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了从“高层级文本描述”到“结构化 JSON 计划”的演进过程，并对比了 JSON、XML、Markdown 和纯文本在可靠性上的差异。</p>
+        </article>
+        
+        <article id="note_09ae1fab49" class="card">
+            <h1>28.从 JSON 到代码：利用代码执行提升自主智能体的逻辑规划与复杂任务处理能力</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u63a2\u8ba8\u4e86\u9ad8\u5ea6\u81ea\u4e3b\u667a\u80fd\u4f53\uff08Autonomous Agents\uff09\u7684\u8bbe\u8ba1\u6a21\u5f0f\uff0c\u6838\u5fc3\u63d0\u5021\u201c\u4ee3\u7801\u6267\u884c\u89c4\u5212\u201d\uff08Planning with Code Execution\uff09\u3002\u8be5\u65b9\u6cd5\u4e3b\u5f20\u8ba9\u5927\u8bed\u8a00\u6a21\u578b\uff08LLM\uff09\u76f4\u63a5\u7f16\u5199\u5e76\u6267\u884c\u4ee3\u7801\uff08\u5982Python\uff09\uff0c\u800c\u975e\u4ec5\u4ec5\u8f93\u51faJSON\u6216\u6587\u672c\u683c\u5f0f\u7684\u6b65\u9aa4\u3002\u8fd9\u79cd\u6a21\u5f0f\u89e3\u51b3\u4e86\u4f20\u7edf\u5de5\u5177\u8c03\u7528\u5728\u5904\u7406\u590d\u6742\u903b\u8f91\u548c\u8fb9\u7f18\u60c5\u51b5\u65f6\u8fc7\u4e8e\u8106\u5f31\u3001\u4f4e\u6548\u4e14\u9700\u4e0d\u65ad\u5f00\u53d1\u65b0\u5de5\u5177\u7684\u75db\u70b9\uff0c\u901a\u8fc7\u5229\u7528\u6210\u719f\u7684\u8f6f\u4ef6\u5e93\uff08\u5982Pandas\uff09\u663e\u8457\u63d0\u5347\u4e86\u667a\u80fd\u4f53\u5904\u7406\u590d\u6742\u67e5\u8be2\u7684\u7075\u6d3b\u6027\u548c\u6210\u529f\u7387\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u6a21\u578b\u4e3a**\u4ee3\u7801\u5373\u52a8\u4f5c\uff08Code as Action\uff09**\u3002\u5177\u4f53\u6b65\u9aa4\u5305\u62ec\uff1a1. **\u63d0\u793a\u8bcd\u5f15\u5bfc**\uff1a\u8981\u6c42LLM\u8f93\u51fa\u89e3\u51b3\u95ee\u9898\u7684Python\u4ee3\u7801\uff0c\u5e76\u4f7f\u7528\u7279\u5b9a\u6807\u7b7e\uff08\u5982XML\uff09\u5305\u88f9\uff1b2. **\u5e93\u96c6\u6210**\uff1a\u5229\u7528**Pandas**\u7b49\u5f3a\u5927\u7b2c\u4e09\u65b9\u5e93\u5904\u7406\u6570\u636e\uff0c\u51cf\u5c11\u5bf9\u5355\u4e00\u529f\u80fd\u5de5\u5177\u7684\u4f9d\u8d56\uff1b3. **\u591a\u6b65\u5c01\u88c5**\uff1a\u5728\u4e00\u6bb5\u4ee3\u7801\u4e2d\u6355\u83b7\u52a0\u8f7d\u3001\u8fc7\u6ee4\u3001\u6392\u5e8f\u3001\u805a\u5408\u7b49**\u591a\u9636\u6bb5\u89c4\u5212**\uff1b4. **\u73af\u5883\u6267\u884c**\uff1a\u5728\u53d7\u63a7\u7684**\u6c99\u7bb1\u73af\u5883**\u4e2d\u8fd0\u884c\u4ee3\u7801\u5e76\u8fd4\u56de\u7ed3\u679c\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u5229\u7528\u6210\u719f\u8f6f\u4ef6\u751f\u6001\uff1a\u901a\u8fc7\u8c03\u7528\u5df2\u6709\u5e93\u7684\u6210\u5343\u4e0a\u4e07\u4e2a\u51fd\u6570\uff0c\u907f\u514d\u4e3a\u6bcf\u4e2a\u7ec6\u5206\u9700\u6c42\u91cd\u590d\u9020\u8f6e\u5b50\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u9ad8\u5e26\u5bbd\u89c4\u5212\uff1a\u4ee3\u7801\u80fd\u6bd4JSON\u66f4\u4e25\u8c28\u5730\u8868\u8fbe\u590d\u6742\u7684\u903b\u8f91\u5224\u65ad\u548c\u5faa\u73af\u64cd\u4f5c\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5b89\u5168\u6027\u4f18\u5148\uff1a\u5fc5\u987b\u5efa\u7acb\u5b89\u5168\u7684\u6267\u884c\u8fb9\u754c\uff08Sandbox\uff09\u4ee5\u5e94\u5bf9\u4e0d\u53ef\u9884\u77e5\u7684\u4ee3\u7801\u884c\u4e3a\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u6570\u636e\u5206\u6790\u4e0e\u62a5\u8868\u751f\u6210"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u667a\u80fd\u8f6f\u4ef6\u5de5\u7a0b\u8f85\u52a9\uff08Agentic Software Coders\uff09"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u591a\u6b65\u9aa4\u5de5\u4f5c\u6d41\u81ea\u52a8\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u79d1\u7814\u6570\u636e\u5904\u7406\u4e0e\u7edf\u8ba1"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u5b89\u5168\u6027\u98ce\u9669\uff08\u9700\u5728\u6c99\u7bb1\u73af\u5883\u4e2d\u8fd0\u884c\u4ee5\u9632\u6076\u610f\u4ee3\u7801\u6267\u884c\uff09\uff1b\u5f00\u53d1\u8005\u5bf9\u7cfb\u7edf\u8fd0\u884c\u65f6\u7684\u63a7\u5236\u529b\u76f8\u5bf9\u51cf\u5f31\uff1b\u5e76\u975e\u6240\u6709\u573a\u666f\u90fd\u9002\u7528\uff0c\u90e8\u5206\u7279\u5b9a\u4efb\u52a1\u4ecd\u9700\u5b9a\u5236\u5316\u5de5\u5177\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"```json\n[\n  {\n    \"\u6a21\u5f0f\u5bf9\u6bd4\": \"\u6267\u884c\u6548\u7387\u4e0e\u7075\u6d3b\u6027\",\n    \"\u6587\u672c\u89c4\u5212 (Text as Action)\": \"\u8868\u73b0\u6700\u5dee\uff0c\u8bed\u4e49\u6a21\u7cca\uff0c\u96be\u4ee5\u76f4\u63a5\u9a71\u52a8\u590d\u6742\u5de5\u5177\u3002\",\n    \"JSON\u89c4\u5212 (JSON as Action)\": \"\u8868\u73b0\u4e2d\u7b49\uff0c\u7ed3\u6784\u5316\u4f46\u8106\u5f31\uff0c\u9762\u5bf9\u65b0\u573a\u666f\u9700\u9891\u7e41\u589e\u52a0\u65b0\u5de5\u5177\u63a5\u53e3\u3002\",\n    \"\u4ee3\u7801\u89c4\u5212 (Code as Action)\": \"\u8868\u73b0\u6700\u4f18\uff0c\u5229\u7528\u73b0\u6709\u5e93\u5904\u7406\u8fb9\u7f18\u60c5\u51b5\uff0c\u903b\u8f91\u8868\u8fbe\u529b\u6700\u5f3a\u3002\"\n  },\n  {\n    \"\u4ee3\u7801\u89c4\u5212\u6d41\u7a0b\": \"1. \u63a5\u6536\u7528\u6237\u67e5\u8be2 -\u003e 2. LLM\u751f\u6210Python\u4ee3\u7801\u5757 -\u003e 3. \u6c99\u7bb1\u73af\u5883\u6267\u884c -\u003e 4. \u8fd4\u56de\u6700\u7ec8\u7b54\u6848\"\n  }\n]\n```"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了一张对比不同模型在“代码、JSON、文本”三种动作模式下任务完成率的柱状图。数据显示，无论是GPT-4、Claude-2还是Gemini-Pro，采用“代码即动作”模式的成功率均显著高于JSON和纯文本模式。</p>
+        </article>
+        
+        <article id="note_8429f359d6" class="card">
+            <h1>29.多智能体协作工作流：角色定义、任务分解与协作模式深度解析</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u63a2\u8ba8\u4e86\u4ece\u5355\u4e00\u667a\u80fd\u4f53\u5411**\u591a\u667a\u80fd\u4f53\u534f\u4f5c\u5de5\u4f5c\u6d41\uff08Multi-agentic workflows\uff09**\u7684\u6f14\u8fdb\u3002\u6838\u5fc3\u903b\u8f91\u5728\u4e8e\u5c06\u590d\u6742\u4efb\u52a1\u5206\u89e3\u4e3a\u7531\u4e0d\u540c\u89d2\u8272\uff08\u5982\u7814\u7a76\u5458\u3001\u8bbe\u8ba1\u5e08\u3001\u64b0\u7a3f\u4eba\uff09\u627f\u62c5\u7684\u5b50\u4efb\u52a1\uff0c\u7c7b\u4f3c\u4e8e\u4eba\u7c7b\u56e2\u961f\u534f\u4f5c\u6216\u8ba1\u7b97\u673a\u591a\u7ebf\u7a0b\u5904\u7406\u3002\u901a\u8fc7\u4e3a\u6bcf\u4e2a\u667a\u80fd\u4f53\u914d\u7f6e\u7279\u5b9a\u7684\u63d0\u793a\u8bcd\u548c\u5de5\u5177\uff0c\u7cfb\u7edf\u80fd\u591f\u66f4\u9ad8\u6548\u5730\u5904\u7406\u590d\u6742\u9700\u6c42\uff0c\u63d0\u9ad8\u4efb\u52a1\u5b8c\u6210\u7684\u4e13\u4e1a\u5ea6\u548c\u81ea\u4e3b\u6027\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6838\u5fc3\u65b9\u6cd5\u8bba\u5305\u542b\u4e09\u4e2a\u5173\u952e\u7ef4\u5ea6\uff1a1. **\u89d2\u8272\u5b9a\u4e49\uff08Role Prompting\uff09**\uff1a\u901a\u8fc7\u63d0\u793a\u8bcd\u8ba9LLM\u626e\u6f14\u7279\u5b9a\u4e13\u5bb6\u89d2\u8272\u30022. **\u4efb\u52a1\u5206\u89e3\uff08Task Decomposition\uff09**\uff1a\u5c06\u5b8f\u89c2\u76ee\u6807\u62c6\u89e3\u4e3a\u539f\u5b50\u5316\u7684\u5b50\u4efb\u52a1\u30023. **\u534f\u4f5c\u6a21\u5f0f\uff08Collaboration Patterns\uff09**\uff1a\u5305\u62ec**\u7ebf\u6027\u5de5\u4f5c\u6d41\uff08Linear Plan\uff09**\uff08\u6309\u987a\u5e8f\u4f20\u9012\u4ea7\u51fa\uff09\u548c**\u7ba1\u7406\u6a21\u5f0f\uff08Manager-led Planning\uff09**\uff08\u7531\u4e00\u4e2a\u7ecf\u7406\u667a\u80fd\u4f53\u8d1f\u8d23\u89c4\u5212\u3001\u5206\u53d1\u4efb\u52a1\u5e76\u8fdb\u884c\u6700\u7ec8\u5ba1\u6838\uff09\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u4e13\u4e1a\u5206\u5de5\uff1a\u6bcf\u4e2a\u667a\u80fd\u4f53\u4e13\u6ce8\u4e8e\u5355\u4e00\u5b50\u4efb\u52a1\u4ee5\u63d0\u5347\u8d28\u91cf"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u5de5\u5177\u96c6\u6210\uff1a\u4e3a\u4e0d\u540c\u89d2\u8272\u914d\u7f6e\u4e13\u5c5e\u5de5\u5177\uff08\u5982\u641c\u7d22\u3001\u7ed8\u56feAPI\uff09"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u6a21\u5757\u5316\u590d\u7528\uff1a\u6784\u5efa\u901a\u7528\u7684\u4e13\u5bb6\u667a\u80fd\u4f53\u4f9b\u591a\u4e2a\u5e94\u7528\u8c03\u7528"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u8fed\u4ee3\u53cd\u9988\uff1a\u5728\u6d41\u7a0b\u672b\u7aef\u52a0\u5165\u5ba1\u6838\u4e0e\u53cd\u601d\u73af\u8282"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u5e02\u573a\u8425\u9500\u7d20\u6750\u521b\u4f5c"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u5b66\u672f\u8bba\u6587/\u7814\u7a76\u62a5\u544a\u64b0\u5199"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u6cd5\u5f8b\u6848\u4ef6\u51c6\u5907\u4e0e\u8c03\u7814"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u8f6f\u4ef6\u5de5\u7a0b\u5f00\u53d1"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u591a\u667a\u80fd\u4f53\u7cfb\u7edf\u589e\u52a0\u4e86\u534f\u8c03\u590d\u6742\u5ea6\u548c\u901a\u4fe1\u5f00\u9500\uff1b\u53ef\u80fd\u5b58\u5728\u9519\u8bef\u5728\u667a\u80fd\u4f53\u95f4\u4f20\u9012\u7684\u98ce\u9669\uff1b\u5bf9\u5e95\u5c42\u5927\u6a21\u578b\u7684\u89c4\u5212\u548c\u89d2\u8272\u626e\u6f14\u80fd\u529b\u8981\u6c42\u8f83\u9ad8\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"```json\n{\n  \"task_role_mapping\": [\n    {\n      \"\u4efb\u52a1\u573a\u666f\": \"\u521b\u5efa\u8425\u9500\u7d20\u6750\",\n      \"\u56e2\u961f\u89d2\u8272\": \"\u7814\u7a76\u5458\u3001\u5e73\u9762\u8bbe\u8ba1\u5e08\u3001\u64b0\u7a3f\u4eba\"\n    },\n    {\n      \"\u4efb\u52a1\u573a\u666f\": \"\u64b0\u5199\u7814\u7a76\u6587\u7ae0\",\n      \"\u56e2\u961f\u89d2\u8272\": \"\u7814\u7a76\u5458\u3001\u7edf\u8ba1\u5b66\u5bb6\u3001\u4e3b\u7b14\u3001\u7f16\u8f91\"\n    },\n    {\n      \"\u4efb\u52a1\u573a\u666f\": \"\u51c6\u5907\u6cd5\u5f8b\u6848\u4ef6\",\n      \"\u56e2\u961f\u89d2\u8272\": \"\u5f8b\u5e08\u52a9\u7406\u3001\u6cd5\u5f8b\u52a9\u624b\u3001\u8c03\u67e5\u5458\"\n    }\n  ],\n  \"workflow_comparison\": {\n    \"\u7ebf\u6027\u6a21\u5f0f\": \"\u7814\u7a76\u5458(\u8c03\u7814\u62a5\u544a) -\u003e \u8bbe\u8ba1\u5e08(\u89c6\u89c9\u7d20\u6750) -\u003e \u64b0\u7a3f\u4eba(\u6700\u7ec8\u62a5\u544a)\",\n    \"\u7ecf\u7406\u6a21\u5f0f\": \"\u8425\u9500\u7ecf\u7406\u667a\u80fd\u4f53(\u89c4\u5212) -\u003e \u5206\u53d1\u4efb\u52a1\u7ed9[\u7814\u7a76\u5458/\u8bbe\u8ba1\u5e08/\u64b0\u7a3f\u4eba] -\u003e \u7ecf\u7406\u667a\u80fd\u4f53(\u5ba1\u6838/\u4f18\u5316)\"\n  }\n}\n```"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了任务与团队角色的映射表、线性协作流程图以及基于经理智能体的层级规划架构图。</p>
+        </article>
+        
+        <article id="note_46f9193956" class="card">
+            <h1>30.多智能体系统通信模式：从线性拓扑到网状协作的设计架构指南</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u63a2\u8ba8\u4e86\u591a\u667a\u80fd\u4f53AI\u7cfb\u7edf\uff08Multi-agent AI systems\uff09\u4e2d\u7684\u901a\u4fe1\u6a21\u5f0f\u8bbe\u8ba1\uff0c\u65e8\u5728\u89e3\u51b3\u667a\u80fd\u4f53\u4e4b\u95f4\u5982\u4f55\u9ad8\u6548\u534f\u4f5c\u4e0e\u4fe1\u606f\u4f20\u9012\u7684\u95ee\u9898\u3002\u5434\u6069\u8fbe\u6559\u6388\u6307\u51fa\uff0c\u6b63\u5982\u4eba\u7c7b\u7ec4\u7ec7\u9700\u8981\u7ec4\u7ec7\u67b6\u6784\u56fe\uff0cAI\u667a\u80fd\u4f53\u4e5f\u9700\u8981\u7279\u5b9a\u7684\u901a\u4fe1\u62d3\u6251\u7ed3\u6784\u3002\u89c6\u9891\u91cd\u70b9\u4ecb\u7ecd\u4e86\u4ece\u7b80\u5355\u7684\u7ebf\u6027\u5e8f\u5217\u5230\u590d\u6742\u7684\u5168\u8fde\u63a5\u7f51\u7edc\u7b49\u56db\u79cd\u6838\u5fc3\u8bbe\u8ba1\u6a21\u5f0f\uff0c\u5e2e\u52a9\u5f00\u53d1\u8005\u6839\u636e\u4efb\u52a1\u590d\u6742\u5ea6\u548c\u53ef\u63a7\u6027\u9700\u6c42\uff0c\u6784\u5efa\u66f4\u5177\u81ea\u4e3b\u6027\u7684\u4ee3\u7406\u7cfb\u7edf\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u89c6\u9891\u63d0\u51fa\u4e86\u56db\u79cd\u4e3b\u8981\u7684**\u901a\u4fe1\u62d3\u6251\u6a21\u578b**\uff1a\n1. **\u7ebf\u6027\u6a21\u5f0f (Linear Plan)**\uff1a\u4efb\u52a1\u6309\u987a\u5e8f\u6d41\u8f6c\uff0c\u5982\u201c\u7814\u7a76\u5458\u2192\u8bbe\u8ba1\u5e08\u2192\u6587\u6848\u201d\uff0c\u9002\u7528\u4e8e\u6d41\u7a0b\u6807\u51c6\u5316\u7684\u4efb\u52a1\u3002\n2. **\u5c42\u7ea7\u6a21\u5f0f (Hierarchical)**\uff1a\u5f15\u5165**\u7ba1\u7406\u667a\u80fd\u4f53 (Manager Agent)** \u8fdb\u884c\u4efb\u52a1\u5206\u53d1\u4e0e\u7ed3\u679c\u6c47\u603b\uff0c\u662f\u76ee\u524d\u6700\u5e38\u7528\u7684\u534f\u8c03\u65b9\u5f0f\u3002\n3. **\u6df1\u5c42\u5c42\u7ea7\u6a21\u5f0f (Deeper Hierarchy)**\uff1a\u5728\u5c42\u7ea7\u57fa\u7840\u4e0a\u589e\u52a0**\u5b50\u667a\u80fd\u4f53 (Sub-agents)**\uff0c\u5982\u7814\u7a76\u5458\u4e0b\u8bbe\u201c\u7f51\u9875\u641c\u7d22\u5458\u201d\u548c\u201c\u4e8b\u5b9e\u6838\u67e5\u5458\u201d\uff0c\u5904\u7406\u66f4\u7ec6\u7c92\u5ea6\u7684\u5b50\u4efb\u52a1\u3002\n4. **\u5168\u5458\u5de8\u9635\u6a21\u5f0f (All-to-All)**\uff1a\u667a\u80fd\u4f53\u4e4b\u95f4\u53ef\u968f\u65f6\u81ea\u7531\u901a\u4fe1\uff0c\u901a\u8fc7**\u63d0\u793a\u8bcd (Prompt)** \u544a\u77e5\u5f7c\u6b64\u5b58\u5728\uff0c\u9002\u7528\u4e8e\u9700\u8981\u9ad8\u5ea6\u534f\u540c\u548c\u5bb9\u5fcd\u4e00\u5b9a\u6df7\u4e71\u7684\u5b9e\u9a8c\u6027\u9879\u76ee\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u7ed3\u6784\u5339\u914d\u539f\u5219\uff1a\u901a\u4fe1\u7ed3\u6784\u5e94\u53cd\u6620\u4efb\u52a1\u672c\u8eab\u7684\u903b\u8f91\u590d\u6742\u5ea6\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u4e2d\u5fc3\u5316\u534f\u8c03\uff1a\u5728\u591a\u4ee3\u7406\u534f\u4f5c\u4e2d\uff0c\u4f7f\u7528\u7ba1\u7406\u4ee3\u7406\u80fd\u663e\u8457\u63d0\u5347\u7ed3\u679c\u7684\u7a33\u5b9a\u6027\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u7075\u6d3b\u6027\u4e0e\u53ef\u63a7\u6027\u5e73\u8861\uff1a\u6839\u636e\u5bf9\u7ed3\u679c\u9884\u6d4b\u6027\u7684\u8981\u6c42\u9009\u62e9\u62d3\u6251\u6df1\u5ea6\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u7cfb\u7edf\u67b6\u6784\u8bbe\u8ba1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u8425\u9500\u5de5\u4f5c\u6d41"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u590d\u6742\u8f6f\u4ef6\u5de5\u7a0b\u81ea\u52a8\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u591a\u4ee3\u7406\u79d1\u7814\u534f\u4f5c\u5e73\u53f0"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u590d\u6742\u7684\u901a\u4fe1\u6a21\u5f0f\uff08\u5982\u5168\u5458\u5de8\u9635\uff09\u867d\u7136\u7075\u6d3b\u6027\u9ad8\uff0c\u4f46\u8f93\u51fa\u7ed3\u679c\u96be\u4ee5\u9884\u6d4b\uff0c\u4e14\u5bf9\u7cfb\u7edf\u63a7\u5236\u548c\u8c03\u8bd5\u63d0\u51fa\u4e86\u66f4\u9ad8\u6311\u6218\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **\u7ebf\u6027\u6d41**\uff1a[\u7814\u7a76\u5458] -\u003e [\u5e73\u9762\u8bbe\u8ba1\u5e08] -\u003e [\u6587\u6848] -\u003e [\u6700\u7ec8\u62a5\u544a]\n- **\u6807\u51c6\u5c42\u7ea7**\uff1a\n  * \u6838\u5fc3\uff1a\u8425\u9500\u7ecf\u7406 (Manager)\n  * \u8282\u70b9\uff1a\u7814\u7a76\u5458\u3001\u5e73\u9762\u8bbe\u8ba1\u5e08\u3001\u6587\u6848\n- **\u6df1\u5c42\u5c42\u7ea7**\uff1a\n  * \u8425\u9500\u7ecf\u7406 -\u003e \u7814\u7a76\u5458 -\u003e {\u7f51\u9875\u7814\u7a76\u5458, \u4e8b\u5b9e\u6838\u67e5\u5458}\n  * \u8425\u9500\u7ecf\u7406 -\u003e \u6587\u6848 -\u003e {\u98ce\u683c\u6da6\u8272\u5458, \u5f15\u7528\u68c0\u67e5\u5458}\n- **\u5168\u5458\u5de8\u9635**\uff1a\u6240\u6709\u8282\u70b9\uff08\u7814\u7a76\u5458\u3001\u8bbe\u8ba1\u5e08\u3001\u6587\u6848\u7b49\uff09\u4e92\u8054\uff0c\u4fe1\u606f\u5b9e\u65f6\u540c\u6b65\u81f3\u63a5\u6536\u65b9\u7684\u8054\u7cfb\u4eba\u5217\u8868\u3002"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频通过四个对比鲜明的流程图展示了智能体间的连接关系，从单向箭头到放射状连接，再到复杂的网状结构。</p>
+        </article>
+        
+        <article id="note_60e19c7174" class="card">
+            <h1>31.全课总结：从设计模式到多智能体协作的核心架构</h1>
+
+            <div class="md-render" data-content='"\u672c\u89c6\u9891\u4e3a\u300a\u667a\u80fd\u4f53AI\uff08Agentic AI\uff09\u300b\u8bfe\u7a0b\u7684\u603b\u7ed3\u56de\u987e\u3002\u5434\u6069\u8fbe\u6559\u6388\u7cfb\u7edf\u6027\u5730\u68b3\u7406\u4e86\u4ece\u57fa\u7840\u8bbe\u8ba1\u6a21\u5f0f\u5230\u590d\u6742\u591a\u667a\u80fd\u4f53\u7cfb\u7edf\u7684\u6838\u5fc3\u67b6\u6784\u3002\u8bfe\u7a0b\u65e8\u5728\u89e3\u51b3\u4f20\u7edf\u5927\u6a21\u578b\u5728\u590d\u6742\u4efb\u52a1\u5904\u7406\u4e2d\u7684\u5c40\u9650\u6027\uff0c\u901a\u8fc7\u5f15\u5165\u53cd\u601d\u3001\u5de5\u5177\u8c03\u7528\u3001\u89c4\u5212\u53ca\u591a\u667a\u80fd\u4f53\u534f\u4f5c\u7b49\u673a\u5236\uff0c\u663e\u8457\u63d0\u5347AI\u7cfb\u7edf\u7684\u6027\u80fd\u4e0e\u5e94\u7528\u8fb9\u754c\u3002\u89c6\u9891\u5f3a\u8c03\u4e86\u7cfb\u7edf\u5316\u8bc4\u4f30\u4e0e\u9519\u8bef\u5206\u6790\u5728\u6784\u5efa\u9ad8\u6548\u667a\u80fd\u4f53\u4e2d\u7684\u5173\u952e\u4f5c\u7528\uff0c\u5e76\u6307\u51fa\u8fd9\u4e9b\u6280\u80fd\u5728\u5f53\u524dAI\u804c\u573a\u4e2d\u7684\u6838\u5fc3\u7ade\u4e89\u529b\u3002"'></div>
+
+            <div class="section-title">核心方法论与步骤</div>
+            <div class="method-container">
+                <div class="md-render" data-content='"\u6784\u5efa\u9ad8\u6548\u667a\u80fd\u4f53AI\u7684\u56db\u4e2a\u6838\u5fc3\u7ef4\u5ea6\uff1a1. **\u53cd\u601d\u8bbe\u8ba1\u6a21\u5f0f (Reflection)**\uff1a\u901a\u8fc7\u81ea\u6211\u8fed\u4ee3\u63d0\u5347\u8f93\u51fa\u8d28\u91cf\uff1b2. **\u5de5\u5177\u4f7f\u7528 (Tool Use/Function Calling)**\uff1a\u901a\u8fc7\u5916\u90e8\u4ee3\u7801\u6267\u884c\u6269\u5c55\u6a21\u578b\u80fd\u529b\u8fb9\u754c\uff1b3. **\u8bc4\u4f30\u4e0e\u9519\u8bef\u5206\u6790 (Evals \u0026 Error Analysis)**\uff1a\u9a71\u52a8\u7cfb\u7edf\u4f18\u5316\u7684\u89c4\u8303\u5316\u6d41\u7a0b\uff1b4. **\u89c4\u5212\u4e0e\u591a\u667a\u80fd\u4f53\u7cfb\u7edf (Planning \u0026 Multi-agent Systems)**\uff1a\u901a\u8fc7\u4efb\u52a1\u5206\u89e3\u4e0e\u534f\u4f5c\u5904\u7406\u590d\u6742\u903b\u8f91\u3002"'></div>
+                <div style="margin-top: 15px;">
+                    <strong>关键原则：</strong>
+                    <div style="margin-top:10px;">
+                        
+                        <div class="list-item md-render" data-content='"\u8fed\u4ee3\u4f18\u4e8e\u5355\u6b21\u751f\u6210\uff1a\u901a\u8fc7\u53cd\u601d\u6a21\u5f0f\u6301\u7eed\u4f18\u5316\u6027\u80fd\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u89c4\u8303\u5316\u8bc4\u4f30\u9a71\u52a8\uff1a\u5efa\u7acb\u4e25\u8c28\u7684\u6d4b\u8bd5\u4e0e\u9519\u8bef\u5206\u6790\u673a\u5236\u662f\u7cfb\u7edf\u63d0\u5347\u7684\u57fa\u7840\u3002"'></div>
+                        
+                        <div class="list-item md-render" data-content='"\u80fd\u529b\u6269\u5c55\u539f\u5219\uff1a\u5229\u7528\u5de5\u5177\u8c03\u7528\u548c\u4ee3\u7801\u6267\u884c\u6253\u7834LLM\u7684\u5c01\u95ed\u73af\u5883\u3002"'></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-title">应用领域</div>
+                    
+                    <div class="list-item md-render" data-content='"\u8f6f\u4ef6\u5de5\u7a0b\u81ea\u52a8\u5316"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u4f01\u4e1a\u7ea7\u590d\u6742\u6d41\u7a0b\u7f16\u6392"'></div>
+                    
+                    <div class="list-item md-render" data-content='"AI\u7cfb\u7edf\u67b6\u6784\u8bbe\u8ba1"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u81ea\u52a8\u5316\u6570\u636e\u5206\u6790\u4e0e\u4ee3\u7801\u6267\u884c"'></div>
+                    
+                    <div class="list-item md-render" data-content='"\u667a\u80fd\u5ba2\u670d\u4e0e\u591a\u8f6e\u5bf9\u8bdd\u7cfb\u7edf"'></div>
+                    
+                </div>
+                <div>
+                    <div class="section-title">局限性观察</div>
+                    <div class="limitations-box md-render" data-content='"\u9ad8\u7ea7\u89c4\u5212\u4e0e\u591a\u667a\u80fd\u4f53\u7cfb\u7edf\u867d\u7136\u529f\u80fd\u5f3a\u5927\uff0c\u4f46\u5176\u884c\u4e3a\u5f80\u5f80\u96be\u4ee5\u9884\u6d4b\u4e14\u63a7\u5236\u96be\u5ea6\u8f83\u9ad8\uff0c\u5bf9\u7cfb\u7edf\u7684\u9c81\u68d2\u6027\u8bbe\u8ba1\u63d0\u51fa\u4e86\u6311\u6218\u3002"'></div>
+                </div>
+            </div>
+
+            <div class="section-title">数据资产与案例实例</div>
+            <div class="md-render" data-content='"- **Why Agentic AI**: \u63a2\u8ba8\u667a\u80fd\u4f53\u5e26\u6765\u7684\u5168\u65b0\u5e94\u7528\u53ef\u80fd\u6027\n- **Reflection design pattern**: \u7b80\u5355\u7684\u6027\u80fd\u63d0\u5347\u624b\u6bb5\n- **Tool use (function calling)**: \u6269\u5c55\u5e94\u7528\u80fd\u529b\uff0c\u5982\u4ee3\u7801\u6267\u884c\n- **Evals, error analysis**: \u6784\u5efa\u7cfb\u7edf\u7684\u89c4\u8303\u5316\u6d41\u7a0b\n- **Planning, multi-agent systems**: \u6784\u5efa\u66f4\u5f3a\u5927\u4f46\u66f4\u590d\u6742\u7684\u7cfb\u7edf"' data-type="asset"></div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">※ 视觉备注：视频展示了一张名为“Summary”的PPT，列出了课程涵盖的五个关键知识模块，作为全课的知识地图。</p>
+        </article>
+        
+    </div>
+
+    <script>
+        document.querySelectorAll('.md-render').forEach(el => {
+            try {
+                const attr = el.getAttribute('data-content');
+                if (!attr) return;
+
+                const raw = JSON.parse(attr);
+                const isAsset = el.getAttribute('data-type') === 'asset';
+
+                const hasMd = /[*\-]{2,}|^[\s]*[-*+][\s]+|\|.*\||#{1,6}\s|```/.test(raw);
+                const hasArrow = raw.includes('->') || raw.includes('→');
+
+                if (hasMd) {
+                    el.innerHTML = marked.parse(raw);
+                } else if (hasArrow && isAsset) {
+                    const nodes = raw.split(/->|→/);
+                    el.innerHTML = `<div class="flow-wrapper">${nodes.map(n => `<span class="flow-node">${n.trim()}</span>`).join('<span style="color:#94a3b8">→</span>')}</div>`;
+                } else {
+                    el.style.whiteSpace = 'pre-wrap';
+                    el.textContent = raw;
+                }
+            } catch (err) {
+                console.error("渲染失败", err);
+            }
+        });
+    </script>
+</body>
+</html>
